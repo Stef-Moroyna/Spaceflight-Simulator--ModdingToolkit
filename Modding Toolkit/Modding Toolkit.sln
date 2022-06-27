@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{0d34d7bb-76d0-f25c-ec10-cf9c8998fa6b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer.Editor", "Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj", "{099e9233-a022-ab4d-2267-587070317e2b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.Modules.UnityMathematics", "Sirenix.OdinInspector.Modules.UnityMathematics.csproj", "{88f82c11-663e-7772-37be-4e0588687e56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{9d8155c9-65ee-b0f9-d623-11a6e62423fa}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0d34d7bb-76d0-f25c-ec10-cf9c8998fa6b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0d34d7bb-76d0-f25c-ec10-cf9c8998fa6b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0d34d7bb-76d0-f25c-ec10-cf9c8998fa6b}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0d34d7bb-76d0-f25c-ec10-cf9c8998fa6b}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099e9233-a022-ab4d-2267-587070317e2b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099e9233-a022-ab4d-2267-587070317e2b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099e9233-a022-ab4d-2267-587070317e2b}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099e9233-a022-ab4d-2267-587070317e2b}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88f82c11-663e-7772-37be-4e0588687e56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88f82c11-663e-7772-37be-4e0588687e56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88f82c11-663e-7772-37be-4e0588687e56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88f82c11-663e-7772-37be-4e0588687e56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9d8155c9-65ee-b0f9-d623-11a6e62423fa}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9d8155c9-65ee-b0f9-d623-11a6e62423fa}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9d8155c9-65ee-b0f9-d623-11a6e62423fa}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9d8155c9-65ee-b0f9-d623-11a6e62423fa}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

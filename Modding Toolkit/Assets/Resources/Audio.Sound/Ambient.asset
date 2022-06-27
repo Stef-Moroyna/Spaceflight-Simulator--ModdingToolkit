@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3dacc9ddb84c5c47b99755cdd3d3005, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  onStart: 0
+  tracks:
+  - clip: {fileID: 8300000, guid: 4168db8d23c39d849b1875fb6571a88e, type: 3}
+    volume: 0.3
+    pitch: 0.3
+    onTrackEnd: 0
+  onEnd: 1

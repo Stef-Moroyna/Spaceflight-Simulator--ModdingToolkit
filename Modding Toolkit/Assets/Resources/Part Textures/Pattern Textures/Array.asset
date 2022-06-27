@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c70d8f290dd0284b87588ddf6666874, type: 3}
+  m_Name: Array
+  m_EditorClassIdentifier: 
+  colorTex:
+    textures:
+    - texture: {fileID: 2800000, guid: f8b2ac6fe907e174c92b2e37b2aa360a, type: 3}
+      ideal: 2
+    - texture: {fileID: 2800000, guid: 700de41678565f143a63a688dc51f1aa, type: 3}
+      ideal: 3
+    border_Bottom:
+      uvSize: 0
+      sizeMode: 0
+      size: 0.5
+    border_Top:
+      uvSize: 0
+      sizeMode: 0
+      size: 0.5
+    center:
+      mode: 2
+      sizeMode: 1
+      size: 1.05
+      logoHeightPercent: 0.5
+    flipToLight_X: 1
+    flipToLight_Y: 1
+    icon: {fileID: 0}
+  tags: []

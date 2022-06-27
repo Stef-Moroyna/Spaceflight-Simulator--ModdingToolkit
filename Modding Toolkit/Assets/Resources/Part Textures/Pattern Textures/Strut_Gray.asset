@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c70d8f290dd0284b87588ddf6666874, type: 3}
+  m_Name: Strut_Gray
+  m_EditorClassIdentifier: 
+  colorTex:
+    textures:
+    - texture: {fileID: 2800000, guid: 748e870696c05524bb7b3050550aefcc, type: 3}
+      ideal: 0
+    border_Bottom:
+      uvSize: 0.25
+      sizeMode: 1
+      size: 0.25
+    border_Top:
+      uvSize: 0.25
+      sizeMode: 1
+      size: 0.25
+    center:
+      mode: 2
+      sizeMode: 1
+      size: 0.5
+      logoHeightPercent: 0.5
+    flipToLight_X: 1
+    flipToLight_Y: 1
+  tags: []

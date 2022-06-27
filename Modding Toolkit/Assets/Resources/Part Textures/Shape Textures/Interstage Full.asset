@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ccf3a634b47aa4f9855acf05dfd568, type: 3}
+  m_Name: Interstage Full
+  m_EditorClassIdentifier: 
+  shapeTex:
+    textures:
+    - texture: {fileID: 2800000, guid: 5713e469ff8258149a2027275dff14ad, type: 3}
+      ideal: 1
+    - texture: {fileID: 2800000, guid: 45b8e53c8d119da449c5e2f20a63741f, type: 3}
+      ideal: 2
+    - texture: {fileID: 2800000, guid: 63d12bc69272a0f4f88bf6ca136bce94, type: 3}
+      ideal: 3
+    - texture: {fileID: 2800000, guid: fa6aae808edc4f54494157d60f26f9cb, type: 3}
+      ideal: 4
+    - texture: {fileID: 2800000, guid: 93e5d0861286005428fba363ef2f9aef, type: 3}
+      ideal: 5
+    - texture: {fileID: 2800000, guid: 67a2c1b23f1927a4fb45b10405eaf43a, type: 3}
+      ideal: 6
+    border_Bottom:
+      uvSize: 0.5
+      sizeMode: 1
+      size: 0.3
+    border_Top:
+      uvSize: 0.5
+      sizeMode: 1
+      size: 0.3
+    center:
+      mode: 0
+      sizeMode: 0
+      size: 0.5
+      logoHeightPercent: 0.5
+    flipToLight_X: 1
+    flipToLight_Y: 1
+  shadowTex: {fileID: 11400000, guid: db0b90a0f7c797e4d964a36961bbb985, type: 2}
+  tags: []

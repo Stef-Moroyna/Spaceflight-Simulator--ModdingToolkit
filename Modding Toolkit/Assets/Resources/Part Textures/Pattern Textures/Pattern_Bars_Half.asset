@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c70d8f290dd0284b87588ddf6666874, type: 3}
+  m_Name: Pattern_Bars_Half
+  m_EditorClassIdentifier: 
+  colorTex:
+    textures:
+    - texture: {fileID: 2800000, guid: 41073933f7aeed944b9c30fc6c031f6e, type: 3}
+      ideal: 0
+    border_Bottom:
+      uvSize: 0
+      sizeMode: 1
+      size: 0.6
+    border_Top:
+      uvSize: 0
+      sizeMode: 0
+      size: 0.5
+    center:
+      mode: 1
+      sizeMode: 0
+      size: 0.5
+      logoHeightPercent: 0.65
+    flipToLight_X: 0
+    flipToLight_Y: 0
+    icon: {fileID: 21300000, guid: 63172b2cc3b1b84489bc13efa9c59478, type: 3}
+  tags:
+  - tank
+  - cone

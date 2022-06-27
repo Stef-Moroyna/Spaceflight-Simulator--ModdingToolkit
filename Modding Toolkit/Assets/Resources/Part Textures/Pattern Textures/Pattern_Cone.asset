@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c70d8f290dd0284b87588ddf6666874, type: 3}
+  m_Name: Pattern_Cone
+  m_EditorClassIdentifier: 
+  colorTex:
+    textures:
+    - texture: {fileID: 2800000, guid: 9e8daafcf0db59b44948f3d821fe15c6, type: 3}
+      ideal: 0
+    border_Bottom:
+      uvSize: 0
+      sizeMode: 0
+      size: 0.5
+    border_Top:
+      uvSize: 0
+      sizeMode: 1
+      size: 1
+    center:
+      mode: 1
+      sizeMode: 1
+      size: 0.3
+      logoHeightPercent: 0.7
+    flipToLight_X: 0
+    flipToLight_Y: 0
+  tags:
+  - cone

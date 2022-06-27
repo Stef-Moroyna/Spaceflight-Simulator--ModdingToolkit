@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ae1bbf9dd329e4a8f37566e82a0a45, type: 3}
+  m_Name: Separator_Left
+  m_EditorClassIdentifier: 
+  colorTex:
+    texture: {fileID: 2800000, guid: e2f71d51fa8f0c34a8aef2190e90bee6, type: 3}
+    flipToLight_X: 0
+    flipToLight_Y: 0
+  shapeTex:
+    texture: {fileID: 2800000, guid: 26261c3b20c55e24f98cb193ae3a5abf, type: 3}
+    flipToLight_X: 0
+    flipToLight_Y: 0
+  shadowTex:
+    texture: {fileID: 2800000, guid: 9a710267a15044844b6aa4f13882465d, type: 3}
+    flipToLight_X: 0
+    flipToLight_Y: 0

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ccf3a634b47aa4f9855acf05dfd568, type: 3}
+  m_Name: Half Rivets
+  m_EditorClassIdentifier: 
+  shapeTex:
+    textures:
+    - texture: {fileID: 2800000, guid: 0b487820543fd3e49804d8f94ff7038a, type: 3}
+      ideal: 1
+    - texture: {fileID: 2800000, guid: c12a80f2032f260438e9864019069737, type: 3}
+      ideal: 2
+    - texture: {fileID: 2800000, guid: 8fc7f1de50979ba48841b65b6b9e6b52, type: 3}
+      ideal: 3
+    - texture: {fileID: 2800000, guid: f8ea5f9ced6e81e4684a4810a5340855, type: 3}
+      ideal: 4
+    - texture: {fileID: 2800000, guid: 9c81bdab435bdd141805d77a851ae9aa, type: 3}
+      ideal: 5
+    - texture: {fileID: 2800000, guid: a2c44d5387dacdb42a315c10c942c462, type: 3}
+      ideal: 6
+    border_Bottom:
+      uvSize: 0
+      sizeMode: 1
+      size: 0.1
+    border_Top:
+      uvSize: 0
+      sizeMode: 1
+      size: 0.1
+    center:
+      mode: 1
+      sizeMode: 1
+      size: 0.1
+      logoHeightPercent: 0.5
+    fixedWidth: 0
+    width: 1
+    flipToLight_X: 1
+    flipToLight_Y: 0
+    metalTexture: 0
+    icon: {fileID: 21300000, guid: 6d7ea97b049543f4c9cba6378154eeb4, type: 3}
+  shadowTex: {fileID: 11400000, guid: db0b90a0f7c797e4d964a36961bbb985, type: 2}
+  tags:
+  - tank
+  - cone
