@@ -10,7 +10,7 @@ namespace SFS.Parts.Modules
     public class Variants
     {
         [BoxGroup] public Variant[] variants = new Variant[0];
-        [BoxGroup] public PickTag[] tags = new PickTag[0];
+        [BoxGroup, HideInInspector] public PickTag[] tags = new PickTag[0];
 
 
         // Pack
