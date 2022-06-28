@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Priority
+  - Specific UI
+  - Map Button
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -13,31 +17,41 @@ TagManager:
   - UI
   - 
   - 
+  - Parts
+  - Part Hitbox
+  - Celestial Body
+  - Map
+  - Non Colliding Parts
+  - Scaled Space
+  - 
+  - Part Icon
+  - Front Parts
+  - Stars
   - 
   - 
   - 
   - 
   - 
   - 
+  - .
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Docking Trigger
+  - Flame Trigger
   m_SortingLayers:
+  - name: Back
+    uniqueID: 1680403729
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Map
+    uniqueID: 3505250655
+    locked: 0
+  - name: UI
+    uniqueID: 1418543263
+    locked: 0
+ 
