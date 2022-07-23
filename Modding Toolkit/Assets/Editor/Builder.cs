@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using System.IO;
 
-public class AssetBundlesBuilder
+public static class AssetBundlesBuilder
 {
 
     static void BuildAllAssetBundles(BuildTarget buildTarget, string pathExtend)
@@ -17,9 +17,15 @@ public class AssetBundlesBuilder
             buildTarget);
     }
 
-    [MenuItem("Assets/Build AssetBundles/Windows")]
+    [MenuItem("Build Pack/Windows")]
     static void BuildAllAssetBundlesWindows() => BuildAllAssetBundles(BuildTarget.StandaloneWindows, "Windows");
 
-    [MenuItem("Assets/Build AssetBundles/Mac")]
+    [MenuItem("Build Pack/Mac")]
     static void BuildAllAssetBundlesMac() => BuildAllAssetBundles(BuildTarget.StandaloneOSX, "Mac");
+    
+    [MenuItem("Build Pack/Android")]
+    static void BuildAllAssetBundlesAndroid() => BuildAllAssetBundles(BuildTarget.Android, "Android");
+    
+    [MenuItem("Build Pack/iOS")]
+    static void BuildAllAssetBundles_iOS() => BuildAllAssetBundles(BuildTarget.iOS, "iOS");
 }
