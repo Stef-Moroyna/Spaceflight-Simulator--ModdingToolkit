@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -9,30 +10,37 @@ namespace SFS.Parts.Modules
     public abstract class PipeData : PolygonData
     {
         [BoxGroup("Depth", false)] public float depthMultiplier = 1;
-        [Range(-1, 1)] public float cut;
+        [Space]
+        public bool advancedCut;
+        [Range(-1.99f, 1.99f), HideIf("advancedCut")] public float cut;
+        [ShowIf("advancedCut")] public AdvancedCut advancedCutData;
+        [Space]
         public bool reduceResolution = true;
 
         // Data
         public Pipe pipe;
-        
-        
         protected void SetData(Pipe pipe)
         {
             this.pipe = pipe;
-
-            List<PipePoint> shapePoints = pipe.points;
-            Vector2[] points = new Vector2[shapePoints.Count * 2];
-
-            for (int i = 0; i < shapePoints.Count; i++)
+            List<PipePoint> points = pipe.points;
+            
+            Vector2[] vertices = new Vector2[points.Count * 2];
+            for (int i = 0; i < points.Count; i++)
             {
-                points[i] = shapePoints[i].GetPosition(Mathf.Clamp(cut - 1, -1, 0));
-                points[points.Length - 1 - i] = shapePoints[i].GetPosition(Mathf.Clamp(cut + 1, 0, 1));
-            }
+                // Sets cut
+                PipePoint point = points[i];
+                point.cutLeft = advancedCut ? advancedCutData.cuts[advancedCutData.cuts.Length == 1? 0 : i].left : Mathf.Clamp(cut - 1, -1, 1) / 2 + 0.5f;
+                point.cutRight = advancedCut ? advancedCutData.cuts[advancedCutData.cuts.Length == 1? 0 : i].right : Mathf.Clamp(cut + 1, -1, 1) / 2 + 0.5f;
 
+                // Output point
+                vertices[i] = point.GetPosition(point.cutLeft * 2 - 1);
+                vertices[vertices.Length - 1 - i] = point.GetPosition(point.cutRight * 2 - 1);
+            }
+            
             if (reduceResolution)
-                SetData(new Polygon(points), new Polygon(ToFastPoints(points, 0.05f)));
+                SetData(new Polygon(vertices), new Polygon(ToFastPoints(vertices, 0.05f)));
             else
-                SetData(new Polygon(points));
+                SetData(new Polygon(vertices));
         }
         
         // Resolution reduction
@@ -99,14 +107,13 @@ namespace SFS.Parts.Modules
 
             return (point - (point_A + line * t)).sqrMagnitude;
         }
-
-
+        
         public override void Raycast(Vector2 point, out float depth)
         {
             for (int i = 0; i < pipe.points.Count - 1; i++)
-                if (Depth(pipe.points[i], pipe.points[i + 1], point, out depth))
+                if (Depth(pipe.points[i], pipe.points[i + 1], point, out float _depth))
                 {
-                    depth = baseDepth + depth * depthMultiplier;
+                    depth = BaseDepth + _depth * depthMultiplier;
                     return;
                 }
 
@@ -151,7 +158,7 @@ namespace SFS.Parts.Modules
         }
         public void AddPoint(Vector2 position, Vector2 width)
         {
-            points.Add(new PipePoint(position, width, points.Count > 0 ? points.Last().height + (points.Last().position - position).magnitude : 0));
+            points.Add(new PipePoint(position, width, points.Count > 0 ? points.Last().height + (points.Last().position - position).magnitude : 0, 0, 1));
         }
 
         // Get
@@ -169,15 +176,18 @@ namespace SFS.Parts.Modules
         public Vector2 position;
         public Vector2 width;
         public float height;
-    
+        public float cutLeft, cutRight;
+        
         public Vector2 Left => position - width / 2;
         public Vector2 Right => position + width / 2;
 
-        public PipePoint(Vector2 position, Vector2 width, float height)
+        public PipePoint(Vector2 position, Vector2 width, float height, float cutLeft, float cutRight)
         {
             this.position = position;
             this.width = width;
             this.height = height;
+            this.cutLeft = cutLeft;
+            this.cutRight = cutRight;
         }
 
         public Vector2 GetPosition(float t)
@@ -185,14 +195,25 @@ namespace SFS.Parts.Modules
             return position + width * (t * 0.5f);
         }
 
-        public static PipePoint Lerp(PipePoint a, PipePoint b, float t)
-        {
-            return new PipePoint(Vector2.Lerp(a.position, b.position, t), Vector2.Lerp(a.width, b.width, t), Mathf.Lerp(a.height, b.height, t));
-        }
-
         public static PipePoint LerpByHeight(PipePoint a, PipePoint b, float height)
         {
             return Lerp(a, b, Mathf.InverseLerp(a.height, b.height, height));
+        }
+        static PipePoint Lerp(PipePoint a, PipePoint b, float t)
+        {
+            return new PipePoint(Vector2.Lerp(a.position, b.position, t), Vector2.Lerp(a.width, b.width, t), Mathf.Lerp(a.height, b.height, t), Mathf.Lerp(a.cutLeft, b.cutLeft, t), Mathf.Lerp(a.cutRight, b.cutRight, t));
+        }
+    }
+
+    [Serializable]
+    public class AdvancedCut
+    {
+        public Cut[] cuts;
+        
+        [Serializable]
+        public class Cut
+        {
+            [Range(0, 1)] public float left = 0, right = 1;
         }
     }
 }

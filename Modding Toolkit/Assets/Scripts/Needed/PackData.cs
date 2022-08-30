@@ -11,6 +11,6 @@ namespace ModLoader
         public string Description;
         public string Author;
         public bool ShowIcon;
-        [ShowIf(nameof(ShowIcon))]public Texture2D Icon;
+        [ShowIf(nameof(ShowIcon)), PreviewField(80, ObjectFieldAlignment.Left)]public Texture2D Icon;
     }
 }

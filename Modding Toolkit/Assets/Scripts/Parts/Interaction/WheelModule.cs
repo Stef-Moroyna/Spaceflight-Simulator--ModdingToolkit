@@ -17,5 +17,9 @@ namespace SFS.Parts
         // State
         [BoxGroup("State", false)] public float angularVelocity;
         [BoxGroup("State", false)] public Bool_Reference on;
+
+        public void ToggleEnabled()
+        {
+        }
     }
 }

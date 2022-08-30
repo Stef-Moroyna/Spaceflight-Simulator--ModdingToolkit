@@ -17,7 +17,7 @@ namespace SFS.Parts.Modules
             SetData(new Polygon(polygonVertices.ToArray()));
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         [BoxGroup("edit", false), HorizontalGroup("edit/h")] public bool edit, view;
         [BoxGroup("edit", false), ShowIf("edit")] public float gridSize = 0.1f;
 
@@ -38,6 +38,6 @@ namespace SFS.Parts.Modules
         }
         
         [Button] void Reverse() => polygonVertices.Reverse();
-#endif
+        #endif
     }
 }

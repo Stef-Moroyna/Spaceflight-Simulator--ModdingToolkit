@@ -54,7 +54,7 @@ namespace SFS.Variables
                 width.OnChange += Recalculate;
             }
             
-            return new PipePoint(position.Value, width.Value, float.NaN);
+            return new PipePoint(position.Value, width.Value, float.NaN, float.NaN, float.NaN);
         }
 
         protected override bool Equals(PipePoint a, PipePoint b) => false;
@@ -224,10 +224,11 @@ namespace SFS.Variables
         //
         public static Composed<T> operator +(Composed<T> a, Action b)
         {
+            a.CheckInitialize();
+            
             b.Invoke();
             a.onChange += b;
             
-            a.CheckInitialize();
             return a;
         }
         public static Composed<T> operator -(Composed<T> a, Action b)
@@ -238,10 +239,11 @@ namespace SFS.Variables
         //
         public static Composed<T> operator +(Composed<T> a, Action<T,T> b)
         {
+            a.CheckInitialize();
+            
             b.Invoke(a.Value, a.Value);
             a.onChangeOldNew += b;
             
-            a.CheckInitialize();
             return a;
         }
         public static Composed<T> operator -(Composed<T> a, Action<T,T> b)

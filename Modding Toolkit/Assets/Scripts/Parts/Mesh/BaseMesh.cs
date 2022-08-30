@@ -14,8 +14,11 @@ namespace SFS.Parts.Modules
         // Generates mesh
         [Button] public abstract void GenerateMesh();
 
+        static int baseDepthID = Shader.PropertyToID("_BaseDepth");
+        static int depthMultiplierID = Shader.PropertyToID("_DepthMultiplier");
+
         // Creates a mesh based on the specified values
-        protected void ApplyMeshData(List<Vector3> vertices, int[] indices, List<Vector3>[] UVs, Color[] colors, List<float> depths, List<PartTex> textures, MeshTopology topology)
+        protected void ApplyMeshData(List<Vector3> vertices, int[] indices, List<Vector3>[] UVs, Color[] colors, List<Vector3> shading, List<Vector3> depths, float baseDepth, float depthMultiplier, List<PartTex> textures, MeshTopology topology)
         {
             // Refs
             Mesh mesh = GetMesh();
@@ -31,9 +34,22 @@ namespace SFS.Parts.Modules
             // Color
             mesh.colors = colors;
             
+            // Shading
+            mesh.SetUVs(5, shading);
+            
             // Depth
-            depths = RenderSortingManager.main != null? RenderSortingManager.main.GetGlobalDepths(depths, sortingLayer) : depths;
-            mesh.SetUVs(3, depths.Select(depth => new Vector2(depth, 0)).ToArray());
+            if (RenderSortingManager.main != null)
+            {
+                baseDepth = RenderSortingManager.main.GetGlobalDepth(0.5f, sortingLayer) + baseDepth * 0.02f * 1f / Mathf.Max(RenderSortingManager.main.layers.Count, 1);
+                depthMultiplier = depthMultiplier * 0.02f * 1f / Mathf.Max(RenderSortingManager.main.layers.Count, 1);
+            }
+            else
+            {
+                baseDepth = 0.5f + baseDepth * 0.02f;
+                depthMultiplier *= 0.02f;
+            }
+            //
+            mesh.SetUVs(3, depths);
 
             
             // Indices, materials, property blocks
@@ -115,9 +131,15 @@ namespace SFS.Parts.Modules
                 if (meshRenderer.HasPropertyBlock())
                     meshRenderer.GetPropertyBlock(propertyBlock, index);
                 
+                // Tex
                 propertyBlock.SetTexture(PartTex.ColorTexture, T.color);
                 propertyBlock.SetTexture(PartTex.ShapeTexture, T.shape);
                 propertyBlock.SetTexture(PartTex.ShadowTexture, T.shadow);
+                
+                // Depth
+                propertyBlock.SetFloat(baseDepthID, baseDepth);
+                propertyBlock.SetFloat(depthMultiplierID, depthMultiplier);
+                
                 meshRenderer.SetPropertyBlock(propertyBlock, index);
             }
             
@@ -143,6 +165,9 @@ namespace SFS.Parts.Modules
         string sortingLayer;
         public void SetSortingLayer(string sortingLayer)
         {
+            if (this.sortingLayer == sortingLayer)
+                return;
+            
             this.sortingLayer = sortingLayer;
             GenerateMesh();
         }
@@ -158,13 +183,13 @@ namespace SFS.Parts.Modules
 
         // Auto regenerate mesh
         #if UNITY_EDITOR
-        protected void OnValidate() => a = true;
-        bool a;
+        protected void OnValidate() => hasGeneratedMeshForEditing = true;
+        bool hasGeneratedMeshForEditing;
         void Update()
         {
-            if (!Application.isPlaying && a)
+            if (!Application.isPlaying && hasGeneratedMeshForEditing)
             {
-                a = false;
+                hasGeneratedMeshForEditing = false;
                 GenerateMesh();
             }
         }

@@ -1,7 +1,9 @@
+using System;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using SFS.Variables;
+using SFS.World;
 
 namespace SFS.Parts.Modules
 {
@@ -9,20 +11,38 @@ namespace SFS.Parts.Modules
     public abstract class PolygonData : SurfaceData
     {
         [SerializeField, BoxGroup("", false), LabelText("Build Collider")] bool colliderArea = true; // Can the polygon collide
+        [SerializeField, BoxGroup("", false), LabelText("Physics Collider")] bool physicsCollider = false; // Can the polygon be clicked
         [SerializeField, BoxGroup("", false), LabelText("Can Click (Build/Game)")] bool clickArea = true; // Can the polygon be clicked
 
-        [HorizontalGroup, HideIf(nameof(isComposedDepth))] public float baseDepth = 0; // Used for raycast/rendering
-        [HorizontalGroup, ShowIf(nameof(isComposedDepth))] public Composed_Float composedBaseDepth;
-        [HorizontalGroup, HideLabel] public bool isComposedDepth;
+        [BoxGroup("Depth", false), HorizontalGroup("Depth/H"), HideIf(nameof(isComposedDepth)), SerializeField] float baseDepth = 0; // Used for raycast/rendering
+        [BoxGroup("Depth", false), HorizontalGroup("Depth/H"), ShowIf(nameof(isComposedDepth)), SerializeField] Composed_Float composedBaseDepth;
+        [BoxGroup("Depth", false), HorizontalGroup("Depth/H"), HideLabel, SerializeField] bool isComposedDepth;
 
         // Data
         public Polygon polygon;
         public Polygon polygonFast;
 
-
+        void Reset()
+        {
+            physicsCollider = true;
+        }
+        void Awake()
+        {
+            PolygonCollider a = gameObject.AddComponent<PolygonCollider>();
+            a.polygon = this;
+        }
+        
         public bool Click => clickArea && isActiveAndEnabled;
         public bool BuildCollider => colliderArea && isActiveAndEnabled;
         public bool BuildCollider_IncludeInactive => colliderArea;
+        public bool PhysicsCollider_IncludeInactive => physicsCollider;
+        
+        public float BaseDepth => isComposedDepth ? composedBaseDepth.Value : baseDepth;
+        public void SubscribeToComposedDepth(Action a)
+        {
+            if (isComposedDepth)
+                composedBaseDepth.OnChange += a;
+        }
         
         protected void SetData(Polygon polygon, Polygon polygonFast)
         {
@@ -40,10 +60,9 @@ namespace SFS.Parts.Modules
             SetData(newSurfaces, newSurfaces);
         }
         
-
         public virtual void Raycast(Vector2 point, out float depth)
         {
-            depth = baseDepth;
+            depth = BaseDepth;
         }
     }
 }

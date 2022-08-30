@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using SFS.Builds;
+using SFS.World;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,20 +11,24 @@ namespace SFS.Parts.Modules
     public class PolygonMesh : BaseMesh, I_InitializePartModule
     {
         [Required] public PolygonData polygonModule;
+        
         public UVOptions UV_Mode = UVOptions.Auto;
-        [HideInInspector]public Vector2[] bounds;
+        [HideInInspector] public Vector2[] bounds;
 
         [BoxGroup, Required] public BasicTexture texture;
-        [BoxGroup, LabelText("Color [Optional]")] public ColorModule colorModule;
+
+        [HorizontalGroup, HideLabel] public ColorType type = ColorType.Module;
+        [HorizontalGroup, HideLabel, ShowIf("type", ColorType.Local)] public Color colorBasic = Color.white;
+        [HorizontalGroup, HideLabel, ShowIf("type", ColorType.Module), Required] public ColorModule colorModule;
         
+        // New default (but keeps legacy assets)
+        void Reset() => type = ColorType.Local;
 
         int I_InitializePartModule.Priority => 0;
         void I_InitializePartModule.Initialize()
         {
             polygonModule.onChange += GenerateMesh;
-            
-            if (polygonModule.isComposedDepth)
-                polygonModule.composedBaseDepth.OnChange += GenerateMesh;
+            polygonModule.SubscribeToComposedDepth(GenerateMesh);
 
             initialized = true;
             GenerateMesh();
@@ -31,14 +37,7 @@ namespace SFS.Parts.Modules
         bool initialized;
         public override void GenerateMesh()
         {
-            if (!initialized && Application.isPlaying)
-                return;
-            
-            if (polygonModule.isComposedDepth)
-                polygonModule.baseDepth = polygonModule.composedBaseDepth.Value;
-            
-            if (!Application.isPlaying)
-                polygonModule.Output();
+            polygonModule.Output();
             
             // Data
             List<Vector2> points = new List<Vector2>(polygonModule.polygon.vertices);
@@ -82,43 +81,52 @@ namespace SFS.Parts.Modules
             }
             
             List<PartTex> textures = new List<PartTex> { new PartTex { color = texture.colorTex.texture, shape = texture.shapeTex.texture, shadow = texture.shadowTex.texture } };
-            ApplyMeshData(vertices.ToList(), indices.ToArray(), uvs, GetColors(vertices.Length), GetDepths(vertices.Length, 0.5f + polygonModule.baseDepth * 0.02f), textures, MeshTopology.Triangles);
+            ApplyMeshData(vertices.ToList(), indices.ToArray(), uvs, GetColors(vertices.Length), GetShading(vertices.Length), GetDepths(vertices.Length), polygonModule.BaseDepth, 0, textures, MeshTopology.Triangles);
         }
         Line2[] Get_UV_Channels()
         {
-            return new []
-            {
-                texture.colorTex.Get_Rect(transform),
-                texture.shapeTex.Get_Rect(transform),
-                texture.shadowTex.Get_Rect(transform)
-            };
+            return new [] { texture.colorTex.Get_Rect(transform), texture.shapeTex.Get_Rect(transform), texture.shadowTex.Get_Rect(transform) };
         }
         Color[] GetColors(int verticeCount)
         {
-            Color color = colorModule != null ? colorModule.GetColor() : Color.white;
+            Color color = type == ColorType.Module && colorModule != null? colorModule.GetColor() : colorBasic;
+            
             Color[] output = new Color[verticeCount];
-
             for (int i = 0; i < output.Length; i++)
                 output[i] = color;
 
             return output;
         }
-        static List<float> GetDepths(int vertexCount, float depth)
+        static List<Vector3> GetShading(int vertexCount)
         {
-            List<float> depths = new List<float>(vertexCount);
+            List<Vector3> depths = new List<Vector3>(vertexCount);
 
             for (int i = 0; i < vertexCount; i++)
-                depths.Add(depth);
+                depths.Add(new Vector3(0, 0, 1));
 
             return depths;
         }
+        static List<Vector3> GetDepths(int vertexCount)
+        {
+            List<Vector3> depths = new List<Vector3>(vertexCount);
 
+            for (int i = 0; i < vertexCount; i++)
+                depths.Add(Vector3.one);
 
+            return depths;
+        }
+        
         public enum UVOptions
         {
             Auto,
             Two_Points,
             Four_Points,
+        }
+        
+        public enum ColorType
+        {
+            Module,
+            Local,
         }
     }
 }

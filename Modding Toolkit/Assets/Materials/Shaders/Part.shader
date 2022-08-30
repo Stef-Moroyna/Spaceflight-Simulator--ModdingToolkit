@@ -40,6 +40,7 @@ Shader "SFS/Part"
                 float3 UVQ_2 : TEXCOORD2;
                 float3 depth : TEXCOORD3;
                 float3 burnUV : TEXCOORD4;
+				float3 shading : TEXCOORD5;
         
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
@@ -53,6 +54,7 @@ Shader "SFS/Part"
                 float3 UVQ_2 : TEXCOORD2;
                 float3 depth : TEXCOORD3;
                 float3 burnUV : TEXCOORD4;
+				float3 shading : TEXCOORD5;
         
                 UNITY_VERTEX_OUTPUT_STEREO
             };
@@ -71,6 +73,7 @@ Shader "SFS/Part"
                 OUT.UVQ_2 = IN.UVQ_2;
                 OUT.depth = IN.depth;
                 OUT.burnUV = IN.burnUV;
+            	OUT.shading = IN.shading;
         
                 return OUT;
             }
@@ -78,7 +81,10 @@ Shader "SFS/Part"
             // Part
             sampler2D _ColorTexture, _ShapeTexture, _ShadowTexture;
             float _Intensity;
-        
+                    
+            // Depth
+            float _BaseDepth, _DepthMultiplier;
+            
             // Burn
             sampler2D _BurnMarkTex, _GradientTex;
             float _MaxSutBlackness;
@@ -93,21 +99,25 @@ Shader "SFS/Part"
             fixed4 frag(v2f IN, out float depth : SV_Depth) : SV_Target
             #endif
             {
+				// IN.depth: x = t_x, y = width
+				float x = abs(IN.depth.x / IN.depth.z * 2 - 1);
+            	
                 // Depth
                 #if defined(SHADER_API_GLES)
                 #else
+            		float _depth = _BaseDepth + (1 - x) * (IN.depth.y / IN.depth.z) * _DepthMultiplier; // base + t * width * multiplier
                     #if defined(UNITY_REVERSED_Z)
-                    depth = IN.depth.x;
+                    depth = _depth;
                     #else
-                    depth = 1.0f - IN.depth.x;
+                    depth = 1.0f - _depth;
                     #endif
                 #endif
             
                 // Color texture // Vertice color
                 fixed4 c = tex2D(_ColorTexture, IN.UVQ_0.xy / IN.UVQ_0.z) * IN.color;
         
-                // Shape texture // Shadow texture
-                float albedo = tex2D(_ShapeTexture, IN.UVQ_1.xy / IN.UVQ_1.z).r * 1.9 * (1 - (1 - tex2D(_ShadowTexture, IN.UVQ_2.xy / IN.UVQ_2.z).r) * _Intensity);
+                // Shape texture // Shadow texture // Shading
+                float albedo = tex2D(_ShapeTexture, IN.UVQ_1.xy / IN.UVQ_1.z).r * 1.9 * (1 - (1 - tex2D(_ShadowTexture, IN.UVQ_2.xy / IN.UVQ_2.z).r) * _Intensity) * (1 + (IN.shading.x / IN.shading.z) * x);
                 c.rgb *= albedo;
         
                 // Burn marks

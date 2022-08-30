@@ -63,13 +63,13 @@ namespace UV
     public class StartEnd_Color
     {
         public Color2 color_Edge;
-        public Color2 color_Center;
+        //public Color2 color_Center;
         public Line height;
 
-        public StartEnd_Color(Color2 color_Edge, Color2 color_Center, Line height)
+        public StartEnd_Color(Color2 color_Edge, /*Color2 color_Center,*/ Line height)
         {
             this.color_Edge = color_Edge;
-            this.color_Center = color_Center;
+            //this.color_Center = color_Center;
             this.height = height;
         }
 
@@ -78,9 +78,9 @@ namespace UV
             Line time = new Line(height.InverseLerp(cut.start), height.InverseLerp(cut.end));
 
             Color2 output_color_A = new Color2(color_Edge.Lerp(time.start), color_Edge.Lerp(time.end));
-            Color2 output_color_B = new Color2(color_Center.Lerp(time.start), color_Center.Lerp(time.end));
+            //Color2 output_color_B = new Color2(color_Center.Lerp(time.start), color_Center.Lerp(time.end));
 
-            return new StartEnd_Color(output_color_A, output_color_B, cut);
+            return new StartEnd_Color(output_color_A, /*output_color_B,*/ cut);
         }
     }
 }

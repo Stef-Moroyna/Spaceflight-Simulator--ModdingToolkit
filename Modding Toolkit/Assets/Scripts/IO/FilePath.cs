@@ -38,6 +38,17 @@ namespace SFS.IO
         {
             Write(() => File.WriteAllText(this, text));
         }
+        public void WriteBytes(byte[] data)
+        {
+            Write(() => File.WriteAllBytes(this, data));
+        }
+        public void AppendText(string text)
+        {
+            if (!FileExists())
+                WriteText("");
+                
+            File.AppendAllText(this, text);
+        }
 
         public byte[] ReadBytes()
         {
@@ -50,7 +61,17 @@ namespace SFS.IO
 
             return File.ReadAllText(this);
         }
-        public void DeleteFile()
+        public StreamWriter StreamWriter
+        {
+            get
+            {
+                if (!this.FileExists())
+                    this.WriteText("");
+                return new StreamWriter(this.Path);
+            }
+        }
+
+            public void DeleteFile()
         {
             if (FileExists())
                 File.Delete(this);
@@ -93,6 +114,12 @@ namespace SFS.IO
                 return;
 
             writeAction.Invoke();
+        }
+        
+        public string GetRelativePath(string root)
+        {
+            return System.IO.Path.GetRelativePath(root, Path);
+            return Path.Replace(System.IO.Path.GetFullPath(root).Replace("\\", "/"), "");
         }
     }
 }

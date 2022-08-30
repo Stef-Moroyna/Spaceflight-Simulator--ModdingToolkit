@@ -12,7 +12,6 @@ namespace SFS.Parts.Modules
         public Composed_Float height_a;
         public Composed_Float height_b;
 
-
         int I_InitializePartModule.Priority => 10;
         void I_InitializePartModule.Initialize()
         {
