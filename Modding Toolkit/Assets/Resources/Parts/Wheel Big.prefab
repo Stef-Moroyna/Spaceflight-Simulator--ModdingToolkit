@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6044823620175555549}
   - component: {fileID: 3331229083831559882}
   - component: {fileID: 3154728170651438565}
+  - component: {fileID: 7602833442710570091}
+  - component: {fileID: 2183976876270218141}
   m_Layer: 8
   m_Name: Attachment
   m_TagString: Untagged
@@ -29,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237239933722641144}
   m_RootOrder: 1
@@ -47,23 +50,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 0
-  part: {fileID: 0}
-  points:
-  - variables: {fileID: 201175616340340550}
-    x:
-      variables: {fileID: 201175616340340550}
-      input: -0.1
-    y:
-      variables: {fileID: 201175616340340550}
-      input: 0
-  - variables: {fileID: 201175616340340550}
-    x:
-      variables: {fileID: 201175616340340550}
-      input: 0.1
-    y:
-      variables: {fileID: 201175616340340550}
-      input: 0
+  points: []
   loop: 0
+  pointsArray:
+  - points:
+    - variables: {fileID: 201175616340340550}
+      x:
+        variables: {fileID: 201175616340340550}
+        input: -0.1
+      y:
+        variables: {fileID: 201175616340340550}
+        input: 0
+    - variables: {fileID: 201175616340340550}
+      x:
+        variables: {fileID: 201175616340340550}
+        input: 0.1
+      y:
+        variables: {fileID: 201175616340340550}
+        input: 0
+    loop: 0
+  edit: 0
+  view: 0
+  gridSize: 0.1
 --- !u!114 &3331229083831559882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,10 +86,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 0
-  part: {fileID: 0}
-  clickArea: 0
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 0
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -0.1, y: -0.5}
   point_B: {x: 0.1, y: 0}
   edit: 1
@@ -98,8 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   polygonModule: {fileID: 3331229083831559882}
   UV_Mode: 0
   bounds:
@@ -108,7 +119,59 @@ MonoBehaviour:
   - {x: 0.1, y: 0}
   - {x: 0.1, y: -0.5}
   texture: {fileID: 11400000, guid: da07820ae1ee5ca42a3825322ecbabcf, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
+--- !u!33 &7602833442710570091
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019362701786343694}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2183976876270218141
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019362701786343694}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1981869520280140615
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +184,6 @@ GameObject:
   - component: {fileID: 7719013137368960298}
   - component: {fileID: 8119894035004989685}
   - component: {fileID: 201175616340340550}
-  - component: {fileID: 2366879239087920201}
   m_Layer: 8
   m_Name: Wheel Big
   m_TagString: Untagged
@@ -139,6 +201,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4377522848761485463}
   - {fileID: 1695650230537363463}
@@ -158,10 +221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    TranslatableGroup: Part Names
+    plainText: 0
     TranslatableName: Rover_Wheel_Name
   description:
-    TranslatableGroup: Part Descriptions
+    plainText: 0
     TranslatableName: Rover_Wheel_Description
   mass:
     variables: {fileID: 201175616340340550}
@@ -188,6 +251,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2878202932824154627}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ToggleEnabled
         m_Mode: 1
         m_Arguments:
@@ -198,6 +262,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  temperature: -Infinity
 --- !u!114 &8119894035004989685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,24 +301,6 @@ MonoBehaviour:
       data: 0001000000ffffffff010000000000000004010000000e53797374656d2e426f6f6c65616e01000000076d5f76616c75650001000b
   stringVariables:
     saves: []
-  _doubleVariables: []
-  _boolVariables:
-  - name: wheel_on
-    value: 0
-    save: 1
-  _stringVariables: []
---- !u!114 &2366879239087920201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981869520280140615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923fbd2e77fe5b64593b1ea8b8a0903f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3497391499415190373
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +317,8 @@ GameObject:
   - component: {fileID: 6008503215922617687}
   - component: {fileID: 646731176021008138}
   - component: {fileID: 4152922042715143809}
+  - component: {fileID: 8351028007346842707}
+  - component: {fileID: 6352654657152491920}
   m_Layer: 8
   m_Name: Wheel
   m_TagString: Untagged
@@ -287,6 +336,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.25, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237239933722641144}
   m_RootOrder: 0
@@ -305,10 +355,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 0
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 2
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   polygonVertices:
   - {x: -0.25, y: 0.65000004}
   - {x: 0.24999999, y: 0.65}
@@ -319,6 +373,7 @@ MonoBehaviour:
   - {x: -0.65000004, y: -0.25}
   - {x: -0.65, y: 0.25}
   edit: 1
+  view: 0
   gridSize: 0.05
 --- !u!114 &3829303385092594736
 MonoBehaviour:
@@ -332,8 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 2
+  renderQueueOffset: 2
   polygonModule: {fileID: 2828506282589882257}
   UV_Mode: 0
   bounds:
@@ -342,6 +396,8 @@ MonoBehaviour:
   - {x: 0.65000004, y: 0.65000004}
   - {x: 0.65000004, y: -0.65000004}
   texture: {fileID: 11400000, guid: c881b98b934a44844b5160d30045d851, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &2878202932824154627
 MonoBehaviour:
@@ -393,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 3
+  ownEngineNozzle: {fileID: 0}
 --- !u!114 &646731176021008138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,3 +476,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shape: {fileID: 2828506282589882257}
+--- !u!33 &8351028007346842707
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497391499415190373}
+  m_Mesh: {fileID: 0}
+--- !u!23 &6352654657152491920
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497391499415190373}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

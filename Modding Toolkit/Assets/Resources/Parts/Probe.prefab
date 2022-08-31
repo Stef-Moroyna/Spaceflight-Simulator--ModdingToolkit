@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 121866261040777602}
   - component: {fileID: 4995750906665059326}
   - component: {fileID: 2596358472741027740}
+  - component: {fileID: 3146091609731530068}
+  - component: {fileID: 1124999619183321187}
   m_Layer: 8
   m_Name: Edge
   m_TagString: Untagged
@@ -29,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3976175161423857305}
   m_RootOrder: 2
@@ -47,14 +50,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
-  shape:
-    points: []
-  cut: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
+  cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   width_a:
     variables: {fileID: 5371138025553930724}
@@ -80,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 121866261040777602}
   textures:
     textureMode: 0
@@ -100,6 +107,10 @@ MonoBehaviour:
       colorBasic: {r: 1, g: 1, b: 1, a: 1}
       colorModule: {fileID: 0}
     colors: []
+  leftCover: 0
+  centerCover: 0
+  rightCover: 0
+  separatorRing: 0
 --- !u!114 &2596358472741027740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,9 +124,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 121866261040777602}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
+--- !u!33 &3146091609731530068
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543013722268242832}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1124999619183321187
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543013722268242832}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3625609527589573302
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +211,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 863193999381381080}
   - {fileID: 7107384087674871845}
@@ -169,10 +232,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    TranslatableGroup: Part Names
+    plainText: 0
     TranslatableName: Probe_Name
   description:
-    TranslatableGroup: Part Descriptions
+    plainText: 0
     TranslatableName: Probe_Description
   mass:
     variables: {fileID: 5371138025553930724}
@@ -198,6 +261,7 @@ MonoBehaviour:
   onPartUsed:
     m_PersistentCalls:
       m_Calls: []
+  temperature: -Infinity
 --- !u!114 &4093754887372546717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,12 +300,6 @@ MonoBehaviour:
     saves: []
   stringVariables:
     saves: []
-  _doubleVariables:
-  - name: width
-    value: 2
-    save: 1
-  _boolVariables: []
-  _stringVariables: []
 --- !u!114 &6393375925381602301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b57e6111e433f4cbee514dd9a8ad8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled:
+    variableName: 
+    referenceToVariables: {fileID: 5371138025553930724}
+    localValue: 1
   torque:
     variables: {fileID: 5371138025553930724}
     input: 5
@@ -325,21 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec10b9375b46f049ae5f1dea9294f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapPoints:
-  - variables: {fileID: 5371138025553930724}
-    x:
-      variables: {fileID: 5371138025553930724}
-      input: 0
-    y:
-      variables: {fileID: 5371138025553930724}
-      input: 0
-  - variables: {fileID: 5371138025553930724}
-    x:
-      variables: {fileID: 5371138025553930724}
-      input: 0
-    y:
-      variables: {fileID: 5371138025553930724}
-      input: 1
+  points: []
+  snapPoints: []
 --- !u!1 &7426983949723048512
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +401,8 @@ GameObject:
   - component: {fileID: 7242855410562122666}
   - component: {fileID: 4450739785476151178}
   - component: {fileID: 892793806391733208}
+  - component: {fileID: 2968616702928350708}
+  - component: {fileID: 1084269471221455667}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -369,6 +420,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3976175161423857305}
   m_RootOrder: 0
@@ -387,14 +439,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
-  shape:
-    points: []
-  cut: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
+  cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   width_a:
     variables: {fileID: 5371138025553930724}
@@ -420,8 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   polygonModule: {fileID: 7242855410562122666}
   UV_Mode: 0
   bounds:
@@ -430,6 +486,8 @@ MonoBehaviour:
   - {x: 0.95, y: 0.84999996}
   - {x: 0.95, y: 0.15}
   texture: {fileID: 11400000, guid: fc14bb0a4f1035a46aa6074abad6e0f4, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &892793806391733208
 MonoBehaviour:
@@ -444,9 +502,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 7242855410562122666}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
+--- !u!33 &2968616702928350708
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426983949723048512}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1084269471221455667
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426983949723048512}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8076400645933536152
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +568,8 @@ GameObject:
   - component: {fileID: 378042405556329839}
   - component: {fileID: 5057470960895597891}
   - component: {fileID: 2744951868754690207}
+  - component: {fileID: 6688815120471170506}
+  - component: {fileID: 2944064203351278048}
   m_Layer: 8
   m_Name: Edge
   m_TagString: Untagged
@@ -476,6 +587,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3976175161423857305}
   m_RootOrder: 1
@@ -494,14 +606,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
-  shape:
-    points: []
-  cut: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
+  cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   width_a:
     variables: {fileID: 5371138025553930724}
@@ -527,8 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 378042405556329839}
   textures:
     textureMode: 0
@@ -547,6 +663,10 @@ MonoBehaviour:
       colorBasic: {r: 1, g: 1, b: 1, a: 1}
       colorModule: {fileID: 0}
     colors: []
+  leftCover: 0
+  centerCover: 0
+  rightCover: 0
+  separatorRing: 0
 --- !u!114 &2744951868754690207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +680,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 378042405556329839}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
+--- !u!33 &6688815120471170506
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076400645933536152}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2944064203351278048
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076400645933536152}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

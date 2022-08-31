@@ -32,9 +32,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1020142672847335081}
   - {fileID: 873144984761290804}
+  - {fileID: 7012582675282857938}
   - {fileID: 4038144703724256110}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,8 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: RCS_Thruster_Name
   description:
+    plainText: 0
     TranslatableName: RCS_Thruster_Description
   mass:
     variables: {fileID: 5144503109960961107}
@@ -84,6 +88,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5144503109960961104}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ToggleRCS
         m_Mode: 0
         m_Arguments:
@@ -247,8 +252,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
-  m_Children:
-  - {fileID: 7012582675282857938}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 5144503109960961100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,8 +272,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   polygonVertices:
   - {x: 0.5, y: 0.14}
   - {x: 0.5, y: 0}
@@ -301,6 +311,8 @@ MonoBehaviour:
   - {x: 0.5, y: 0.38}
   - {x: 0.5, y: -0.38000003}
   texture: {fileID: 11400000, guid: ab9c054c36e783640b80b7ae74716814, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &4016053253258189542
 MonoBehaviour:
@@ -315,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 0
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 8651176470912845393}
   collider_Polygon: {fileID: 0}
   collider_Box: {fileID: 0}
@@ -329,14 +342,16 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -357,6 +372,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &215651869266024014
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -370,18 +386,8 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1020142672847335081}
+    m_TransformParent: {fileID: 5144503109960961100}
     m_Modifications:
-    - target: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: time.referenceToVariables
-      value: 
-      objectReference: {fileID: 5144503109960961107}
-    - target: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: targetTime.referenceToVariables
-      value: 
-      objectReference: {fileID: 5144503109960961107}
     - target: {fileID: 4750001457289002403, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_Name
@@ -390,12 +396,12 @@ PrefabInstance:
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
@@ -444,12 +450,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf6053aa4d930c41bdae89818543319, type: 3}
---- !u!4 &7012582675282857938 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
-    type: 3}
-  m_PrefabInstance: {fileID: 3201231256760623290}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2939736946236536760 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
@@ -462,6 +462,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552528028df376f4ea4a34bddcebb6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7012582675282857938 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
+    type: 3}
+  m_PrefabInstance: {fileID: 3201231256760623290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4693512398664859484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,16 +475,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5144503109960961100}
     m_Modifications:
-    - target: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: time.referenceToVariables
-      value: 
-      objectReference: {fileID: 5144503109960961107}
-    - target: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: targetTime.referenceToVariables
-      value: 
-      objectReference: {fileID: 5144503109960961107}
     - target: {fileID: 4750001457289002403, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_Name
@@ -491,23 +487,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
@@ -576,16 +562,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5144503109960961100}
     m_Modifications:
-    - target: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: time.referenceToVariables
-      value: 
-      objectReference: {fileID: 5144503109960961107}
-    - target: {fileID: 333554378480621314, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: targetTime.referenceToVariables
-      value: 
-      objectReference: {fileID: 5144503109960961107}
     - target: {fileID: 4750001457289002403, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_Name
@@ -594,27 +570,17 @@ PrefabInstance:
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5565530033764904808, guid: 6cf6053aa4d930c41bdae89818543319,
         type: 3}

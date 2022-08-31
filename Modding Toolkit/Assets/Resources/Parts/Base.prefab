@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6025496177165280393}
   m_RootOrder: 2
@@ -50,6 +51,7 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 3
   composedBaseDepth:
@@ -57,7 +59,10 @@ MonoBehaviour:
     input: width
   isComposedDepth: 1
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 6025496177165280511}
@@ -204,10 +209,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -232,6 +239,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5295183428267602815
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +271,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6025496177165280393}
   m_RootOrder: 3
@@ -282,6 +291,7 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
   composedBaseDepth:
@@ -289,7 +299,10 @@ MonoBehaviour:
     input: 
   isComposedDepth: 0
   depthMultiplier: 1
-  cut: 0.7
+  advancedCut: 0
+  cut: 0.5
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 6025496177165280511}
@@ -436,10 +449,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -464,6 +479,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6025496177165280394
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +498,6 @@ GameObject:
   - component: {fileID: 4355835229077590899}
   - component: {fileID: 6510604737524473163}
   - component: {fileID: 9185718412258651831}
-  - component: {fileID: 8121828613541560003}
   m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
@@ -500,6 +515,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 67778702123730740}
   - {fileID: 1765880973440988312}
@@ -521,11 +537,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Fuel_Tank_Name
-    plainText: 0
   description:
-    TranslatableName: Fuel_Tank_Description
     plainText: 0
+    TranslatableName: Fuel_Tank_Description
   mass:
     variables: {fileID: 6025496177165280511}
     input: mass
@@ -606,6 +622,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4355835229077590899}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ToggleTransfer
         m_Mode: 1
         m_Arguments:
@@ -665,7 +682,7 @@ MonoBehaviour:
       data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
     - name: mass
       save: 0
-      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c7565000600000000000000000b
   boolVariables:
     saves: []
   stringVariables:
@@ -749,14 +766,7 @@ MonoBehaviour:
       y:
         variables: {fileID: 6025496177165280511}
         input: 0
-  snapPoints:
-  - variables: {fileID: 6025496177165280511}
-    x:
-      variables: {fileID: 6025496177165280511}
-      input: 0
-    y:
-      variables: {fileID: 6025496177165280511}
-      input: height
+  snapPoints: []
 --- !u!114 &6025496177165280497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,30 +870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c5c5e3479f6f246b7ca416398a7a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8121828613541560003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6025496177165280394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pack: 0
-  allowed:
-  - size:
-      variableName: width
-      referenceToVariables: {fileID: 6025496177165280511}
-      localValue: 0
-    maxAllowedSize: 3
-  - size:
-      variableName: height
-      referenceToVariables: {fileID: 6025496177165280511}
-      localValue: 0
-    maxAllowedSize: 2.5
 --- !u!1 &6557694391700078669
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +901,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6025496177165280393}
   m_RootOrder: 0
@@ -934,14 +921,18 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
   composedBaseDepth:
-    variables: {fileID: 0}
+    variables: {fileID: 6025496177165280511}
     input: 
   isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 6025496177165280511}
@@ -1054,10 +1045,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1082,6 +1075,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7045704132107697511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1107,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6025496177165280393}
   m_RootOrder: 1
@@ -1132,6 +1127,7 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
   composedBaseDepth:
@@ -1139,7 +1135,10 @@ MonoBehaviour:
     input: 
   isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: -0.7
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 6025496177165280511}
@@ -1286,10 +1285,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1314,3 +1315,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

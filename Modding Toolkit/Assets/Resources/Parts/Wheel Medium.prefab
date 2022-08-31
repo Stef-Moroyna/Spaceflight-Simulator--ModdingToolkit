@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237239933722641144}
   m_RootOrder: 1
@@ -49,22 +50,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 0
-  points:
-  - variables: {fileID: 201175616340340550}
-    x:
-      variables: {fileID: 201175616340340550}
-      input: -0.1
-    y:
-      variables: {fileID: 201175616340340550}
-      input: 0
-  - variables: {fileID: 201175616340340550}
-    x:
-      variables: {fileID: 201175616340340550}
-      input: 0.1
-    y:
-      variables: {fileID: 201175616340340550}
-      input: 0
+  points: []
   loop: 0
+  pointsArray:
+  - points:
+    - variables: {fileID: 201175616340340550}
+      x:
+        variables: {fileID: 201175616340340550}
+        input: -0.1
+      y:
+        variables: {fileID: 201175616340340550}
+        input: 0
+    - variables: {fileID: 201175616340340550}
+      x:
+        variables: {fileID: 201175616340340550}
+        input: 0.1
+      y:
+        variables: {fileID: 201175616340340550}
+        input: 0
+    loop: 0
+  edit: 0
+  view: 0
+  gridSize: 0.1
 --- !u!114 &3331229083831559882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,8 +87,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -0.1, y: -0.5}
   point_B: {x: 0.1, y: 0}
   edit: 1
@@ -98,8 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   polygonModule: {fileID: 3331229083831559882}
   UV_Mode: 0
   bounds:
@@ -108,6 +119,8 @@ MonoBehaviour:
   - {x: 0.1, y: 0}
   - {x: 0.1, y: -0.5}
   texture: {fileID: 11400000, guid: da07820ae1ee5ca42a3825322ecbabcf, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!23 &4245337621582287228
 MeshRenderer:
@@ -120,10 +133,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -148,6 +163,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6617641614009002701
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -185,6 +201,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4377522848761485463}
   - {fileID: 1695650230537363463}
@@ -204,8 +221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Rover_Wheel_Name
   description:
+    plainText: 0
     TranslatableName: Rover_Wheel_Description
   mass:
     variables: {fileID: 201175616340340550}
@@ -232,6 +251,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2878202932824154627}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ToggleEnabled
         m_Mode: 1
         m_Arguments:
@@ -316,6 +336,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237239933722641144}
   m_RootOrder: 0
@@ -335,8 +356,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 2
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   polygonVertices:
   - {x: -0.2, y: 0.45000005}
   - {x: 0.2, y: 0.45000005}
@@ -347,6 +373,7 @@ MonoBehaviour:
   - {x: -0.45000005, y: -0.2}
   - {x: -0.45000005, y: 0.2}
   edit: 1
+  view: 0
   gridSize: 0.05
 --- !u!114 &3829303385092594736
 MonoBehaviour:
@@ -360,8 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 2
+  renderQueueOffset: 2
   polygonModule: {fileID: 2828506282589882257}
   UV_Mode: 0
   bounds:
@@ -370,6 +396,8 @@ MonoBehaviour:
   - {x: 0.45000005, y: 0.45000005}
   - {x: 0.45000005, y: -0.45000005}
   texture: {fileID: 11400000, guid: e8c2753137893af419cee9b68a4571c9, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &2878202932824154627
 MonoBehaviour:
@@ -421,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 3
+  ownEngineNozzle: {fileID: 0}
 --- !u!114 &1857302905794571132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,10 +487,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -486,6 +517,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &4786748760439469326
 MeshFilter:
   m_ObjectHideFlags: 0

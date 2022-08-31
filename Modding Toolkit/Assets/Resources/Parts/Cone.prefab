@@ -20,8 +20,6 @@ GameObject:
   - component: {fileID: 3461503228955927399}
   - component: {fileID: 1457258690766018317}
   - component: {fileID: 6726597625919975820}
-  - component: {fileID: 5804061903276687156}
-  - component: {fileID: 2132352971827885662}
   m_Layer: 8
   m_Name: Cone
   m_TagString: Untagged
@@ -39,6 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5437554189422762157}
   m_Father: {fileID: 0}
@@ -57,8 +56,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Aerodynamic_Nose_Cone_Name
   description:
+    plainText: 0
     TranslatableName: Aerodynamic_Nose_Cone_Description
   mass:
     variables: {fileID: 1113172281960641807}
@@ -123,7 +124,6 @@ MonoBehaviour:
   onPartUsed:
     m_PersistentCalls:
       m_Calls: []
-  onRegionClicked: []
   temperature: -Infinity
 --- !u!114 &1113172281960641800
 MonoBehaviour:
@@ -184,10 +184,18 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   composedShape:
     variables: {fileID: 1113172281960641807}
@@ -387,14 +395,7 @@ MonoBehaviour:
       y:
         variables: {fileID: 1113172281960641807}
         input: 0
-  snapPoints:
-  - variables: {fileID: 1113172281960641807}
-    x:
-      variables: {fileID: 1113172281960641807}
-      input: 0
-    y:
-      variables: {fileID: 1113172281960641807}
-      input: 0
+  snapPoints: []
 --- !u!23 &1457258690766018317
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -406,10 +407,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -434,6 +437,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6726597625919975820
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -442,38 +446,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113172281960641793}
   m_Mesh: {fileID: 0}
---- !u!114 &5804061903276687156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113172281960641793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pack: 0
-  allowed:
-  - size:
-      variableName: size
-      referenceToVariables: {fileID: 1113172281960641807}
-      localValue: 0
-    maxAllowedSize: 2
---- !u!114 &2132352971827885662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113172281960641793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88fafc78c5d3c0148a2ac2488e106271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: Intro_Nosecone
 --- !u!1 &8610513783590295036
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +474,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113172281960641802}
   m_RootOrder: 0
@@ -521,10 +494,18 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 1113172281960641807}

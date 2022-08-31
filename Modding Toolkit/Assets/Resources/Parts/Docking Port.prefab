@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6494576956410373482}
   - component: {fileID: 6653145512268603622}
   - component: {fileID: 384417991737694433}
-  - component: {fileID: 6072533513207564054}
   m_Layer: 8
   m_Name: Docking Port
   m_TagString: Untagged
@@ -33,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1707740847796509273}
   - {fileID: 6402851240480292451}
@@ -54,8 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Docking_Port_Name
   description:
+    plainText: 0
     TranslatableName: Docking_Port_Description
   mass:
     variables: {fileID: 8877277868885857939}
@@ -107,6 +109,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6653145512268603622}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Detach
         m_Mode: 0
         m_Arguments:
@@ -150,6 +153,9 @@ MonoBehaviour:
   doubleVariables:
     saves:
     - name: width
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: force_multiplier
       save: 1
       data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
   boolVariables:
@@ -226,40 +232,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 0
-  points:
-  - variables: {fileID: 8877277868885857939}
-    x:
-      variables: {fileID: 8877277868885857939}
-      input: -width * 0.5 + 0.3
-    y:
-      variables: {fileID: 8877277868885857939}
-      input: 0
-  - variables: {fileID: 8877277868885857939}
-    x:
-      variables: {fileID: 8877277868885857939}
-      input: width * 0.5 - 0.3
-    y:
-      variables: {fileID: 8877277868885857939}
-      input: 0
+  points: []
   loop: 0
---- !u!114 &6072533513207564054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213823932382801179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowed:
-  - size:
-      variableName: width
-      referenceToVariables: {fileID: 8877277868885857939}
-      localValue: 0
-    maxAllowedSize: 1
+  pointsArray:
+  - points:
+    - variables: {fileID: 8877277868885857939}
+      x:
+        variables: {fileID: 8877277868885857939}
+        input: -width * 0.5 + 0.3
+      y:
+        variables: {fileID: 8877277868885857939}
+        input: 0
+    - variables: {fileID: 8877277868885857939}
+      x:
+        variables: {fileID: 8877277868885857939}
+        input: width * 0.5 - 0.3
+      y:
+        variables: {fileID: 8877277868885857939}
+        input: 0
+    loop: 0
+  edit: 0
+  view: 0
+  gridSize: 0.1
 --- !u!1 &890075953337142916
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +285,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8637720446152722119}
   m_RootOrder: 3
@@ -310,10 +305,18 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   width_a:
     variables: {fileID: 8877277868885857939}
@@ -339,8 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 5573987081523053494}
   textures:
     textureMode: 0
@@ -391,10 +393,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -419,6 +423,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &4156252155413024110
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -456,6 +461,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8637720446152722119}
   m_RootOrder: 0
@@ -541,6 +547,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8637720446152722119}
   m_RootOrder: 2
@@ -560,10 +567,18 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   width_a:
     variables: {fileID: 8877277868885857939}
@@ -589,8 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 753801403964712242}
   textures:
     textureMode: 0
@@ -651,10 +665,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -679,6 +695,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6200091466203596652
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -718,6 +735,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8637720446152722119}
   m_RootOrder: 1
@@ -737,10 +755,18 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   width_a:
     variables: {fileID: 8877277868885857939}
@@ -766,8 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 5838320632718949448}
   textures:
     textureMode: 0
@@ -818,10 +843,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -846,6 +873,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1073127776479779003
 MeshFilter:
   m_ObjectHideFlags: 0

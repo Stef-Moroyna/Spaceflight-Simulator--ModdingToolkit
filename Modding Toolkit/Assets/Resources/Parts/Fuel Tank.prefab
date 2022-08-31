@@ -22,9 +22,8 @@ GameObject:
   - component: {fileID: 6205538154851828139}
   - component: {fileID: 6510604737524473163}
   - component: {fileID: 9185718412258651831}
-  - component: {fileID: 4019905696621437763}
-  - component: {fileID: 8943219765926418611}
-  - component: {fileID: 1766207617468981286}
+  - component: {fileID: 5360091776078153125}
+  - component: {fileID: 2074914987631835494}
   m_Layer: 8
   m_Name: Fuel Tank
   m_TagString: Untagged
@@ -42,6 +41,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,8 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Fuel_Tank_Name
   description:
+    plainText: 0
     TranslatableName: Fuel_Tank_Description
   mass:
     variables: {fileID: 6025496177165280511}
@@ -412,6 +414,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4355835229077590899}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ToggleTransfer
         m_Mode: 1
         m_Arguments:
@@ -500,10 +503,18 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   width_a:
     variables: {fileID: 6025496177165280511}
@@ -606,21 +617,7 @@ MonoBehaviour:
       y:
         variables: {fileID: 6025496177165280511}
         input: height
-  snapPoints:
-  - variables: {fileID: 6025496177165280511}
-    x:
-      variables: {fileID: 6025496177165280511}
-      input: 0
-    y:
-      variables: {fileID: 6025496177165280511}
-      input: 0
-  - variables: {fileID: 6025496177165280511}
-    x:
-      variables: {fileID: 6025496177165280511}
-      input: 0
-    y:
-      variables: {fileID: 6025496177165280511}
-      input: height
+  snapPoints: []
 --- !u!114 &6025496177165280496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,44 +866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c5c5e3479f6f246b7ca416398a7a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4019905696621437763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6025496177165280394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pack: 0
-  allowed:
-  - size:
-      variableName: width_a
-      referenceToVariables: {fileID: 6025496177165280511}
-      localValue: 0
-    maxAllowedSize: 3
-  - size:
-      variableName: width_b
-      referenceToVariables: {fileID: 6025496177165280511}
-      localValue: 0
-    maxAllowedSize: 3
-  - size:
-      variableName: height
-      referenceToVariables: {fileID: 6025496177165280511}
-      localValue: 0
-    maxAllowedSize: 4
---- !u!33 &8943219765926418611
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6025496177165280394}
-  m_Mesh: {fileID: 0}
---- !u!23 &1766207617468981286
+--- !u!23 &5360091776078153125
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -917,10 +877,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -945,3 +907,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2074914987631835494
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6025496177165280394}
+  m_Mesh: {fileID: 0}

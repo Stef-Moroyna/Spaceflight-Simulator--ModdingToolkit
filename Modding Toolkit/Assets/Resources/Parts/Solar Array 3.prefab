@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2518449159803923132}
   - component: {fileID: 2462674240757705008}
   - component: {fileID: 3257348986948700469}
+  - component: {fileID: 1213384161907624789}
+  - component: {fileID: 93985900438703965}
   m_Layer: 8
   m_Name: Edge Bottom
   m_TagString: Untagged
@@ -30,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2482967785408195463}
   m_RootOrder: 2
@@ -48,10 +51,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -1.48, y: 0}
   point_B: {x: 1.48, y: 0.2}
   edit: 1
@@ -68,8 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   polygonModule: {fileID: 8905710515723217949}
   UV_Mode: 0
   bounds:
@@ -78,6 +84,8 @@ MonoBehaviour:
   - {x: 1.48, y: 0.2}
   - {x: 1.48, y: 0}
   texture: {fileID: 11400000, guid: 720ef49991d6c034c9e9384efbe5edce, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 3257348986948700469}
 --- !u!114 &2462674240757705008
 MonoBehaviour:
@@ -92,9 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 0
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 8905710515723217949}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
 --- !u!114 &3257348986948700469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +117,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.35, g: 0.35, b: 0.35, a: 1}
+--- !u!33 &1213384161907624789
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316930370203910497}
+  m_Mesh: {fileID: 0}
+--- !u!23 &93985900438703965
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316930370203910497}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2477086821536638581
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +180,6 @@ GameObject:
   - component: {fileID: 6375236078957571665}
   - component: {fileID: 1449713589513460084}
   - component: {fileID: 2590625007958029063}
-  - component: {fileID: -2582150408932838948}
   - component: {fileID: 82144371228490283}
   m_Layer: 8
   m_Name: Solar Array 3
@@ -140,6 +198,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5803830428293659536}
   - {fileID: 4248270115954154803}
@@ -163,10 +222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    TranslatableGroup: Part Names
+    plainText: 0
     TranslatableName: Solar_Panel_Name
   description:
-    TranslatableGroup: Part Descriptions
+    plainText: 0
     TranslatableName: Solar_Panel_Description
   mass:
     variables: {fileID: 1449713589513460084}
@@ -193,6 +252,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2590625007958029063}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
@@ -203,6 +263,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  temperature: -Infinity
 --- !u!114 &6375236078957571665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,15 +305,6 @@ MonoBehaviour:
     saves: []
   stringVariables:
     saves: []
-  _doubleVariables:
-  - name: state
-    value: 0
-    save: 1
-  - name: state_target
-    value: 0
-    save: 1
-  _boolVariables: []
-  _stringVariables: []
 --- !u!114 &2590625007958029063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,18 +624,6 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     audioSource: {fileID: 0}
---- !u!114 &-2582150408932838948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2477086821536638581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923fbd2e77fe5b64593b1ea8b8a0903f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &82144371228490283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label:
-    TranslatableGroup: Modules
+    plainText: 0
     TranslatableName: Panel_Expanded
   state: {fileID: 2590625007958029063}
 --- !u!1 &2479040212450119059
@@ -627,6 +667,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2482967785408195463}
   m_RootOrder: 5
@@ -740,6 +781,8 @@ GameObject:
   - component: {fileID: 8837850002870022370}
   - component: {fileID: 7998953017927624936}
   - component: {fileID: 8087706692303726375}
+  - component: {fileID: 5665290389684360453}
+  - component: {fileID: 395694147933238935}
   m_Layer: 8
   m_Name: Strut
   m_TagString: Untagged
@@ -757,6 +800,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2482967785408195463}
   m_RootOrder: 1
@@ -775,10 +819,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: -0.1
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: 0.21999995, y: -0.2}
   point_B: {x: 0.6300001, y: 0.2}
   edit: 1
@@ -795,8 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   polygonModule: {fileID: 2471448909710758840}
   UV_Mode: 0
   bounds:
@@ -805,6 +852,8 @@ MonoBehaviour:
   - {x: 0.6300001, y: 0.2}
   - {x: 0.6300001, y: -0.2}
   texture: {fileID: 11400000, guid: 720ef49991d6c034c9e9384efbe5edce, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 8087706692303726375}
 --- !u!114 &7998953017927624936
 MonoBehaviour:
@@ -819,9 +868,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 0
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 2471448909710758840}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
 --- !u!114 &8087706692303726375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +885,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.35, g: 0.35, b: 0.35, a: 1}
+--- !u!33 &5665290389684360453
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687478205814210880}
+  m_Mesh: {fileID: 0}
+--- !u!23 &395694147933238935
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687478205814210880}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7892018606286442074
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +949,8 @@ GameObject:
   - component: {fileID: 6257072941808383651}
   - component: {fileID: 1554485330481716085}
   - component: {fileID: 8904711678941582195}
+  - component: {fileID: 4009148307711138371}
+  - component: {fileID: 2470691882993724065}
   m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
@@ -866,6 +968,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2482967785408195463}
   m_RootOrder: 0
@@ -884,23 +987,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 0
-  part: {fileID: 0}
-  points:
-  - variables: {fileID: 1449713589513460084}
-    x:
-      variables: {fileID: 1449713589513460084}
-      input: 0
-    y:
-      variables: {fileID: 1449713589513460084}
-      input: -0.85
-  - variables: {fileID: 1449713589513460084}
-    x:
-      variables: {fileID: 1449713589513460084}
-      input: 0
-    y:
-      variables: {fileID: 1449713589513460084}
-      input: 0.85
+  points: []
   loop: 0
+  pointsArray:
+  - points:
+    - variables: {fileID: 1449713589513460084}
+      x:
+        variables: {fileID: 1449713589513460084}
+        input: 0
+      y:
+        variables: {fileID: 1449713589513460084}
+        input: -0.85
+    - variables: {fileID: 1449713589513460084}
+      x:
+        variables: {fileID: 1449713589513460084}
+        input: 0
+      y:
+        variables: {fileID: 1449713589513460084}
+        input: 0.85
+    loop: 0
+  edit: 0
+  view: 0
+  gridSize: 0.1
 --- !u!114 &1458582219767562913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,10 +1023,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 0
-  part: {fileID: 0}
-  clickArea: 0
   colliderArea: 0
+  physicsCollider: 0
+  clickArea: 0
   baseDepth: 0.5
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -0.05, y: -0.85}
   point_B: {x: 0.25, y: 0.85}
   edit: 0
@@ -935,8 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 1
+  renderQueueOffset: 1
   polygonModule: {fileID: 1458582219767562913}
   UV_Mode: 0
   bounds:
@@ -945,6 +1056,8 @@ MonoBehaviour:
   - {x: 0.25, y: 0.85}
   - {x: 0.25, y: -0.85}
   texture: {fileID: 11400000, guid: da07820ae1ee5ca42a3825322ecbabcf, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &1554485330481716085
 MonoBehaviour:
@@ -959,9 +1072,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 1458582219767562913}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
 --- !u!114 &8904711678941582195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,14 +1090,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0.5
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: 0, y: -0.85}
   point_B: {x: 0.25, y: 0.85}
   edit: 0
   gridSize: 0.05
+--- !u!33 &4009148307711138371
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892018606286442074}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2470691882993724065
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892018606286442074}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8611242874269497260
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1165,8 @@ GameObject:
   - component: {fileID: 1800256107118353013}
   - component: {fileID: 8288025427228661950}
   - component: {fileID: 1276992435098254954}
+  - component: {fileID: 2131526356678963842}
+  - component: {fileID: 297642778434370105}
   m_Layer: 8
   m_Name: Edge Top
   m_TagString: Untagged
@@ -1014,6 +1184,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2482967785408195463}
   m_RootOrder: 4
@@ -1032,10 +1203,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -1.48, y: 0}
   point_B: {x: 1.48, y: 0.2}
   edit: 1
@@ -1052,8 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e483146094b00478fb1e25d75f7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   polygonModule: {fileID: 3381805903318703083}
   UV_Mode: 0
   bounds:
@@ -1062,6 +1236,8 @@ MonoBehaviour:
   - {x: 1.48, y: 0.2}
   - {x: 1.48, y: 0}
   texture: {fileID: 11400000, guid: 720ef49991d6c034c9e9384efbe5edce, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 1276992435098254954}
 --- !u!114 &8288025427228661950
 MonoBehaviour:
@@ -1076,9 +1252,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 0
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 3381805903318703083}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
 --- !u!114 &1276992435098254954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1269,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.35, g: 0.35, b: 0.35, a: 1}
+--- !u!33 &2131526356678963842
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8611242874269497260}
+  m_Mesh: {fileID: 0}
+--- !u!23 &297642778434370105
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8611242874269497260}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8877409266750608129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1331,8 @@ GameObject:
   - component: {fileID: 8609976055304554539}
   - component: {fileID: 4413066833806728958}
   - component: {fileID: 3395309264135546644}
+  - component: {fileID: 1695757463876806570}
+  - component: {fileID: 2668033116502528929}
   m_Layer: 8
   m_Name: Array
   m_TagString: Untagged
@@ -1121,6 +1350,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2482967785408195463}
   m_RootOrder: 3
@@ -1139,14 +1369,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 0
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 0
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
-  shape:
-    points: []
-  cut: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 0
+  advancedCut: 0
+  cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   width_a:
     variables: {fileID: 1449713589513460084}
@@ -1172,8 +1407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 8609976055304554539}
   textures:
     textureMode: 0
@@ -1272,6 +1506,10 @@ MonoBehaviour:
         colorBasic: {r: 1, g: 1, b: 1, a: 1}
         colorModule: {fileID: 0}
       height: 11.2
+  leftCover: 0
+  centerCover: 0
+  rightCover: 0
+  separatorRing: 0
 --- !u!114 &3395309264135546644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1523,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 0
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 8609976055304554539}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
+--- !u!33 &1695757463876806570
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877409266750608129}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2668033116502528929
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877409266750608129}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

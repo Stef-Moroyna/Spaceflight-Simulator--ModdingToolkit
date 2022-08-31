@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 3665616484978459589}
   - component: {fileID: 1135224373853883438}
   - component: {fileID: 7465015451998277016}
-  - component: {fileID: 8482224654809379196}
   - component: {fileID: 2753354675775321821}
   - component: {fileID: 2672393380200249798}
   m_Layer: 8
@@ -38,6 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6643128841713310736}
   m_Father: {fileID: 0}
@@ -56,8 +56,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Aerodynamic_Nose_Cone_Name
   description:
+    plainText: 0
     TranslatableName: Aerodynamic_Nose_Cone_Description
   mass:
     variables: {fileID: 3665616484978459584}
@@ -83,6 +85,8 @@ MonoBehaviour:
       tags:
       - tag: {fileID: 11400000, guid: 26d0e3030cb1a9140b03d8b8c16e7a5e, type: 2}
         priority: 1
+      - tag: {fileID: 11400000, guid: 37f8444f4a2f9374fbda3c1d0252eae8, type: 2}
+        priority: -5
       cost: 0
     - changes:
       - name: size
@@ -172,10 +176,18 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   composedShape:
     variables: {fileID: 3665616484978459584}
@@ -249,8 +261,8 @@ MonoBehaviour:
           variables: {fileID: 3665616484978459584}
           input: 0
   edit: 1
+  view: 1
   gridSize: 0.02
-  sides: 8
 --- !u!114 &3665616484978459591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 3665616484978459590}
   textures:
     textureMode: 0
@@ -283,6 +294,10 @@ MonoBehaviour:
       colorBasic: {r: 1, g: 1, b: 1, a: 1}
       colorModule: {fileID: 0}
     colors: []
+  leftCover: 0
+  centerCover: 0
+  rightCover: 0
+  separatorRing: 0
 --- !u!114 &688171453176696917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +321,8 @@ MonoBehaviour:
     variableName: shape_tex
     referenceToVariables: {fileID: 3665616484978459584}
     localValue: 
+  disableColorSelect: 0
+  disableShapeSelect: 0
 --- !u!114 &3665616484978459589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 3665616484978459590}
   collider_Polygon: {fileID: 0}
   collider_Box: {fileID: 0}
@@ -348,64 +366,6 @@ MonoBehaviour:
     output:
       variables: {fileID: 3665616484978459584}
       input: size
-    occupied:
-      reciverType: 0
-      position:
-        variables: {fileID: 0}
-        x:
-          variables: {fileID: 0}
-          input: 
-        y:
-          variables: {fileID: 0}
-          input: 
-      normal: {x: 0, y: 0}
-      adaptRange:
-        min:
-          variables: {fileID: 0}
-          input: 
-        max:
-          variables: {fileID: 0}
-          input: 
-      type: 0
-      inputArea:
-        variables: {fileID: 0}
-        position:
-          variables: {fileID: 0}
-          x:
-            variables: {fileID: 0}
-            input: 
-          y:
-            variables: {fileID: 0}
-            input: 
-        size:
-          variables: {fileID: 0}
-          x:
-            variables: {fileID: 0}
-            input: 
-          y:
-            variables: {fileID: 0}
-            input: 
-      priority: 
-      defaultOutput:
-        variables: {fileID: 0}
-        input: 
-      outputOffset: 0
-      output:
-        variableName: 
-        referenceToVariables: {fileID: 0}
-        localValue: 0
-      isOccupied:
-        variableName: 
-        referenceToVariables: {fileID: 0}
-        localValue: 0
-      differenceX:
-        variableName: 
-        referenceToVariables: {fileID: 0}
-        localValue: 0
-      differenceY:
-        variableName: 
-        referenceToVariables: {fileID: 0}
-        localValue: 0
 --- !u!114 &7465015451998277016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,33 +387,7 @@ MonoBehaviour:
       y:
         variables: {fileID: 3665616484978459584}
         input: 0
-    normal: {x: 0, y: 0}
-  snapPoints:
-  - variables: {fileID: 3665616484978459584}
-    x:
-      variables: {fileID: 3665616484978459584}
-      input: 0
-    y:
-      variables: {fileID: 3665616484978459584}
-      input: 0
---- !u!114 &8482224654809379196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3665616484978459610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowed:
-  - size:
-      variableName: size
-      referenceToVariables: {fileID: 3665616484978459584}
-      localValue: 0
-    maxAllowedSize: 2
+  snapPoints: []
 --- !u!23 &2753354675775321821
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -465,10 +399,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -493,6 +429,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2672393380200249798
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -529,6 +466,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3665616484978459597}
   m_RootOrder: 0
@@ -548,10 +486,18 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 3665616484978459584}
@@ -591,8 +537,8 @@ MonoBehaviour:
           variables: {fileID: 3665616484978459584}
           input: 0
   edit: 1
+  view: 1
   gridSize: 0.02
-  sides: 8
 --- !u!114 &2830287883761390362
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,6 +64,10 @@ public class SFS_PartPackModBuilder : OdinEditorWindow
             AssetDatabase.CreateAsset(data, assetPath);
             AssetImporter.GetAtPath(assetPath).SetAssetBundleNameAndVariant(bundles[0], bundles[1]);
         }
+        else
+        {
+            AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(data)).SetAssetBundleNameAndVariant(bundles[0], bundles[1]);
+        }
 
         AssetBundlePack bundlePack = new AssetBundlePack();
 

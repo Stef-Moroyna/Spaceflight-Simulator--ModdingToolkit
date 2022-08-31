@@ -9,26 +9,24 @@ namespace SFS.Parts.Modules
 {
     public class EngineModule : MonoBehaviour
     {
-        //#warning merge into thrust vector?
         [BoxGroup("Ref", false), SuffixLabel("t")] public Composed_Float thrust;
         [BoxGroup("Ref", false)] public Composed_Vector2 thrustNormal = new Composed_Vector2(Vector2.up);
-        
-        
+        //
         [BoxGroup("Ref", false)] public Composed_Float ISP;
         [BoxGroup("Ref", false)] public Composed_Vector2 thrustPosition = new Composed_Vector2(Vector2.zero);
         [BoxGroup("Ref", false), Required] public FlowModule source;
-        [BoxGroup("Ref", false)] public MoveModule gimbal;
+        //
+        [BoxGroup("Ref", false)] public bool hasGimbal = true;
+        [BoxGroup("Ref", false), ShowIf("hasGimbal")] public Bool_Reference gimbalOn;
+        [BoxGroup("Ref", false), ShowIf("hasGimbal")] public MoveModule gimbal;
         //
         [BoxGroup("State", false)] public Bool_Reference engineOn;
         [BoxGroup("State", false)] public Float_Reference throttle_Out;
         
         // Patch
         public Bool_Reference heatOn;
-        public GameObject heatHolder;
+        [Required] public GameObject heatHolder;
         Vector3 originalPosition;
-        
-        // Data Injection
-        public bool IsPlayer { get; set; }
         public Rigidbody2D Rb2d { get; set; }
         //
         readonly Float_Local throttle_Input = new Float_Local();

@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 1113172281960641804}
   - component: {fileID: 3224696863155018061}
   - component: {fileID: 1113172281960641794}
-  - component: {fileID: 718071179121705422}
   - component: {fileID: 7357859356761042407}
   - component: {fileID: 1349590318885609013}
   m_Layer: 8
@@ -38,6 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,8 +55,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Aerodynamic_Fuselage_Name
   description:
+    plainText: 0
     TranslatableName: Aerodynamic_Fuselage_Description
   mass:
     variables: {fileID: 1113172281960641807}
@@ -157,10 +159,18 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 1
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: -0.7
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 1113172281960641807}
@@ -234,8 +244,8 @@ MonoBehaviour:
           variables: {fileID: 1113172281960641807}
           input: 0
   edit: 1
+  view: 1
   gridSize: 0.02
-  sides: 8
 --- !u!114 &1573234325099545837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,10 +261,18 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 1
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 1
+  advancedCut: 0
   cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 1
   composedShape:
     variables: {fileID: 1113172281960641807}
@@ -328,8 +346,8 @@ MonoBehaviour:
           variables: {fileID: 1113172281960641807}
           input: 0
   edit: 1
+  view: 1
   gridSize: 0.02
-  sides: 8
 --- !u!114 &917274317586457335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,29 +362,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 1
-  points:
-  - variables: {fileID: 1113172281960641807}
-    x:
-      variables: {fileID: 1113172281960641807}
-      input: -0.5 * size
-    y:
-      variables: {fileID: 1113172281960641807}
-      input: 0
-  - variables: {fileID: 1113172281960641807}
-    x:
-      variables: {fileID: 1113172281960641807}
-      input: 0
-    y:
-      variables: {fileID: 1113172281960641807}
-      input: 0
-  - variables: {fileID: 1113172281960641807}
-    x:
-      variables: {fileID: 1113172281960641807}
-      input: 0
-    y:
-      variables: {fileID: 1113172281960641807}
-      input: 1.13 * size
+  points: []
   loop: 0
+  pointsArray:
+  - points:
+    - variables: {fileID: 1113172281960641807}
+      x:
+        variables: {fileID: 1113172281960641807}
+        input: -0.5 * size
+      y:
+        variables: {fileID: 1113172281960641807}
+        input: 0
+    - variables: {fileID: 1113172281960641807}
+      x:
+        variables: {fileID: 1113172281960641807}
+        input: 0
+      y:
+        variables: {fileID: 1113172281960641807}
+        input: 0
+    - variables: {fileID: 1113172281960641807}
+      x:
+        variables: {fileID: 1113172281960641807}
+        input: 0
+      y:
+        variables: {fileID: 1113172281960641807}
+        input: 1.13 * size
+    loop: 0
+  edit: 0
+  view: 0
+  gridSize: 0.1
 --- !u!114 &1113172281960641804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,8 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 1113172281960641805}
   textures:
     textureMode: 0
@@ -441,27 +464,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 1573234325099545837}
   collider_Polygon: {fileID: 0}
   collider_Box: {fileID: 0}
---- !u!114 &718071179121705422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113172281960641793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowed:
-  - size:
-      variableName: size
-      referenceToVariables: {fileID: 1113172281960641807}
-      localValue: 0
-    maxAllowedSize: 3
 --- !u!33 &7357859356761042407
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -481,10 +487,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -509,3 +517,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

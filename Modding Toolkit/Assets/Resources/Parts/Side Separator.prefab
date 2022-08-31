@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451297697334000212}
   m_RootOrder: 3
@@ -46,8 +47,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 1
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: 0, y: -0.75}
   point_B: {x: 0.5, y: 0.75}
   edit: 1
@@ -82,6 +88,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.075, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451297697334000212}
   m_RootOrder: 2
@@ -101,8 +108,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0.5
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: 0.20000002, y: -0.345}
   point_B: {x: 0.3, y: 0.345}
   edit: 1
@@ -128,6 +140,8 @@ MonoBehaviour:
   - {x: 0.3, y: 0.345}
   - {x: 0.3, y: -0.345}
   texture: {fileID: 11400000, guid: 6d2109d980604624891c11f58c26c23d, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!23 &5056977893472784818
 MeshRenderer:
@@ -140,10 +154,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -168,6 +184,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2350839835695865686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -203,6 +220,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451297697334000212}
   m_RootOrder: 4
@@ -222,8 +240,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 1
   baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -0.05, y: -0.75}
   point_B: {x: 0.55, y: 0.75}
   edit: 1
@@ -241,7 +264,6 @@ GameObject:
   - component: {fileID: 5738350211713547623}
   - component: {fileID: 552882644767706344}
   - component: {fileID: 3682034078241148987}
-  - component: {fileID: 6000438752278941548}
   - component: {fileID: 5815746944891629891}
   m_Layer: 8
   m_Name: Side Separator
@@ -260,6 +282,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3092528979705307222}
   - {fileID: 4614894350671889161}
@@ -283,8 +306,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
+    plainText: 0
     TranslatableName: Side_Separator_Name
   description:
+    plainText: 0
     TranslatableName: Side_Separator_Description
   mass:
     variables: {fileID: 552882644767706344}
@@ -311,6 +336,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3682034078241148987}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Split
         m_Mode: 0
         m_Arguments:
@@ -321,7 +347,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onRegionClicked: []
   temperature: -Infinity
 --- !u!114 &5738350211713547623
 MonoBehaviour:
@@ -427,6 +452,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6935467856656321489}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Spawn
         m_Mode: 2
         m_Arguments:
@@ -437,19 +463,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6000438752278941548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5743349094741602330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88fafc78c5d3c0148a2ac2488e106271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: Intro_SideSeparator
 --- !u!114 &5815746944891629891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +504,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451297697334000212}
   m_RootOrder: 5
@@ -543,6 +557,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451297697334000212}
   m_RootOrder: 1
@@ -598,8 +613,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0.5
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: 0.3, y: -0.75}
   point_B: {x: 0.55, y: 0.75}
   edit: 1
@@ -625,6 +645,8 @@ MonoBehaviour:
   - {x: 0.55, y: 0.75}
   - {x: 0.55, y: -0.75}
   texture: {fileID: 11400000, guid: 8f1372d78b7997c4490b20421d4d05b9, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &3830350221294133957
 MonoBehaviour:
@@ -654,10 +676,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -682,6 +706,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &5801258374878971762
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -722,6 +747,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451297697334000212}
   m_RootOrder: 0
@@ -777,8 +803,13 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 0
+  physicsCollider: 0
   clickArea: 0
   baseDepth: 0.5
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   point_A: {x: -0.05, y: -0.75}
   point_B: {x: 0.20000005, y: 0.75}
   edit: 1
@@ -804,6 +835,8 @@ MonoBehaviour:
   - {x: 0.20000005, y: 0.75}
   - {x: 0.20000005, y: -0.75}
   texture: {fileID: 11400000, guid: da07820ae1ee5ca42a3825322ecbabcf, type: 2}
+  type: 0
+  colorBasic: {r: 1, g: 1, b: 1, a: 1}
   colorModule: {fileID: 0}
 --- !u!114 &289846510099138554
 MonoBehaviour:
@@ -833,10 +866,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -861,6 +896,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &8048567577015340446
 MeshFilter:
   m_ObjectHideFlags: 0

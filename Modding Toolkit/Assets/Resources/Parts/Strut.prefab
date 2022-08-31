@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8852161485143155108}
   - component: {fileID: 406228099916718847}
   - component: {fileID: 7277954857638211745}
+  - component: {fileID: 1831100686518077094}
+  - component: {fileID: 5815486358366798980}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -29,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3976175161423857305}
   m_RootOrder: 0
@@ -47,14 +50,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentSurfaces: 1
   dragSurfaces: 1
-  part: {fileID: 0}
-  clickArea: 1
   colliderArea: 1
+  physicsCollider: 0
+  clickArea: 1
   baseDepth: 0
-  shape:
-    points: []
-  cut: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input: 
+  isComposedDepth: 0
   depthMultiplier: 0
+  advancedCut: 0
+  cut: 0
+  advancedCutData:
+    cuts: []
   reduceResolution: 0
   width_a:
     variables: {fileID: 5371138025553930724}
@@ -80,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7560b24127b2fe45909a6821f093671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 
-  sortingLayerOffset: 0
+  renderQueueOffset: 0
   pipeData: {fileID: 8852161485143155108}
   textures:
     textureMode: 0
@@ -100,6 +107,10 @@ MonoBehaviour:
       colorBasic: {r: 1, g: 1, b: 1, a: 1}
       colorModule: {fileID: 0}
     colors: []
+  leftCover: 0
+  centerCover: 0
+  rightCover: 0
+  separatorRing: 0
 --- !u!114 &7277954857638211745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,9 +124,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactTolerance: 2
+  ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 8852161485143155108}
-  collider_polygon: {fileID: 0}
-  collider_box: {fileID: 0}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
+--- !u!33 &1831100686518077094
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238818441469665153}
+  m_Mesh: {fileID: 0}
+--- !u!23 &5815486358366798980
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238818441469665153}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e52d76acc88b7f1488d5339895c05236, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3625609527589573302
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +190,6 @@ GameObject:
   - component: {fileID: 8144933413456411887}
   - component: {fileID: 4093754887372546717}
   - component: {fileID: 5371138025553930724}
-  - component: {fileID: 7768107558309944}
   m_Layer: 8
   m_Name: Strut
   m_TagString: Untagged
@@ -146,6 +207,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8996372755802446169}
   m_Father: {fileID: 0}
@@ -164,10 +226,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    TranslatableGroup: Part Names
+    plainText: 0
     TranslatableName: Structural_Part_Name
   description:
-    TranslatableGroup: Part Descriptions
+    plainText: 0
     TranslatableName: Structural_Part_Description
   mass:
     variables: {fileID: 5371138025553930724}
@@ -238,6 +300,7 @@ MonoBehaviour:
   onPartUsed:
     m_PersistentCalls:
       m_Calls: []
+  temperature: -Infinity
 --- !u!114 &4093754887372546717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,27 +339,3 @@ MonoBehaviour:
     saves: []
   stringVariables:
     saves: []
-  _doubleVariables:
-  - name: size
-    value: 0.5
-    save: 1
-  _boolVariables: []
-  _stringVariables: []
---- !u!114 &7768107558309944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3625609527589573302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907b263f139fee4782001469fdbc62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowed:
-  - size:
-      variableName: size
-      referenceToVariables: {fileID: 5371138025553930724}
-      localValue: 0
-    maxAllowedSize: 2

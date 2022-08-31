@@ -179,10 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    plainText: 0
     TranslatableName: Landing_Leg_Name
   description:
-    plainText: 0
     TranslatableName: Landing_Leg_Description
   mass:
     variables: {fileID: 3696336866231701002}
@@ -221,6 +219,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onRegionClicked: []
   temperature: -Infinity
 --- !u!114 &730975860376083388
 MonoBehaviour:
@@ -667,7 +666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label:
-    plainText: 0
     TranslatableName: Landing_Leg_Expanded
   state: {fileID: 114057326622176834}
 --- !u!1 &1271653499950984
@@ -724,10 +722,6 @@ MonoBehaviour:
   colliderArea: 1
   clickArea: 1
   baseDepth: 0
-  composedBaseDepth:
-    variables: {fileID: 0}
-    input: 
-  isComposedDepth: 0
   depthMultiplier: 1
   cut: 0
   reduceResolution: 0
@@ -895,10 +889,6 @@ MonoBehaviour:
   colliderArea: 0
   clickArea: 1
   baseDepth: 0.5
-  composedBaseDepth:
-    variables: {fileID: 0}
-    input: 
-  isComposedDepth: 0
   polygonVertices:
   - {x: -0.050000004, y: 0.46499997}
   - {x: 0.25, y: 0.39}
@@ -1052,10 +1042,6 @@ MonoBehaviour:
   colliderArea: 1
   clickArea: 1
   baseDepth: 0
-  composedBaseDepth:
-    variables: {fileID: 0}
-    input: 
-  isComposedDepth: 0
   depthMultiplier: 1
   cut: 0
   reduceResolution: 0
@@ -1222,10 +1208,6 @@ MonoBehaviour:
   colliderArea: 0
   clickArea: 1
   baseDepth: 0.5
-  composedBaseDepth:
-    variables: {fileID: 0}
-    input: 
-  isComposedDepth: 0
   polygonVertices:
   - {x: -0.27, y: -0.20000002}
   - {x: -0.27, y: -0.15000004}
@@ -1382,10 +1364,6 @@ MonoBehaviour:
   colliderArea: 1
   clickArea: 1
   baseDepth: 0
-  composedBaseDepth:
-    variables: {fileID: 0}
-    input: 
-  isComposedDepth: 0
   depthMultiplier: 1
   cut: 0
   reduceResolution: 0
