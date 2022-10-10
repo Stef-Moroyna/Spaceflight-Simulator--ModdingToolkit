@@ -3,9 +3,6 @@ using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-#if UNITY_STANDALONE
-using Steamworks;
-#endif
 
 [Serializable]
 public class PlatformUtilities
