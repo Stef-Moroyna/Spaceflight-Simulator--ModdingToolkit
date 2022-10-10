@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using Beebyte.Obfuscator;
 using Newtonsoft.Json;
 using SFS.Parts.Modules;
 using Sirenix.OdinInspector;
@@ -9,7 +8,7 @@ using UnityEngine;
 
 namespace SFS.Parts
 {
-    [Serializable, Skip]
+    [Serializable]
     public class PartSave
     {
         [JsonProperty("n")] public string name;
