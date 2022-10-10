@@ -1,4 +1,3 @@
-using Beebyte.Obfuscator;
 using SFS.Translations;
 using System.Collections.Generic;
 using UnityEngine.Scripting;
@@ -11,7 +10,7 @@ using F = SFS.Translations.Field;
 
 namespace SFS
 {
-    [Preserve, Skip]
+    [Preserve]
     public partial class SFS_Translation
     {
         public F None => A(nameof(None), "None");
