@@ -1,8 +1,10 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UV;
 using SFS.Parts.Modules;
+using UnityEngine.Serialization;
 
 namespace SFS.Parts
 {
@@ -17,7 +19,7 @@ namespace SFS.Parts
         [LabelText("Mode")] public CenterData center;
         [Space]
         public bool fixedWidth;
-        [ShowIf("fixedWidth")] public float width = 1;
+        [ShowIf("fixedWidth"), FormerlySerializedAs("width")] public float fixedWidthValue = 1;
         [Space]
         public bool flipToLight_X = true;
         public bool flipToLight_Y = true;
@@ -27,10 +29,10 @@ namespace SFS.Parts
         public Sprite icon;
 
         // Get
-        public UV_Channel Get_UV(Pipe shape, Line segment, float shapeWidth, Transform meshHolder, Vector2 lightDirection)
+        public List<StartEnd_UV> Get_UV(Pipe shape, Line segment, float shapeWidth, Transform meshHolder, Vector2 lightDirection)
         {
             if (shape.points.Count < 2)
-                return new UV_Channel();
+                return new List<StartEnd_UV>();
 
             // Prepares UV channel
             Texture2D texture = GetBestTexture(shapeWidth);
@@ -50,40 +52,63 @@ namespace SFS.Parts
 
 
             // Output
-            UV_Channel output = new UV_Channel();
+            List<StartEnd_UV> output = new List<StartEnd_UV>();
+            void AddQuadClamped(Line cut, Line vertical_UV, Line2 uv, Line clamp, Texture2D tex, PartTexture data, float fixedWidthValue)
+            {
+                Line clampedCut = new Line(Mathf.Clamp(cut.start, clamp.start, clamp.end), Mathf.Clamp(cut.end, clamp.start, clamp.end));
+                Line clampedUV = new Line(vertical_UV.Lerp(Mathf.InverseLerp(cut.start, cut.end, clampedCut.start)), vertical_UV.Lerp(Mathf.InverseLerp(cut.start, cut.end, clampedCut.end)));
 
+                AddQuad(clampedCut, clampedUV, uv, tex, data, fixedWidthValue);
+            }
+            void AddQuad(Line cut, Line vertical_UV, Line2 uv, Texture2D tex, PartTexture data, float fixedWidthValue)
+            {
+                if (cut.Size > 0)
+                    output.Add(new StartEnd_UV(cut, vertical_UV, uv, tex, data, fixedWidthValue));
+            }
+            
+            
             // Bottom segment
-            output.AddQuad(bottom_Segment, new Line(0, GetCenterUV().start), texture_UV, texture, this);
+            AddQuad(bottom_Segment, new Line(0, GetCenterUV().start), texture_UV, texture, this, fixedWidthValue);
 
             // Center segments
             if (center.mode == CenterData.CenterMode.Stretch)
             {
-                output.AddQuad(center_Segment, GetCenterUV(), texture_UV, texture, this);
+                AddQuad(center_Segment, GetCenterUV(), texture_UV, texture, this, fixedWidthValue);
             }
             if (center.mode == CenterData.CenterMode.Logo)
             {
-                float centerSize = center.sizeMode == VerticalSizeMode.Aspect? GetCenterUV().Size * GetAspectRatio(texture) * shape.GetWidthAtHeight(center_Segment.Lerp(center.logoHeightPercent)).magnitude : center.size;
+                float centerSize = GetCenterSize(center_Segment.Lerp(center.logoHeightPercent));
+                float fixedWidthValue_Scaled = fixedWidthValue;
+
+                if (center.scaleLogoToFit && centerSize > center_Segment.Size * 0.85f)
+                {
+                    float centerSize_Scaled = Mathf.Max(centerSize * 0.75f, center_Segment.Size * 0.85f);
+                    fixedWidthValue_Scaled *= centerSize_Scaled / centerSize;
+                    centerSize = centerSize_Scaled;
+                }
 
                 Line centerCut = Line.StartSize(Mathf.Lerp(center_Segment.start, center_Segment.end - centerSize, center.logoHeightPercent), centerSize);
 
-                output.AddQuad(new Line(center_Segment.start, centerCut.start), Line.CenterSize(GetCenterUV().start, 0), texture_UV, texture, this); // Bottom connection
-                output.AddQuadClamped(centerCut, GetCenterUV(), texture_UV, center_Segment, texture, this); // Center logo quad
-                output.AddQuad(new Line(centerCut.end, center_Segment.end), Line.CenterSize(GetCenterUV().end, 0), texture_UV, texture, this); // Top connection
+                AddQuad(new Line(center_Segment.start, centerCut.start), Line.CenterSize(GetCenterUV().start, 0), texture_UV, texture, this, fixedWidthValue); // Bottom connection
+                AddQuadClamped(centerCut, GetCenterUV(), texture_UV, center_Segment, texture, this, fixedWidthValue_Scaled); // Center logo quad
+                AddQuad(new Line(centerCut.end, center_Segment.end), Line.CenterSize(GetCenterUV().end, 0), texture_UV, texture, this, fixedWidthValue); // Top connection
             }
             if (center.mode == CenterData.CenterMode.Tile)
             {
-                float centerSize = center.sizeMode == VerticalSizeMode.Aspect? GetCenterUV().Size * GetAspectRatio(texture) * shape.GetWidthAtHeight(center_Segment.start).magnitude : center.size;
-
+                float centerSize = GetCenterSize(center_Segment.start);
+                
                 for (int i = 0; i < Mathf.Ceil(center_Segment.Size / centerSize); i++)
-                    output.AddQuadClamped(Line.StartSize(center_Segment.start + centerSize * i, centerSize), GetCenterUV(), texture_UV, center_Segment, texture, this);
+                    AddQuadClamped(Line.StartSize(center_Segment.start + centerSize * i, centerSize), GetCenterUV(), texture_UV, center_Segment, texture, this, fixedWidthValue);
             }
+            //
+            float GetCenterSize(float height) => center.sizeMode == VerticalSizeMode.Aspect? GetCenterUV().Size * GetAspectRatio(texture) * (fixedWidth? fixedWidthValue : shape.GetWidthAtHeight(height).magnitude) : center.size;
 
             // Top segment
-            output.AddQuad(top_Segment, new Line(GetCenterUV().end, 1), texture_UV, texture, this);
+            AddQuad(top_Segment, new Line(GetCenterUV().end, 1), texture_UV, texture, this, fixedWidthValue);
 
             return output;
         }
-
+        
         public Texture2D GetBestTexture(float shapeWidth)
         {
             PerValueTexture best = textures[0];
@@ -94,7 +119,7 @@ namespace SFS.Parts
 
             return best.texture;
         }
-
+        
         float GetBottomBorderSize(Pipe shape, Line segment, Texture texture)
         {
             if (border_Bottom.uvSize == 0)
@@ -111,12 +136,12 @@ namespace SFS.Parts
             float size = border_Top.sizeMode == VerticalSizeMode.Fixed ? border_Top.size : (border_Top.uvSize * GetAspectRatio(texture) * shape.GetWidthAtHeight(segment.end).magnitude);
             return Mathf.Min(size, segment.Size / 2);
         }
-
+        
         float GetAspectRatio(Texture texture)
         {
             return (float)texture.height / texture.width;
         }
-
+        
         Line GetCenterUV()
         {
             return new Line(border_Bottom.uvSize, 1 - border_Top.uvSize);
@@ -136,8 +161,8 @@ namespace SFS.Parts
     {
         [HorizontalGroup, HideLabel, SuffixLabel("UV   ")] public float uvSize;
 
-        [HorizontalGroup, HideLabel, ShowIf("Valid")] public VerticalSizeMode sizeMode;
-        [HorizontalGroup, HideLabel, ShowIf("Valid"), ShowIf("sizeMode", VerticalSizeMode.Fixed), SuffixLabel("m   ")] public float size = 0.5f;
+        [HorizontalGroup, HideLabel, ShowIf(nameof(Valid))] public VerticalSizeMode sizeMode;
+        [HorizontalGroup, HideLabel, ShowIf(nameof(Valid)), ShowIf("sizeMode", VerticalSizeMode.Fixed), SuffixLabel("m   ")] public float size = 0.5f;
 
         bool Valid => uvSize > 0;
     }
@@ -148,7 +173,8 @@ namespace SFS.Parts
         [HorizontalGroup, HideLabel, ShowIf(nameof(SizeOptions))] public VerticalSizeMode sizeMode;
         [HorizontalGroup, HideLabel, ShowIf(nameof(SizeOptions)), ShowIf(nameof(sizeMode), VerticalSizeMode.Fixed), SuffixLabel("m   ")] public float size = 0.5f;
 
-        [ShowIf("mode", CenterMode.Logo), Range(0, 1)] public float logoHeightPercent = 0.5f;
+        [ShowIf(nameof(mode), CenterMode.Logo), Range(0, 1)] public float logoHeightPercent = 0.5f;
+        [ShowIf(nameof(mode), CenterMode.Logo)] public bool scaleLogoToFit;
 
         bool SizeOptions => mode != CenterMode.Stretch;
 

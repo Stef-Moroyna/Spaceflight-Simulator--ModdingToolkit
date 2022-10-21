@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Linq;
 using System.Text;
@@ -166,7 +166,8 @@ namespace SFS.Parts.Modules
 
         void CreateTexture(Bounds bounds)
         {
-            Destroy(offsetTexture); // Memory clear
+            if (offsetTexture != null)
+                Destroy(offsetTexture); // Memory clear
             
             float width = bounds.xMax - bounds.xMin;
             int resolution = (int)(width * 6);

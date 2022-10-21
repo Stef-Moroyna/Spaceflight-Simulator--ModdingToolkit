@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SFS.Builds;
 using SFS.Variables;
-using SFS.World;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UV;
@@ -57,7 +55,7 @@ namespace SFS.Parts.Modules
             // Generates mesh
             ApplyMeshData(data.vertices, GetQuadIndices(points.elements), data.UVs, data.colors.ToArray(), data.shading, data.depths, pipeData.BaseDepth, pipeData.depthMultiplier, data.textures, MeshTopology.Quads);
         }
-        void GetMeshQuads(List<PipePoint> points, UV_Channel[] vertical_UVs, Color_Channel color_Channel, List<float> slopeShading, MeshData data)
+        void GetMeshQuads(List<PipePoint> points, List<StartEnd_UV>[] vertical_UVs, Color_Channel color_Channel, List<float> slopeShading, MeshData data)
         {
             // Loops trough each point 
             for (int quadIndex = 0; quadIndex < points.Count - 1; quadIndex++)
@@ -84,29 +82,31 @@ namespace SFS.Parts.Modules
                 for (int uv_Index = 0; uv_Index < vertical_UVs.Length; uv_Index++)
                 {
                     // Calculates UV and applies M at the end
-                    StartEnd_UV tex = vertical_UVs[uv_Index].elements[quadIndex];
+                    StartEnd_UV tex = vertical_UVs[uv_Index][quadIndex];
                     if (!tex.data.metalTexture)
                     {
                         if (leftCover && uv_Index == 0)
-                            tex.texture_UV.end.x = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.2f);
+                            tex.texture_UV.end.x = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.05f);
+                        
                         if (centerCover && uv_Index == 0)
                         {
-                            float start = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.3f);
-                            float end = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.7f);
+                            float start = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.4f);
+                            float end = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.6f);
                             tex.texture_UV.start.x = start;
                             tex.texture_UV.end.x = end;
                         }
+                        
                         if (rightCover && uv_Index == 0)
-                            tex.texture_UV.start.x = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.8f);   
+                            tex.texture_UV.start.x = Mathf.Lerp(tex.texture_UV.start.x, tex.texture_UV.end.x, 0.95f);   
                     }
                     
                     if (separatorRing && uv_Index == 0)
-                        tex.texture_UV.end.y = Mathf.Lerp(tex.texture_UV.start.y, tex.texture_UV.end.y, 0.2f);
+                        tex.texture_UV.end.y = tex.texture_UV.start.y;
                     
-                    float leftBottom = tex.data.fixedWidth? ((point_A.cutLeft - 0.5f) * point_A.width.magnitude / tex.data.width + 0.5f) : point_A.cutLeft;
-                    float leftTop = tex.data.fixedWidth? ((point_B.cutLeft - 0.5f) * point_B.width.magnitude / tex.data.width + 0.5f) : point_B.cutLeft;
-                    float rightTop = tex.data.fixedWidth? ((point_B.cutRight - 0.5f) * point_B.width.magnitude / tex.data.width + 0.5f) : point_B.cutRight;
-                    float rightBottom = tex.data.fixedWidth? ((point_A.cutRight - 0.5f) * point_A.width.magnitude / tex.data.width + 0.5f) : point_A.cutRight;
+                    float leftBottom = tex.data.fixedWidth? ((point_A.cutLeft - 0.5f) * point_A.width.magnitude / tex.fixedWidthValue + 0.5f) : point_A.cutLeft;
+                    float leftTop = tex.data.fixedWidth? ((point_B.cutLeft - 0.5f) * point_B.width.magnitude / tex.fixedWidthValue + 0.5f) : point_B.cutLeft;
+                    float rightTop = tex.data.fixedWidth? ((point_B.cutRight - 0.5f) * point_B.width.magnitude / tex.fixedWidthValue + 0.5f) : point_B.cutRight;
+                    float rightBottom = tex.data.fixedWidth? ((point_A.cutRight - 0.5f) * point_A.width.magnitude / tex.fixedWidthValue + 0.5f) : point_A.cutRight;
                    
                     Line2 texture_UV = tex.texture_UV;
                     Line vertical = tex.vertical_UV;
@@ -154,7 +154,7 @@ namespace SFS.Parts.Modules
                 data.colors.AddRange(colors);
                 data.shading.AddRange(shading);
                 data.depths.AddRange(depths);
-                data.textures.Add(new PartTex { color = vertical_UVs[0].elements[quadIndex].texture, shape = vertical_UVs[1].elements[quadIndex].texture, shadow = vertical_UVs[2].elements[quadIndex].texture });
+                data.textures.Add(new PartTex { color = vertical_UVs[0][quadIndex].texture, shape = vertical_UVs[1][quadIndex].texture, shadow = vertical_UVs[2][quadIndex].texture });
             }
         }
 
@@ -172,7 +172,6 @@ namespace SFS.Parts.Modules
             return indices;
         }
 
-        
         // Used by skin module
         public void SetColorTexture(ColorTexture colorTexture)
         {
@@ -192,13 +191,12 @@ namespace SFS.Parts.Modules
         }
 
         // Get
-        UV_Channel[] Get_UV_Channels(Pipe shape) => textures.GetOutput(shape, transform, GetLightDirection());
+        List<StartEnd_UV>[] Get_UV_Channels(Pipe shape) => textures.GetOutput(shape, transform, GetLightDirection());
         Vector2 GetLightDirection()
         {
-            // if (GameManager.main != null && transform.root.childCount > 0 && transform.root.GetChild(0).name == "Parts Holder")
-            //     return transform.root.GetChild(0).TransformDirection(new Vector2(-1, 1));
+            Vector2 a = new Vector2(-1 * pipeData.depthMultiplier, 1);
 
-            return new Vector2(-1, 1);
+            return a;
         }
         //
         List<float> GetSlopeShading(List<PipePoint> points)
@@ -227,39 +225,39 @@ namespace SFS.Parts.Modules
     public class Textures
     {
         public Mode textureMode;
-        [ShowIf("textureMode", Mode.Basic)] public TextureSelector texture;
-        [ShowIf("textureMode", Mode.Advanced)] public TextureKey[] textures;
+        [ShowIf("textureMode", Mode.Single)] public TextureSelector texture;
+        [ShowIf("textureMode", Mode.Multiple)] public TextureKey[] textures;
         [Space]
         public WidthMode widthMode;
         [ShowIf("widthMode", WidthMode.Composed)] public Composed_Float width;
 
 
-        public UV_Channel[] GetOutput(Pipe shape, Transform meshHolder, Vector2 lightDirection)
+        public List<StartEnd_UV>[] GetOutput(Pipe shape, Transform meshHolder, Vector2 lightDirection)
         {
             float shapeWidth = GetShapeWidth(shape);
 
-            if (textureMode == Mode.Basic)
+            if (textureMode == Mode.Single)
             {
                 Line segment = new Line(0, shape.points.Last().height);
 
                 return new []
                 {
-                    texture.colorTexture.colorTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection),
-                    texture.shapeTexture.shapeTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection),
-                    texture.shapeTexture.shadowTex.texture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection)
+                    texture.colorTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection),
+                    texture.shapeTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection),
+                    texture.shapeTexture.shadowTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection)
                 };
             }
             else
             {
-                UV_Channel[] output = { new UV_Channel(), new UV_Channel(), new UV_Channel() };
+                List<StartEnd_UV>[] output = { new List<StartEnd_UV>(), new List<StartEnd_UV>(), new List<StartEnd_UV>() };
 
                 for (int i = 0; i < textures.Length; i++)
                 {
                     Line segment = new Line(i > 0? textures[i - 1].height : 0, textures[i].height);
 
-                    output[0].elements.AddRange(textures[i].texture.colorTexture.colorTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection).elements);
-                    output[1].elements.AddRange(textures[i].texture.shapeTexture.shapeTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection).elements);
-                    output[2].elements.AddRange(textures[i].texture.shapeTexture.shadowTex.texture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection).elements);
+                    output[0].AddRange(textures[i].texture.colorTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection));
+                    output[1].AddRange(textures[i].texture.shapeTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection));
+                    output[2].AddRange(textures[i].texture.shapeTexture.shadowTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection));
                 }
 
                 return output;
@@ -309,12 +307,12 @@ namespace SFS.Parts.Modules
     public class Colors
     {
         [LabelText("Color Mode")] public Mode mode;
-        [ShowIf("mode", Mode.Basic)] public ColorSelector color;
-        [ShowIf("mode", Mode.Advanced)] public ColorKey[] colors;
+        [ShowIf("mode", Mode.Single)] public ColorSelector color;
+        [ShowIf("mode", Mode.Multiple)] public ColorKey[] colors;
 
         public Color_Channel GetOutput()
         {
-            if (mode == Mode.Basic)
+            if (mode == Mode.Single)
             {
                 Color c = color.GetColor();
                 return new Color_Channel(new List<StartEnd_Color>() { new StartEnd_Color(new Color2(c, c), /*new Color2(c, c),*/ new Line(0, 0)) });
@@ -361,8 +359,8 @@ namespace SFS.Parts.Modules
     //
     public enum Mode
     {
-        Basic,
-        Advanced,
+        Single,
+        Multiple,
     }
     
     // Process data
@@ -435,24 +433,24 @@ namespace SFS.Parts.Modules
     }
     public class UV_Splittable : Splittable
     {
-        public UV_Channel element;
-        public UV_Splittable(UV_Channel element) => this.element = element;
+        public List<StartEnd_UV> element;
+        public UV_Splittable(List<StartEnd_UV> element) => this.element = element;
 
         // Implementation
         protected override float[] GetSplits()
         {
-            if (element.elements.Count == 0)
+            if (element.Count == 0)
                 return new float[0];
 
-            List<float> heights = new List<float>() { element.elements[0].height.start };
+            List<float> heights = new List<float>() { element[0].height.start };
             
-            heights.AddRange(element.elements.Select(uv => uv.height.end));
+            heights.AddRange(element.Select(uv => uv.height.end));
 
             return heights.ToArray();
         }
         protected override void Split(float[] splits)
         {
-            if (element.elements.Count == 0)
+            if (element.Count == 0)
                 return;
 
             List<StartEnd_UV> output = new List<StartEnd_UV>();
@@ -461,15 +459,15 @@ namespace SFS.Parts.Modules
             int elementIndex = 0;
             for (int splitIndex = 0; splitIndex < splits.Length - 1; splitIndex++)
             {
-                if (splits[splitIndex] >= element.elements[elementIndex].height.end && elementIndex < element.elements.Count - 1)
+                if (splits[splitIndex] >= element[elementIndex].height.end && elementIndex < element.Count - 1)
                     elementIndex++;
 
                 // Cuts segment
                 Line cut = new Line(splits[splitIndex], splits[splitIndex + 1]);
-                output.Add(element.elements[elementIndex].Cut(cut));
+                output.Add(element[elementIndex].Cut(cut));
             }
 
-            element.elements = output;
+            element = output;
         }
     }
     public class Color_Splittable : Splittable

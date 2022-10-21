@@ -4,8 +4,10 @@ using Sirenix.OdinInspector;
 namespace SFS.Parts
 {
     [CreateAssetMenu]
-    public class ShadowTexture : ScriptableObject
+    public class ShadowTexture : TextureAssetBase
     {
-        [BoxGroup("Shadow Tex"), InlineProperty, HideLabel] public PartTexture texture;
+        [HideIf(nameof(multiple)), BoxGroup, InlineProperty, HideLabel] public PartTexture texture;
+
+        protected override PartTexture Texture => texture;
     }
 }
