@@ -15,14 +15,21 @@ public struct Double2
     }
 
     public static Double2 zero => new Double2();
+    public static Double2 right => new Double2(1, 0);
+    public static Double2 up => new Double2(0, 1);
+    public static Double2 down => new Double2(0, -1);
 
     public static double Dot(Double2 a, Double2 b) => (a.x * b.x) + (a.y * b.y);
+    public static double Angle(Double2 from, Double2 to)
+    {
+        double num = Math.Sqrt(from.sqrMagnitude * to.sqrMagnitude);
+        return num < 1.00000000362749E-15 ? 0.0 : Math.Acos(Math.Clamp(Dot(from, to) / num, -1, 1)) * 57.29578;
+    }
+    public static double SignedAngle(Double2 from, Double2 to) => Angle(from, to) * Math.Sign(from.x * to.y - from.y * to.x);
 
     public double AngleRadians => Math.Atan2(y, x);
-    public double AngleDegrees => Math.Atan2(y, x) / (Math.PI * 2) * 360.0;
 
     public double magnitude => Math.Sqrt(x * x + y * y);
-
     public double sqrMagnitude => x * x + y * y;
 
 

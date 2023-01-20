@@ -1,14 +1,7 @@
 using SFS.Variables;
-using Sirenix.OdinInspector;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Reflection;
-using System.Text;
-using System.Threading;
-using UnityEngine;
 
 namespace SFS.Translations
 {
@@ -38,17 +31,13 @@ namespace SFS.Translations
         }
         
         
-        #if UNITY_EDITOR
         public static List<FieldReference> dropdownData;
-        #endif
         
         static Loc()
         {
             SetLanguage("Default", TranslationSerialization.CreateTranslation<SFS_Translation>());
             
-            #if UNITY_EDITOR
             dropdownData = TranslationSerialization.GetFieldReferences<SFS_Translation>().Select(a => new FieldReference(a.Item1.Name, a.Item2.Name)).ToList();
-            #endif
         }
     }
 }

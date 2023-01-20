@@ -12,19 +12,22 @@ namespace SFS
         public List<string> layers = new List<string>();
         
         
-        [ShowInInspector] public Dictionary<int, Material> partMaterials = new Dictionary<int, Material>();
-        [ShowInInspector] public Dictionary<int, Material> partModelMaterials = new Dictionary<int, Material>();
+        [ShowInInspector] public Dictionary<(Material, int), Material> partMaterials = new Dictionary<(Material, int), Material>();
 
         const int Transparent_Queue = 3000;
         
-
-        public Material GetPartMaterial(int renderQueue)
+        Material GetMaterial(int renderQueue, Material prefab)
         {
-            return null;
-        }
-        public Material GetPartModelMaterial(int renderQueue, bool normals)
-        {
-            return null;
+            (Material prefab, int renderQueue) key = (prefab, renderQueue);
+            if (!partMaterials.ContainsKey(key))
+            {
+                Material mat = Instantiate(prefab);
+                mat.name = "PartModel " + (renderQueue - 3000) + " " + mat.GetInstanceID();
+                mat.renderQueue = renderQueue;
+                partMaterials.Add(key, mat);
+            }
+            
+            return partMaterials[key];
         }
 
         public float GetGlobalDepth(float localDepth, string layer)
@@ -38,7 +41,7 @@ namespace SFS
 
             return Mathf.Lerp(start, start + range, localDepth);
         }
-        public List<float> GetGlobalDepths(List<float> localDepths, string layer)
+        /*public List<float> GetGlobalDepths(List<float> localDepths, string layer)
         {
             if (!layers.Contains(layer))
                 return localDepths;
@@ -51,7 +54,7 @@ namespace SFS
                 localDepths[i] = Mathf.Lerp(start, start + range, localDepths[i]);
 
             return localDepths;
-        }
+        }*/
         public int GetRenderQueue(string layer)
         {
             if (!layers.Contains(layer))

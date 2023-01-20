@@ -8,13 +8,7 @@ namespace SFS.Parts.Modules
     {
         public Composed_Float input;
         public Float_Reference output;
-
-
-        void Start()
-        {
-            input.OnChange += RecalculateOutput;
-        }
-
+        
         [Button(ButtonSizes.Medium)]
         public void RecalculateOutput()
         {

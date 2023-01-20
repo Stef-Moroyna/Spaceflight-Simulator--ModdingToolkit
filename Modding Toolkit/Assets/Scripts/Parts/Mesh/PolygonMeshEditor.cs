@@ -52,8 +52,8 @@ namespace SFS.Parts.Modules
         {
             Vector2[] bounds = mesh.bounds;
 
-            bounds[0] += MyHandles.DrawHandle(mesh.transform, bounds[0], Color.red);
-            bounds[2] += MyHandles.DrawHandle(mesh.transform, bounds[2], Color.red);
+            bounds[0] += Round(MyHandles.DrawHandle(mesh.transform, bounds[0], Color.red), mesh.grid);
+            bounds[2] += Round(MyHandles.DrawHandle(mesh.transform, bounds[2], Color.red), mesh.grid);
 
             bounds[1] = new Vector2(bounds[0].x, bounds[2].y);
             bounds[3] = new Vector2(bounds[2].x, bounds[0].y);
@@ -64,12 +64,18 @@ namespace SFS.Parts.Modules
         {
             Vector2[] bounds = mesh.bounds;
 
-            bounds[0] += MyHandles.DrawHandle(mesh.transform, bounds[0], Color.red);
-            bounds[1] += MyHandles.DrawHandle(mesh.transform, bounds[1], Color.red);
-            bounds[2] += MyHandles.DrawHandle(mesh.transform, bounds[2], Color.red);
-            bounds[3] += MyHandles.DrawHandle(mesh.transform, bounds[3], Color.red);
+            bounds[0] += Round(MyHandles.DrawHandle(mesh.transform, bounds[0], Color.red), mesh.grid);
+            bounds[1] += Round(MyHandles.DrawHandle(mesh.transform, bounds[1], Color.red), mesh.grid);
+            bounds[2] += Round(MyHandles.DrawHandle(mesh.transform, bounds[2], Color.red), mesh.grid);
+            bounds[3] += Round(MyHandles.DrawHandle(mesh.transform, bounds[3], Color.red), mesh.grid);
 
             mesh.bounds = bounds;
+        }
+
+        // Utility
+        Vector2 Round(Vector2 a, float value)
+        {
+            return value != 0 ? a.Round(value) : a;
         }
     }
 }

@@ -20,21 +20,21 @@ namespace SFS.Variables
     }
 
     // Composed composites
-    [Serializable, InlineProperty, HideReferenceObjectPicker, PropertySpace(0, 2)] public class Composed_Shape : Composed<Pipe>
+    [Serializable, InlineProperty, HideReferenceObjectPicker, PropertySpace(0, 2)] public class Composed_Pipe : Composed<Pipe>
     {
-        public List<Composed_ShapePoint> points;
+        public List<Composed_PipePoint> points;
 
         protected override Pipe GetResult(bool initialize)
         {
             if (initialize)
             {
-                foreach (Composed_ShapePoint point in points)
+                foreach (Composed_PipePoint point in points)
                     point.OnChange += Recalculate;
             }
             
             Pipe a = new Pipe();
 
-            foreach (Composed_ShapePoint point in points)
+            foreach (Composed_PipePoint point in points)
                 a.AddPoint(point.Value.position, point.Value.width);
 
             return a;
@@ -42,7 +42,7 @@ namespace SFS.Variables
 
         protected override bool Equals(Pipe a, Pipe b) => false;
     }
-    [Serializable, InlineProperty, HideReferenceObjectPicker, PropertySpace(0, 2)] public class Composed_ShapePoint : Composed<PipePoint>
+    [Serializable, InlineProperty, HideReferenceObjectPicker, PropertySpace(0, 2)] public class Composed_PipePoint : Composed<PipePoint>
     {
         public Composed_Vector2 position, width;
 
@@ -59,7 +59,7 @@ namespace SFS.Variables
 
         protected override bool Equals(PipePoint a, PipePoint b) => false;
 
-        public Composed_ShapePoint(Vector2 position, Vector2 width)
+        public Composed_PipePoint(Vector2 position, Vector2 width)
         {
             this.position = new Composed_Vector2(position);
             this.width = new Composed_Vector2(width);

@@ -91,8 +91,6 @@ MonoBehaviour:
     y:
       variables: {fileID: 5371138025553930724}
       input: width * 0.25
-  cannotDetachIfSurfaceCovered: 1
-  surfaceForCover: {fileID: 7185259699728909087}
   showDescription: 1
   showForceMultiplier: 0
   useForceMultiplierEvenIfNotShown: 0
@@ -100,6 +98,9 @@ MonoBehaviour:
     variableName: 
     referenceToVariables: {fileID: 5371138025553930724}
     localValue: 0
+  cannotDetachIfSurfaceCovered: 1
+  surfaceForCover: {fileID: 7185259699728909087}
+  activatedByLES: 0
   onDetach:
     m_PersistentCalls:
       m_Calls:
@@ -186,11 +187,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    plainText: 0
     TranslatableName: Heat_Shield_Name
-  description:
     plainText: 0
+  description:
     TranslatableName: Heat_Shield_Description
+    plainText: 0
   mass:
     variables: {fileID: 5371138025553930724}
     input: width * 0.25
@@ -338,7 +339,6 @@ MonoBehaviour:
       y:
         variables: {fileID: 5371138025553930724}
         input: 0
-  snapPoints: []
 --- !u!114 &590641833442340217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +352,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - position:
+  - toggle: 0
+    enabled:
+      variableName: 
+      referenceToVariables: {fileID: 0}
+      localValue: 0
+    position:
       variables: {fileID: 5371138025553930724}
       x:
         variables: {fileID: 5371138025553930724}
@@ -365,7 +370,15 @@ MonoBehaviour:
     output:
       variables: {fileID: 5371138025553930724}
       input: width - 0.4
-  - position:
+    outputOffset: 0
+    shareIsOccupied: 0
+    shareIndex: 0
+  - toggle: 0
+    enabled:
+      variableName: 
+      referenceToVariables: {fileID: 0}
+      localValue: 0
+    position:
       variables: {fileID: 5371138025553930724}
       x:
         variables: {fileID: 5371138025553930724}
@@ -378,6 +391,9 @@ MonoBehaviour:
     output:
       variables: {fileID: 5371138025553930724}
       input: width
+    outputOffset: 0
+    shareIsOccupied: 0
+    shareIndex: 0
 --- !u!114 &907692306656092304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +425,7 @@ MonoBehaviour:
         variables: {fileID: 5371138025553930724}
         input: width_original + 1
     type: 1
+    extraTypes: []
     priority: 
     inputArea:
       variables: {fileID: 0}
@@ -449,6 +466,16 @@ MonoBehaviour:
       referenceToVariables: {fileID: 0}
       localValue: 0
   ignoreOccupied: 0
+  applySeparatorFix: 0
+  applyFairingConeFix: 0
+  original:
+    variableName: 
+    referenceToVariables: {fileID: 0}
+    localValue: 0
+  width:
+    variableName: 
+    referenceToVariables: {fileID: 0}
+    localValue: 0
 --- !u!114 &701519292159571125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +525,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - position:
+  - toggle: 0
+    enabled:
+      variableName: 
+      referenceToVariables: {fileID: 0}
+      localValue: 0
+    position:
       variables: {fileID: 5371138025553930724}
       x:
         variables: {fileID: 5371138025553930724}
@@ -511,6 +543,9 @@ MonoBehaviour:
     output:
       variables: {fileID: 5371138025553930724}
       input: width
+    outputOffset: 0
+    shareIsOccupied: 0
+    shareIndex: 0
 --- !u!1 &4570212958988585033
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +667,7 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 1
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 1
   baseDepth: 0
@@ -793,6 +829,7 @@ MonoBehaviour:
   centerCover: 0
   rightCover: 0
   separatorRing: 0
+  smoothShading: 0
 --- !u!114 &5089925399279259380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,8 +845,6 @@ MonoBehaviour:
   impactTolerance: 2
   ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 3033729051421380614}
-  collider_Polygon: {fileID: 0}
-  collider_Box: {fileID: 0}
 --- !u!33 &6861939198866315514
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -876,8 +911,8 @@ MonoBehaviour:
   isHeatShield: 1
   useCustomName: 1
   customName:
-    plainText: 0
     TranslatableName: Heat_Shield_Name
+    plainText: 0
   temperature:
     variableName: shield_temp
     referenceToVariables: {fileID: 5371138025553930724}

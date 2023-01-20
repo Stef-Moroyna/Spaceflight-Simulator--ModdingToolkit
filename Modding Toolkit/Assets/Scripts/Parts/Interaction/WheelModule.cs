@@ -1,7 +1,5 @@
-﻿using SFS.Parts.Modules;
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
-using SFS.World;
 using SFS.Variables;
 
 namespace SFS.Parts
@@ -18,6 +16,7 @@ namespace SFS.Parts
         [BoxGroup("State", false)] public float angularVelocity;
         [BoxGroup("State", false)] public Bool_Reference on;
 
+  
         public void ToggleEnabled()
         {
         }

@@ -6,16 +6,12 @@ using Sirenix.OdinInspector;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class PipeSurface : SurfaceData, I_InitializePartModule
+    public class PipeSurface : SurfaceData
     {
         // Variables
         [Space]
         [Required] public PipeData pipeData;
         public bool top = true, left = true, bottom = true, right = true;
-
-
-        int I_InitializePartModule.Priority => 9;
-        void I_InitializePartModule.Initialize() => pipeData.onChange += Output;
 
         public override void Output()
         {

@@ -1,6 +1,8 @@
+using System;
 using SFS.Parsers.Regex;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace SFS.Translations
 {
@@ -25,7 +27,11 @@ namespace SFS.Translations
             subs[index] = sub;
         }
 
-        
+
+        public Builder InjectField(TranslationVariable subs, string variableName)
+        {
+            return InjectField(subs.Field, variableName);
+        }
         public Builder InjectField(Field subs, string variableName)
         {
             return GetBuilder(0).InjectField(subs, variableName);
@@ -42,7 +48,15 @@ namespace SFS.Translations
 
         public static implicit operator string(Field field)
         {
-            return field.subs[0];
+            try
+            {
+                return field.subs[0];
+            }
+            catch(Exception e)
+            {
+                Debug.Log(e);
+                throw;
+            }
         }
 
         public static Field Text(string sub)

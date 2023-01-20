@@ -12,7 +12,6 @@ public class Polygon
     }
 
 
-
     // Polygons - Polygons
     public static bool Intersect(ConvexPolygon[] A, ConvexPolygon[] B, float overlapThreshold)
     {
@@ -78,23 +77,6 @@ public class Polygon
             Vector2[] points = new Vector2[polygon.points.Length];
             for (int i = 0; i < points.Length; i++)
                 points[i] = transform.TransformPoint(polygon.points[i]);
-
-            output[polygonIndex] = new ConvexPolygon(points);
-        }
-
-        return output;
-    }
-    public ConvexPolygon[] GetConvexPolygonsWorld_ToLocal(Transform transform, Transform final)
-    {
-        ConvexPolygon[] output = new ConvexPolygon[convexPolygons.Length];
-
-        for (int polygonIndex = 0; polygonIndex < output.Length; polygonIndex++)
-        {
-            ConvexPolygon polygon = convexPolygons[polygonIndex];
-
-            Vector2[] points = new Vector2[polygon.points.Length];
-            for (int i = 0; i < points.Length; i++)
-                points[i] = final.InverseTransformPoint(transform.TransformPoint(polygon.points[i]));
 
             output[polygonIndex] = new ConvexPolygon(points);
         }

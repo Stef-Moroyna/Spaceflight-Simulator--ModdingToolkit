@@ -1,19 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
-using SFS.Builds;
-using SFS.World;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class PolygonMesh : BaseMesh, I_InitializePartModule
+    public class PolygonMesh : BaseMesh
     {
         [Required] public PolygonData polygonModule;
         
         public UVOptions UV_Mode = UVOptions.Auto;
-        [HideInInspector] public Vector2[] bounds;
+        [HideIf(nameof(UV_Mode), UVOptions.Auto)] public float grid;
+        [HideInInspector]public Vector2[] bounds;
 
         [BoxGroup, Required] public BasicTexture texture;
 
@@ -23,18 +22,7 @@ namespace SFS.Parts.Modules
         
         // New default (but keeps legacy assets)
         void Reset() => type = ColorType.Local;
-
-        int I_InitializePartModule.Priority => 0;
-        void I_InitializePartModule.Initialize()
-        {
-            polygonModule.onChange += GenerateMesh;
-            polygonModule.SubscribeToComposedDepth(GenerateMesh);
-
-            initialized = true;
-            GenerateMesh();
-        }
-
-        bool initialized;
+        
         public override void GenerateMesh()
         {
             polygonModule.Output();

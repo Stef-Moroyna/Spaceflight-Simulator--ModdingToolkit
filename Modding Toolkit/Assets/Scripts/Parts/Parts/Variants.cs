@@ -1,8 +1,6 @@
 using SFS.Builds;
 using Sirenix.OdinInspector;
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace SFS.Parts.Modules
 {
@@ -10,7 +8,7 @@ namespace SFS.Parts.Modules
     public class Variants
     {
         [BoxGroup] public Variant[] variants = new Variant[0];
-        [BoxGroup, HideInInspector] public PickTag[] tags = new PickTag[0];
+        [BoxGroup] public PickTag[] tags = new PickTag[0];
 
 
         // Pack
@@ -83,108 +81,5 @@ namespace SFS.Parts.Modules
             [Required] public PickCategory tag;
             public int priority;
         }
-    }
-
-
-    [Serializable, InlineProperty]
-    public class VariantRef
-    {
-        // Part dropdown
-        [Required, ValueDropdown(nameof(PartOptions))] public Part part;
-        Part[] PartOptions() => null;
-        
-        
-        // Variant dropdown
-        [HideInInspector] public int variantIndex_A = -1;
-        [HideInInspector] public int variantIndex_B = -1;
-        //
-        [ValueDropdown(nameof(Variants)), ShowInInspector] string Variant
-        {
-            get => GetLabel(variantIndex_A, variantIndex_B);
-            set
-            {
-                variantIndex_A = int.Parse(value.Split(',')[0]);
-                variantIndex_B = int.Parse(value.Split(',')[1]);
-            }
-        }
-        string[] Variants()
-        {
-            if (part == null)
-                return new []{ -1 + ", " + -1 };
-
-            List<string> output = new List<string>();
-            
-            for (int a = 0; a < part.variants.Length; a++)
-                for (int b = 0; b < part.variants[a].variants.Length; b++)
-                    output.Add(GetLabel(a, b));
-
-            return output.ToArray();
-        }
-
-
-        string GetLabel(int a, int b)
-        {
-            string label = a + ", " + b;
-                
-            bool valid = part != null && part.variants.IsValidIndex(a) && part.variants[a].variants.IsValidIndex(b);
-            
-            if (valid)
-                foreach (Variants.Variable change in part.variants[a].variants[b].changes)
-                    label += ", " + change.GetLabel();
-
-            return label;
-        }
-        
-
-        // Functionality
-        public Variants.Variant GetVariant()
-        {
-            return part.variants[variantIndex_A].variants[variantIndex_B];
-        }
-        public string GetNameID()
-        {
-            return part.name + "_" + variantIndex_A + "_" + variantIndex_B;
-        }
-        public VariantRef(Part part, int variantIndex_A, int variantIndex_B)
-        {
-            this.part = part;
-            this.variantIndex_A = variantIndex_A;
-            this.variantIndex_B = variantIndex_B;
-        }
-        public List<Variants.PickTag> GetPickTags()
-        {
-            if (variantIndex_A == -1)
-                return new List<Variants.PickTag>();
-
-            List<Variants.PickTag> output = new List<Variants.PickTag>();
-
-            if (part.variants[variantIndex_A].tags != null)
-                foreach (Variants.PickTag tag in part.variants[variantIndex_A].tags)
-                    if (!output.Contains(tag))
-                        output.Add(tag);
-
-            if (GetVariant().tags != null)
-                foreach (Variants.PickTag tag in GetVariant().tags)
-                    if (!output.Contains(tag))
-                        output.Add(tag);
-
-            return output;
-        }
-        public int GetPriority(PickCategory tag)
-        {
-            foreach (Variants.PickTag pickTag in part.variants[variantIndex_A].tags)
-                if (pickTag.tag == tag)
-                    return pickTag.priority;
-
-            foreach (Variants.PickTag pickTag in GetVariant().tags)
-                if (pickTag.tag == tag)
-                    return pickTag.priority;
-
-            throw new Exception("Tag not found");
-        }
-
-
-        // Implementation
-        public int Value => 1;
     }
 }

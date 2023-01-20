@@ -29,10 +29,7 @@ MonoBehaviour:
       sizeMode: 0
       size: 3.5
       logoHeightPercent: 0.5
-    fixedWidth: 0
-    width: 1
     flipToLight_X: 0
     flipToLight_Y: 0
-    metalTexture: 0
     icon: {fileID: 0}
   tags: []

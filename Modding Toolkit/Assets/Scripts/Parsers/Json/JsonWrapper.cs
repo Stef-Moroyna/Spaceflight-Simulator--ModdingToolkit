@@ -42,7 +42,7 @@ namespace SFS.Parsers.Json
         {
             try
             {
-                VersionedData<T> data = JsonConvert.DeserializeObject<VersionedData<T>>(json, serializerSettings);
+                VersionedData<T> data = JsonConvert.DeserializeObject<VersionedData<T>>(json, SerializerSettings);
 
                 if (data.data == null)
                     goto OLD_FORMAT;
@@ -54,15 +54,15 @@ namespace SFS.Parsers.Json
             }
 
             OLD_FORMAT:
-            return JsonConvert.DeserializeObject<T>(json, serializerSettings);
+            return JsonConvert.DeserializeObject<T>(json, SerializerSettings);
         }
         public static string ToJson(object data, bool pretty)
         {
-            return JsonConvert.SerializeObject(data, pretty ? Formatting.Indented : Formatting.None, serializerSettings);
+            return JsonConvert.SerializeObject(data, pretty || Application.isEditor? Formatting.Indented : Formatting.None, SerializerSettings);
         }
 
         // Settings stuff...
-        static readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings()
+        static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
         {
             ContractResolver = new MainContractResolver(),
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore,

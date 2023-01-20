@@ -37,29 +37,30 @@ public class GLDrawer : MonoBehaviour
         GL.Vertex(start + perpendicular);
         GL.End();
     }
-    public static void DrawCircle(Vector3 position, float radius, int resolution, Color color, float sortingOrder = 1f)
-    {
-        if (resolution < 3)
-            return;
 
+    public static void DrawCircle(Vector2 position, float radius, int resolution, Color color, float sortingOrder = 1f) => DrawCircles(new List<Vector2> { position }, radius, resolution, color, sortingOrder);
+    public static void DrawCircles(List<Vector2> positions, float radius, int resolution, Color color, float sortingOrder = 1f)
+    {
         GL.Begin(GL.QUADS);
 
         GetMaterial(sortingOrder)?.SetPass(0);
 
         GL.Color(color);
         
-        Vector3[] points = new Vector3[resolution];
+        Vector2[] points = new Vector2[resolution];
 
+        float step = 2 * Mathf.PI / resolution;
         for (int i = 0; i < resolution; i++)
-            points[i] = new Vector3(position.x + radius * Mathf.Cos(2 * Mathf.PI * i / resolution), position.y + radius * Mathf.Sin(2 * Mathf.PI * i / resolution), position.z);
+            points[i] = new Vector2(radius * Mathf.Cos(step * i), radius * Mathf.Sin(step * i));
 
-        for (int i = 0; i < points.Length; i++)
-        {
-            GL.Vertex(position);
-            GL.Vertex(points[(i + 1) % points.Length]);
-            GL.Vertex(points[i]);
-            GL.Vertex(position);
-        }
+        foreach (Vector2 position in positions)
+            for (int i = 0; i < points.Length; i++)
+            {
+                GL.Vertex(position);
+                GL.Vertex(position + points[(i + 1) % points.Length]);
+                GL.Vertex(position + points[i]);
+                GL.Vertex(position);
+            }
 
         GL.End();
     }

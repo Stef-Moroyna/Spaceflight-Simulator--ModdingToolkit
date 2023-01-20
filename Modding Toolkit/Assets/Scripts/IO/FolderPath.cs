@@ -105,27 +105,6 @@ namespace SFS.IO
         {
             return Directory.Exists(this);
         }
-        public void CopyFolder(FolderPath path)
-        {
-            path.DeleteFolder(); // Clears new path
-
-            foreach (FilePath file in GetFilesInFolder(true))
-            {
-                FolderPath tempTarget = path.Clone();
-
-                foreach (string pathPart in file.GetParent().GetRelativePath(this).Split('/'))
-                {
-                    if (string.IsNullOrWhiteSpace(pathPart))
-                        continue;
-
-                    tempTarget.Extend(pathPart);
-                }
-
-                tempTarget.CreateFolder();
-                FilePath targetFile = new FilePath(tempTarget.ExtendToFile(file.FileName));
-                file.Copy(targetFile);
-            }
-        }
         public void Move(FolderPath path)
         {
             if (Path == path.Path)

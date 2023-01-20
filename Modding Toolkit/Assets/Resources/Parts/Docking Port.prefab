@@ -54,11 +54,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    plainText: 0
     TranslatableName: Docking_Port_Name
-  description:
     plainText: 0
+  description:
     TranslatableName: Docking_Port_Description
+    plainText: 0
   mass:
     variables: {fileID: 8877277868885857939}
     input: width * 0.2
@@ -157,7 +157,10 @@ MonoBehaviour:
       data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
     - name: force_multiplier
       save: 1
-      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000e03f0b
+    - name: sep_force_multiplier
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000e03f0b
   boolVariables:
     saves: []
   stringVariables:
@@ -178,7 +181,11 @@ MonoBehaviour:
   occupationSurface: {fileID: 384417991737694433}
   dockDistance: 0.03
   pullDistance: 3
-  pullForce: 0.6
+  pullForce: 0.5
+  forceMultiplier:
+    variableName: force_multiplier
+    referenceToVariables: {fileID: 8877277868885857939}
+    localValue: 0
   isOccupied:
     value: 0
   isOnCooldown:
@@ -206,15 +213,16 @@ MonoBehaviour:
     y:
       variables: {fileID: 8877277868885857939}
       input: width * 2
-  cannotDetachIfSurfaceCovered: 0
-  surfaceForCover: {fileID: 0}
   showDescription: 1
-  showForceMultiplier: 0
+  showForceMultiplier: 1
   useForceMultiplierEvenIfNotShown: 0
   forceMultiplier:
-    variableName: 
+    variableName: sep_force_multiplier
     referenceToVariables: {fileID: 8877277868885857939}
     localValue: 0.5
+  cannotDetachIfSurfaceCovered: 0
+  surfaceForCover: {fileID: 0}
+  activatedByLES: 0
   onDetach:
     m_PersistentCalls:
       m_Calls: []
@@ -305,6 +313,7 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 1
   baseDepth: 0
@@ -365,6 +374,7 @@ MonoBehaviour:
   centerCover: 0
   rightCover: 0
   separatorRing: 0
+  smoothShading: 0
 --- !u!114 &6357238278833458122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,8 +390,6 @@ MonoBehaviour:
   impactTolerance: 1
   ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 5573987081523053494}
-  collider_Polygon: {fileID: 0}
-  collider_Box: {fileID: 0}
 --- !u!23 &6981683051694342211
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -567,6 +575,7 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 1
   baseDepth: 0
@@ -637,6 +646,7 @@ MonoBehaviour:
   centerCover: 0
   rightCover: 0
   separatorRing: 0
+  smoothShading: 0
 --- !u!114 &1077984921448377329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,8 +662,6 @@ MonoBehaviour:
   impactTolerance: 1
   ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 753801403964712242}
-  collider_Polygon: {fileID: 0}
-  collider_Box: {fileID: 0}
 --- !u!23 &897527139075971448
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -755,6 +763,7 @@ MonoBehaviour:
   attachmentSurfaces: 1
   dragSurfaces: 1
   colliderArea: 1
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 1
   baseDepth: 0
@@ -815,6 +824,7 @@ MonoBehaviour:
   centerCover: 0
   rightCover: 0
   separatorRing: 0
+  smoothShading: 0
 --- !u!114 &6347168925834265618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,8 +840,6 @@ MonoBehaviour:
   impactTolerance: 1
   ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 5838320632718949448}
-  collider_Polygon: {fileID: 0}
-  collider_Box: {fileID: 0}
 --- !u!23 &1728828599838658906
 MeshRenderer:
   m_ObjectHideFlags: 0

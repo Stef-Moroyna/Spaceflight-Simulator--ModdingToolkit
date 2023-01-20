@@ -5,7 +5,6 @@ public static class PolygonPartioner
 {
     public static List<ConvexPolygon> Partion(Vector2[] points)
     {
-//#warning FUTURE / Optimize
         VertexChain v = new VertexChain(points);
         List<VertexChain> polys = ConvexPartition(v);
         List<ConvexPolygon> output = new List<ConvexPolygon>();

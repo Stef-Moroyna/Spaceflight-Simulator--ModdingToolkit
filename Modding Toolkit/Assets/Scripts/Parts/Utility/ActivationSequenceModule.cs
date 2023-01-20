@@ -6,9 +6,7 @@ namespace SFS.Parts.Modules
     public class ActivationSequenceModule : MonoBehaviour
     {
         public Float_Reference state;
-        [Space]
         public UsePartUnityEvent[] steps;
-
 
         public void Activate(UsePartData data)
         {

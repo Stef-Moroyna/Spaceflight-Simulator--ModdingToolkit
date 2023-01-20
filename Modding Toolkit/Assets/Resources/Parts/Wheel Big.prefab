@@ -87,6 +87,7 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 1
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 0
   baseDepth: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   renderQueueOffset: 0
   polygonModule: {fileID: 3331229083831559882}
   UV_Mode: 0
+  grid: 0
   bounds:
   - {x: -0.1, y: -0.5}
   - {x: -0.1, y: 0}
@@ -221,11 +223,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    plainText: 0
     TranslatableName: Rover_Wheel_Name
-  description:
     plainText: 0
+  description:
     TranslatableName: Rover_Wheel_Description
+    plainText: 0
   mass:
     variables: {fileID: 201175616340340550}
     input: 0.5
@@ -356,6 +358,7 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 0
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 1
   baseDepth: 2
@@ -390,6 +393,7 @@ MonoBehaviour:
   renderQueueOffset: 2
   polygonModule: {fileID: 2828506282589882257}
   UV_Mode: 0
+  grid: 0
   bounds:
   - {x: -0.65000004, y: -0.65000004}
   - {x: -0.65000004, y: 0.65000004}

@@ -4,7 +4,7 @@ using SFS.Variables;
 
 namespace SFS.Parts.Modules
 {
-    public class MassModule : MonoBehaviour, I_InitializePartModule
+    public class MassModule : MonoBehaviour
     {
         // Input variables
         [Required, BoxGroup("Input", false)] public PolygonData polygonModule;
@@ -12,13 +12,7 @@ namespace SFS.Parts.Modules
         // Output variables
         [BoxGroup("Output", false)] public Float_Reference mass;
 
-        // Initialization
-        int I_InitializePartModule.Priority => -1;
-        void I_InitializePartModule.Initialize()
-        {
-            polygonModule.onChange += RecalculateMass;
-        }
-
+        
         // On change
         [Button] void RecalculateMass()
         {

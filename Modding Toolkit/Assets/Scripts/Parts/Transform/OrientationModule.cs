@@ -6,19 +6,9 @@ using Sirenix.OdinInspector;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class OrientationModule : MonoBehaviour, I_InitializePartModule
+    public class OrientationModule : MonoBehaviour
     {
         [SerializeField] public Orientation_Local orientation = new Orientation_Local() { Value = new Orientation(1, 1, 0) };
-
-        int I_InitializePartModule.Priority => 11;
-        void I_InitializePartModule.Initialize() => orientation.OnChange += ApplyOrientation;
-
-
-        public void ApplyOrientation()
-        {
-            transform.localScale = new Vector3(orientation.Value.x, orientation.Value.y, 1);
-            transform.localEulerAngles = new Vector3(0, 0, orientation.Value.z);
-        }
 
         public static Vector2 operator *(Vector2 a, OrientationModule orientation)
         {
@@ -36,6 +26,40 @@ namespace SFS.Parts.Modules
         protected override bool IsEqual(Orientation a, Orientation b)
         {
             return a == b || a != null && b != null && a.x == b.x && a.y == b.y && a.z == b.z;
+        }
+    }
+    
+    [Serializable, InlineProperty]
+    public class Orientation
+    {
+        [HorizontalGroup, HideLabel] public float x = 1;
+        [HorizontalGroup, HideLabel] public float y = 1;
+        [HorizontalGroup, HideLabel] public float z;
+
+        public Orientation(float x, float y, float z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        public bool InversedAxis() // Are the axis or rotation reversed
+        {
+            return Mathf.Abs(z % 180) > 0.001f;
+        }
+        
+        public static Vector2 operator *(Vector2 a, Orientation orientation)
+        {
+            return Quaternion.Euler(0, 0, orientation.z) * new Vector2(a.x * orientation.x, a.y * orientation.y);
+        }
+        public static Orientation operator +(Orientation a, Orientation change)
+        {
+            return new Orientation(change.x < 0? -a.x : a.x, change.y < 0? -a.y : a.y, change.z + a.z);
+        }
+
+        public Orientation GetCopy()
+        {
+            return new Orientation(x, y, z);
         }
     }
 }

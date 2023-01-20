@@ -92,7 +92,7 @@ namespace SFS.Variables
 
 
         // Get
-        bool Local => variableName.Length == 0 || referenceToVariables == null;
+        public bool Local => variableName.Length == 0 || referenceToVariables == null || Variable == null;
         public abstract VariableList<T>.Variable GetVariable(string variableName);
         public abstract VariableList<T> GetVariableList();
 
@@ -101,7 +101,7 @@ namespace SFS.Variables
         [ShowInInspector, HorizontalGroup, HideLabel]
         public virtual T Value
         {
-            get => Local ? localValue : Variable.Value;
+            get => Local? localValue : Variable.Value;
 
             set
             {

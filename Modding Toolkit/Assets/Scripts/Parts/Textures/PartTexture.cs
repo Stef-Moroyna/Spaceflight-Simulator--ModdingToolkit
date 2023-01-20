@@ -75,7 +75,7 @@ namespace SFS.Parts
             {
                 AddQuad(center_Segment, GetCenterUV(), texture_UV, texture, this, fixedWidthValue);
             }
-            if (center.mode == CenterData.CenterMode.Logo)
+            else if (center.mode == CenterData.CenterMode.Logo)
             {
                 float centerSize = GetCenterSize(center_Segment.Lerp(center.logoHeightPercent));
                 float fixedWidthValue_Scaled = fixedWidthValue;
@@ -93,7 +93,7 @@ namespace SFS.Parts
                 AddQuadClamped(centerCut, GetCenterUV(), texture_UV, center_Segment, texture, this, fixedWidthValue_Scaled); // Center logo quad
                 AddQuad(new Line(centerCut.end, center_Segment.end), Line.CenterSize(GetCenterUV().end, 0), texture_UV, texture, this, fixedWidthValue); // Top connection
             }
-            if (center.mode == CenterData.CenterMode.Tile)
+            else if (center.mode == CenterData.CenterMode.Tile)
             {
                 float centerSize = GetCenterSize(center_Segment.start);
                 

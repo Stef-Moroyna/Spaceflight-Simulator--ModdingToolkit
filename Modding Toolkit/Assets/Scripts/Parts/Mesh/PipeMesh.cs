@@ -9,28 +9,14 @@ using UV;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class PipeMesh : BaseMesh, I_InitializePartModule
+    public class PipeMesh : BaseMesh
     {
         [Required] public PipeData pipeData;
         [BoxGroup("material", false)] public Textures textures;
         [BoxGroup("material", false), Space] public Colors colors;
-        [FoldoutGroup("Specific")] public bool leftCover, centerCover, rightCover, separatorRing;
-        
-        // Setup
-        int I_InitializePartModule.Priority => 0;
-        void I_InitializePartModule.Initialize()
-        {
-            textures.width.OnChange += GenerateMesh;
-            pipeData.onChange += GenerateMesh;
-            pipeData.SubscribeToComposedDepth(GenerateMesh);
+        [FoldoutGroup("Specific")] public bool leftCover, centerCover, rightCover, separatorRing, smoothShading;
 
-            initialized = true;
-            GenerateMesh();
-        }
-        
 
-        // Mesh generation
-        bool initialized;
         public override void GenerateMesh()
         {
             pipeData.Output();
@@ -173,6 +159,7 @@ namespace SFS.Parts.Modules
         }
 
         // Used by skin module
+        public Event_Local onSetColorTexture;
         public void SetColorTexture(ColorTexture colorTexture)
         {
             if (textures.texture.colorTexture == colorTexture)
@@ -180,6 +167,8 @@ namespace SFS.Parts.Modules
 
             textures.texture.colorTexture = colorTexture;
             GenerateMesh();
+            
+            onSetColorTexture?.Invoke();
         }
         public void SetShapeTexture(ShapeTexture shapeTexture)
         {
@@ -198,7 +187,7 @@ namespace SFS.Parts.Modules
 
             return a;
         }
-        //
+        
         List<float> GetSlopeShading(List<PipePoint> points)
         {
             List<float> output = new List<float>();
@@ -239,7 +228,6 @@ namespace SFS.Parts.Modules
             if (textureMode == Mode.Single)
             {
                 Line segment = new Line(0, shape.points.Last().height);
-
                 return new []
                 {
                     texture.colorTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection),
@@ -253,8 +241,9 @@ namespace SFS.Parts.Modules
 
                 for (int i = 0; i < textures.Length; i++)
                 {
-                    Line segment = new Line(i > 0? textures[i - 1].height : 0, textures[i].height);
-
+                    Line segment = new Line(ConvertHeight(i > 0? textures[i - 1].height : 0), ConvertHeight(textures[i].height));
+                    float ConvertHeight(float height) => height >= 0? height : shape.points.Last().height + height;
+                    
                     output[0].AddRange(textures[i].texture.colorTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection));
                     output[1].AddRange(textures[i].texture.shapeTexture.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection));
                     output[2].AddRange(textures[i].texture.shapeTexture.shadowTex.Get_UV(shape, segment, shapeWidth, meshHolder, lightDirection));
@@ -385,7 +374,6 @@ namespace SFS.Parts.Modules
                             splits.Add(split);
 
             splits.Sort();
-
             return splits.ToArray();
         }
 

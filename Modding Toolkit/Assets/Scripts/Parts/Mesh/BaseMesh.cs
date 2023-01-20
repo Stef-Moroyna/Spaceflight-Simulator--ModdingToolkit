@@ -112,16 +112,7 @@ namespace SFS.Parts.Modules
             }
             void SetMaterials(int count)
             {
-                Material material = null;
-                if (Application.isPlaying)
-                {
-                    int renderQueue = RenderSortingManager.main.GetRenderQueue(sortingLayer) + renderQueueOffset;
-                    material = RenderSortingManager.main.GetPartMaterial(renderQueue);
-                }
-                #if UNITY_EDITOR
-                else
-                    material = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Materials/Part 1.mat", typeof(Material));     
-                #endif
+                Material material = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Materials/Part 1.mat", typeof(Material));
 
                 meshRenderer.sharedMaterials = new Material[count].Select(a => material).ToArray();
             }

@@ -6,14 +6,12 @@ using F = SFS.Translations.Field;
 // ReSharper disable InconsistentNaming
 // /ReSharper disable UnusedMember.Global
 
-//public F A => A(nameof(A), "");
-
 namespace SFS
 {
     [Preserve]
     public partial class SFS_Translation
     {
-        public F None => A(nameof(None), "None");
+        public F None => A(nameof(None), "None");        
         public F Font => A(nameof(Font), "normal");
         
         #region General
@@ -60,6 +58,15 @@ namespace SFS
             "<Size=55> Programmer </size>",
             "",
             "Chris Christo",
+            "<Size=55> Programmer </size>",
+            "",
+            "Josh",
+            "<Size=55> Programmer </size>",
+            "",
+            "Aidan",
+            "<Size=55> Programmer </size>",
+            "",
+            "Andrey Onischenko",
             "<Size=55> Programmer </size>",
             "",
             "Davi Vasc",
@@ -156,6 +163,7 @@ namespace SFS
         public F Import => A(nameof(Import), "Import");
         public F Delete => A(nameof(Delete), "Delete");
         public F Rename => A(nameof(Rename), "Rename");
+        public F Delete_File_With_Type => A(nameof(Delete_File_With_Type), "Delete %filename% %filetype{1}%");
         //
         [Documentation("In progress")]
         public F Saving_In_Progress => A(nameof(Saving_In_Progress), "Saving...");
@@ -173,32 +181,24 @@ namespace SFS
         //
         [Documentation("Load failure")]
         public F Load_Failed => A(nameof(Load_Failed), "Could not load %filetype{1}% from %filepath%");
-        //
-        [LocSpace]
-        public F Conversion_Success => A(nameof(Conversion_Success), 
-            "Detected a 1.4 %filetype{1}% and converted it to %version% format");
-        [LocSpace]
-        public F Conversion_Failed => A(nameof(Conversion_Failed), F.MultilineText(
-            "Detected a 1.4 %filetype{1}% and converted it to %version% format",
-            "",
-            "Conversion failed:",
-            "%reason%"));
         #endregion
 
         #region Purchasing
         [Group("Purchasing")]
         public F Open_Shop_Menu => A(nameof(Open_Shop_Menu), "Expansions");
         public F Parts_Expansion => A(nameof(Parts_Expansion), "Parts Expansion");
+        public F Redstone_Atlas_Pack => A(nameof(Redstone_Atlas_Pack), "Redstone Atlas Pack");
         public F Skins_Expansion => A(nameof(Skins_Expansion), "Skins Expansion");
         public F Planets_Expansion => A(nameof(Planets_Expansion), "Planets Expansion");
         public F Cheats_Expansion => A(nameof(Cheats_Expansion), "Cheats");
         public F Infinite_Area_Expansion => A(nameof(Infinite_Area_Expansion), "Infinite Build Area");
         public F Builder_Bundle => A(nameof(Builder_Bundle), "Builder Bundle");
-        public F Upgrade_To_Builder_Bundle => A(nameof(Upgrade_To_Builder_Bundle), "Upgrade To Builder Bundle");
         public F Sandbox_Bundle => A(nameof(Sandbox_Bundle), "Sandbox Bundle");
-        public F Upgrade_To_Sandbox_Bundle => A(nameof(Upgrade_To_Sandbox_Bundle), "Upgrade To Sandbox Bundle");
         public F Full_Bundle => A(nameof(Full_Bundle), "Full Bundle");
         public F Upgrade_To_Full_Bundle => A(nameof(Upgrade_To_Full_Bundle), "Upgrade To Full Bundle");
+        public F Mac_Full_Version => A(nameof(Mac_Full_Version), "Full Version");
+        public F Not_All_Parts_Are_Owned => A(nameof(Not_All_Parts_Are_Owned), "Not all parts are owned\nDisabled not owned parts\n\nView parts expansion?");
+        public F View_Part_Expansion => A(nameof(View_Part_Expansion), "View Expansion");
         //
         [LocSpace]
         public F More_Parts => A(nameof(More_Parts), "More Parts...");
@@ -209,28 +209,22 @@ namespace SFS
         //
         [LocSpace]
         public F Buy_Product => A(nameof(Buy_Product), "Buy %product% %price%");
-        public F Discount_Reason_Upgrade => A(nameof(Discount_Reason_Upgrade), "Discounted because you already own other expansions");
+        
+        public F Timed_Sale_Text => A(nameof(Timed_Sale_Text), "%product_name% -%sale_percent%" + "\n" + "%time_left%");
+        public F Time_Upgrade_Text => A(nameof(Time_Upgrade_Text), "Upgrade to %product_name% -%sale_percent%" + "\n" + "%time_left%");
+
         public F Purchase_Thanks_Msg => A(nameof(Purchase_Thanks_Msg), F.MultilineText(
             "Purchased: %product%",
             "",
             "Thanks for your purchase",
             "Now go and explore the stars!"
             ));
+        
         public F Owned => A(nameof(Owned), "%product% (Owned)");
         //
         [LocSpace]
         public F Restore_Open => A(nameof(Restore_Open), "Restore");
-        public F Restore_Text => A(nameof(Restore_Text), F.MultilineText(
-            "Purchases on android are restored automatically on startup",
-            "",
-            "- Check that you are logged into the google play account you bought it with (Check that purchase appears in google play purchase history)",
-            "",
-            "- Check the purchase button, if price is not shown, it means the game failed to connect to the store. Check your internet connection and restart the game",
-            "",
-            "If none of the above work, contact me at: games.morojna@gmail.com",
-            "",
-            "You can also try waiting, the purchase sometimes restores itself after a few hours"));
-
+        
         [Documentation("Parts Expansion")]
         public F PartsExpansion_Tanks => A(nameof(PartsExpansion_Tanks), "Large variety of fuel tanks!");
         public F PartsExpansion_Engines => A(nameof(PartsExpansion_Engines), "Heavy lift engines!");
@@ -288,6 +282,9 @@ namespace SFS
         public F Language_Name => A(nameof(Language_Name), "Language");
         public F Menu_Scale => A(nameof(Menu_Scale), "Interface Scale");
         public F Menu_Opacity => A(nameof(Menu_Opacity), "Interface Opacity");
+        public F Shakes_Name => A(nameof(Shakes_Name), "Camera Shake");
+        public F Orbit_Line_Count => A(nameof(Orbit_Line_Count), "Orbit Line Count");
+        public F Anti_Aliasing => A(nameof(Anti_Aliasing), "Anti-Aliasing");
 
         [Group("Settings PC")]
         [Unexported] public F Video_Resolution_Name => A(nameof(Video_Resolution_Name), "Resolution");
@@ -303,21 +300,12 @@ namespace SFS
         public F Infinite_Build_Area_Name => A(nameof(Infinite_Build_Area_Name), "Infinite Build Area");
         public F Part_Clipping_Name => A(nameof(Part_Clipping_Name), "Part Clipping");
         public F Infinite_Fuel_Name => A(nameof(Infinite_Fuel_Name), "Infinite Fuel");
+        public F Infinite_Oxygen_Name => A(nameof(Infinite_Oxygen_Name), "Infinite Oxygen");
         public F No_Atmospheric_Drag_Name => A(nameof(No_Atmospheric_Drag_Name), "No Atmospheric Drag");
         public F No_Collision_Damage_Name => A(nameof(No_Collision_Damage_Name), "No Collision Damage");
         public F No_Gravity_Name => A(nameof(No_Gravity_Name), "No Gravity");
         public F No_Heat_Damage_Name => A(nameof(No_Heat_Damage_Name), "No Heat Damage");
         public F No_Burn_Marks_Name => A(nameof(No_Burn_Marks_Name), "No Burn Marks");
-
-        [Group("Active Cheats")] // Cheats list
-        public F Using_Infinite_Build_Area => A(nameof(Using_Infinite_Build_Area), "Infinite Build Area");
-        public F Using_Part_Clipping => A(nameof(Using_Part_Clipping), "Part Clipping");
-        public F Using_Infinite_Fuel => A(nameof(Using_Infinite_Fuel), "Infinite Fuel");
-        public F Using_No_Atmospheric_Drag => A(nameof(Using_No_Atmospheric_Drag), "No Atmospheric Drag");
-        public F Using_No_Collision_Damage => A(nameof(Using_No_Collision_Damage), "No Collision Damage");
-        public F Using_No_Gravity => A(nameof(Using_No_Gravity), "No Gravity");
-        public F Using_No_Heat_Damage => A(nameof(Using_No_Heat_Damage), "No Heat Damage");
-        public F Using_No_Burn_Marks => A(nameof(Using_No_Burn_Marks), "No Burn Marks");
         #endregion
 
         #region Tutorials
@@ -366,35 +354,30 @@ namespace SFS
         public F Missing_Capsule => A(nameof(Missing_Capsule), "Your rocket has no capsule, making it uncontrollable");
         public F Missing_Parachute => A(nameof(Missing_Parachute), "Your rocket has no parachute");
         public F Missing_Heat_Shield => A(nameof(Missing_Heat_Shield), "Your rocket has no heat shield");
-        
         //public Field Missing_Fuel => GetField(nameof(Missing_Fuel), "One or more of your rocket engines are not connected to a fuel source");
         //public Field Missing_Fuel_Popup => GetField(nameof(Missing_Fuel_Popup), "No fuel source");
-        
-        public F Too_Heavy => A(nameof(Too_Heavy), F.MultilineText("Your rocket is too heavy to launch", "%mass%", "%thrust%"));
+        public F Too_Heavy => A(nameof(Too_Heavy), Field.MultilineText("Your rocket is too heavy to launch", "%mass%", "%thrust%"));
+        [LocSpace]
         public F Launch_Anyway_Button => A(nameof(Launch_Anyway_Button), "Launch Anyway");
+        [LocSpace]
+        public F Launch_Horizontally_Ask => A(nameof(Launch_Horizontally_Ask), "Launch horizontally?");
+        public F Launch_Horizontally_Confirm => A(nameof(Launch_Horizontally_Confirm), "Launch Horizontally");
+        public F Launch_Vertically_Confirm => A(nameof(Launch_Vertically_Confirm), "Launch Vertically");
         //
         [Documentation("Example rockets")]
         public F Example_Rockets_OpenMenu => A(nameof(Example_Rockets_OpenMenu), "Example Rockets");
         public F Basic_Rocket => A(nameof(Basic_Rocket), "Basic Rocket");
-        public F Stages => A(nameof(Stages), "Stages");
-        public F Ideal_Stages => A(nameof(Ideal_Stages), "Ideal Stages");
-        public F Lander => A(nameof(Lander), "Lander");
+        public F Stages => A(nameof(Stages), "Two Stage Rocket");
+        public F Ideal_Stages => A(nameof(Ideal_Stages), "Three Stage Rocket");
+        public F Lander => A(nameof(Lander), "Moon Lander");
         #endregion
 
         #region Map
         [Group("Map")]
         public F Toggle_Map_Button => A(nameof(Toggle_Map_Button), "Map");
-        //
-        [Documentation("Shown in map when you escape a gravity field of a planet")]
         public F Escape => A(nameof(Escape), "Escape");
-        //
-        [Documentation("Shown in map when you encounter/enter a gravity field of a planet")]
         public F Encounter => A(nameof(Encounter), "Encounter");
-        //
-        [Documentation("Shown in map when you approach/encounter another rocket")]
         public F Rendezvous => A(nameof(Rendezvous), "Rendezvous");
-        //
-        [Documentation("Shows the transfer window to another planet")]
         public F Transfer => A(nameof(Transfer), "Transfer Window");
         #endregion
 
@@ -410,28 +393,51 @@ namespace SFS
         public F Height_Terrain_Vertical => A(nameof(Height_Terrain_Vertical), "Height (Terrain):\n\n%height%");
         public F Height_Vertical => A(nameof(Height_Vertical), "Height:\n\n%height%");
         public F Velocity_Vertical => A(nameof(Velocity_Vertical), "Velocity:\n\n%speed%");
-        [Documentation("Best ascend flight angle")]
+        public F Velocity_Relative_Vertical => A(nameof(Velocity_Relative_Vertical), "Velocity (Relative):\n\n%speed%");
+        public F Distance_Relative_Vertical => A(nameof(Distance_Relative_Vertical), "Distance (Relative):\n\n%distance%");
         public F Angle_Vertical => A(nameof(Angle_Vertical), "Angle:\n\n%angle% / %targetAngle%");
         //
         [LocSpace]
         public F Height_Terrain_Horizontal => A(nameof(Height_Terrain_Horizontal), "Height (Terrain): %height%");
         public F Height_Horizontal => A(nameof(Height_Horizontal), "Height: %height%");
         public F Velocity_Horizontal => A(nameof(Velocity_Horizontal), "Velocity: %speed%");
-        [Documentation("Angle indicates the best angle/direction the player can rotate their rocket towards")]
+        public F Velocity_Relative_Horizontal => A(nameof(Velocity_Relative_Horizontal), "Velocity (Relative): %speed%");
+        public F Distance_Relative_Horizontal => A(nameof(Distance_Relative_Horizontal), "Distance (Relative): %distance%");
         public F Angle_Horizontal => A(nameof(Angle_Horizontal), "Angle: %angle% / %targetAngle%");
+        //
+        [LocSpace]
+        public F Relative_Velocity_Arrow => A(nameof(Relative_Velocity_Arrow), "Relative Velocity\n%velocity%");
+        public F Side_Velocity_Arrow => A(nameof(Side_Velocity_Arrow), "Side Velocity\n%velocity%");
+        public F Forward_Velocity_Arrow => A(nameof(Forward_Velocity_Arrow), "Distance\n%distance%\n\nVelocity\n%velocity%");
+        
+        [Group("Failure menu")]
+        public F Failure_Cause => A(nameof(Failure_Cause), "FAILURE CAUSE:");
+        public F Failure_Crash_Into_Rocket => A(nameof(Failure_Crash_Into_Rocket), "Crashed into another rocket");
+        public F Failure_Crash_Into_Terrain => A(nameof(Failure_Crash_Into_Terrain), "Crashed into the surface of %planet{1}%");
+        public F Failure_Burn_Up => A(nameof(Failure_Burn_Up), "Burned up on reentry");
         #endregion
         
         #region Game menus
-        [Group("Game menus")]
-        public F Restart_Mission => A(nameof(Restart_Mission), "Restart Mission");
+        [Group("End mission menu")]
+        // Rocket/generic
         public F Recover_Rocket => A(nameof(Recover_Rocket), "Recover");
         public F Destroy_Rocket => A(nameof(Destroy_Rocket), "Destroy");
-        //
+        // Debris
+        public F Debris_Recover => A(nameof(Debris_Recover), "Recover Debris");
+        public F Debris_Destroy => A(nameof(Debris_Destroy), "Destroy Debris");
+        public F Debris_Recover_Title => A(nameof(Debris_Recover_Title), "Recover debris?");
+        public F Debris_Destroy_Title => A(nameof(Debris_Destroy_Title), "Destroy debris?");
+        public F View_Mission_Log => A(nameof(View_Mission_Log), "View Flight Log");
+        // Astronaut
+        [Unexported] public F Crewed_Destroy_Warning => A(nameof(Crewed_Destroy_Warning), "Destroying this rocket will kill all crew on board");
+        
         [Documentation("Restart menu")]
+        public F Restart_Mission_To_Launch_Warning => A(nameof(Restart_Mission_To_Launch_Warning), "WARNING:\nThis will undo all progress since last launch");
+        public F Restart_Mission_To_Build_Warning => A(nameof(Restart_Mission_To_Build_Warning), "WARNING:\nThis will undo all progress since last launch");
         public F Restart_Mission_To_Launch => A(nameof(Restart_Mission_To_Launch), "Revert To Launch");
-        public F Restart_Mission_To_Launch_Warning => A(nameof(Restart_Mission_To_Launch_Warning), "Revert to launch?" + "\n\n" + "WARNING:\nThis will revert all progress since last launch");
         public F Restart_Mission_To_Build => A(nameof(Restart_Mission_To_Build), "Revert To Build");
-        public F Restart_Mission_To_Build_Warning => A(nameof(Restart_Mission_To_Build_Warning), "Revert to build?" + "\n\n" + "WARNING:\nThis will revert all progress since last launch");
+        public F Revert_30_Secs => A(nameof(Revert_30_Secs), "Revert 30 Sec");
+        public F Revert_3_Min => A(nameof(Revert_3_Min), "Revert 3 Min");
         //
         [Documentation("End mission menu")]
         public F End_Mission_Menu_Title => A(nameof(End_Mission_Menu_Title), "Mission Achievements:");
@@ -442,25 +448,20 @@ namespace SFS
         public F Clear_Debris_Confirm => A(nameof(Clear_Debris_Confirm), "Clear Debris");
         //
         [Documentation("Select menu")]
+        [Unexported] public F Planets_Rock => A(nameof(Planets_Rock), "%planet{0}% Rock");
+        [LocSpace]
         public F Navigate_To => A(nameof(Navigate_To), "Navigate To");
         public F End_Navigation => A(nameof(End_Navigation), "End Navigation");
         public F Focus => A(nameof(Focus), "Focus");
         public F Unfocus => A(nameof(Unfocus), "Unfocus");
         public F Switch_To => A(nameof(Switch_To), "Switch To");
+        [Unexported] public F Collect_Rock => A(nameof(Collect_Rock), "Collect");
         #endregion
 
         #region Rocket
         [Group("Rocket")]
         public F Default_Rocket_Name => A(nameof(Default_Rocket_Name), "Rocket");
-        
-        [Documentation("Informs the player that he cannot perform an action due to rocket having no control")]
         public F No_Control_Msg => A(nameof(No_Control_Msg), "No control");
-        
-        [Documentation("Failure menu")]
-        public F Failure_Cause => A(nameof(Failure_Cause), "FAILURE CAUSE:");
-        public F Failure_Crash_Into_Rocket => A(nameof(Failure_Crash_Into_Rocket), "Crashed into another rocket");
-        public F Failure_Crash_Into_Terrain => A(nameof(Failure_Crash_Into_Terrain), "Crashed into the surface of %planet{1}%");
-        public F Failure_Burn_Up => A(nameof(Failure_Burn_Up), "Burned up on reentry");
         #endregion
 
         #region Timewarp
@@ -473,6 +474,8 @@ namespace SFS
         public F Cannot_Timewarp_While_Accelerating => A(nameof(Cannot_Timewarp_While_Accelerating), "Cannot timewarp faster than %speed%x while under acceleration");
         public F Cannot_Use_Part_While_Timewarping => A(nameof(Cannot_Use_Part_While_Timewarping), "Cannot use %part{1}% while timewarping");
         public F Cannot_Turn_While_Timewarping => A(nameof(Cannot_Turn_While_Timewarping), "Cannot turn while timewarping");
+        [LocSpace]
+        public F Timewarp_To_Button => A(nameof(Timewarp_To_Button), "Timewarp Here");
         #endregion
 
         #region Units
@@ -591,7 +594,7 @@ namespace SFS
         public F Kolibri_Engine_Description => A(nameof(Kolibri_Engine_Description), "A tiny engine used for landers");
         public F Ion_Engine_Description => A(nameof(Ion_Engine_Description), "A low thrust engine with an incredibly high efficiency");
         public F RCS_Thruster_Description => A(nameof(RCS_Thruster_Description), "A set of small directional thrusters, used for docking");
-        public F Booster_Description => A(nameof(Booster_Description), "Can only be started once. Has high trust but low efficiency");
+        public F Booster_Description => A(nameof(Booster_Description), "Has high thrust, low efficiency" + "\n" + "Cannot be turned off or throttle once ignite");
         // Aerodynamics
         public F Aerodynamic_Nose_Cone_Description => A(nameof(Aerodynamic_Nose_Cone_Description), "An aerodynamic nose cone, used to improve the aerodynamics of side boosters");
         public F Aerodynamic_Fuselage_Description => A(nameof(Aerodynamic_Fuselage_Description), "An aerodynamic fuselage, used to cover engines");
@@ -610,6 +613,7 @@ namespace SFS
         [Group("Modules")]
         public F Torque_Module_Torque => A(nameof(Torque_Module_Torque), "Torque: %value%kN");
         public F Separation_Force => A(nameof(Separation_Force), "Separation force: %value%kN");
+        public F Magnet_Force => A(nameof(Magnet_Force), "Magnet force: %value%kN");
         [LocSpace]
         public F Max_Heat_Tolerance => A(nameof(Max_Heat_Tolerance), "Heat tolerance: %temperature%");
         [LocSpace]
@@ -618,6 +622,7 @@ namespace SFS
         [LocSpace]
         public F Engine_Module_State => A(nameof(Engine_Module_State), "Engine %state{0}%");
         public F Engine_On_Label => A(nameof(Engine_On_Label), "Engine on");
+        public F Gimbal_On_Label => A(nameof(Gimbal_On_Label), "Gimbal on");
         [LocSpace]
         public F Msg_RCS_Module_State => A(nameof(Msg_RCS_Module_State), "RCS %state{0}%");
         [LocSpace]
@@ -628,6 +633,7 @@ namespace SFS
         public F Landing_Leg_Expanded => A(nameof(Landing_Leg_Expanded), "Deployed");
         [LocSpace]
         public F Detach_Edges_Label => A(nameof(Detach_Edges_Label), "Detach edges");
+        public F Adapt_To_Tanks_Label => A(nameof(Adapt_To_Tanks_Label), "Adapt to fuel tanks");
         [LocSpace]
         public F Info_Parachute_Max_Height => A(nameof(Info_Parachute_Max_Height), "Max deploy height: %height%");
         public F Msg_Cannot_Deploy_Parachute_In_Vacuum => A(nameof(Msg_Cannot_Deploy_Parachute_In_Vacuum), "Cannot deploy parachute in a vacuum");
@@ -675,6 +681,7 @@ namespace SFS
         public F Hellas_Planitia => A(nameof(Hellas_Planitia), "Hellas Planitia");
         public F Arcadia_Planitia => A(nameof(Arcadia_Planitia), "Arcadia Planitia");
         public F Utopia_Planitia => A(nameof(Utopia_Planitia), "Utopia Planitia");
+        public F Jezero_Crater => A(nameof(Jezero_Crater), "Jezero Crater");
         [LocSpace]
         public F Atalanta_Planitia => A(nameof(Atalanta_Planitia), "Atalanta Planitia");
         public F Lavinia_Planitia => A(nameof(Lavinia_Planitia), "Lavinia Planitia");
@@ -710,14 +717,61 @@ namespace SFS
         public F Entered_SOI => A(nameof(Entered_SOI), "Entered the sphere of influence of %planet{1}%");
         public F Escaped_SOI => A(nameof(Escaped_SOI), "Escaped the sphere of influence of %planet{1}%");
         [LocSpace]
-        public F Docked_Suborbital => A(nameof(Docked_Suborbital), "Docked in a suborbital trajectory of %planet{0}%");
+        public F Docked_Suborbital => A(nameof(Docked_Suborbital), "Docked in a suborbital trajectory of %planet{1}%");
         public F Docked_Orbit_Low => A(nameof(Docked_Orbit_Low), "Docked in low %planet{0}% orbit");
         public F Docked_Orbit_Transfer => A(nameof(Docked_Orbit_Transfer), "Docked in a transfer orbit of %planet{1}%");
         public F Docked_Orbit_High => A(nameof(Docked_Orbit_High), "Docked in high %planet{0}% orbit");
         public F Docked_Escape => A(nameof(Docked_Escape), "Docked on an escape trajectory of %planet{1}%");
         public F Docked_Surface => A(nameof(Docked_Surface), "Docked on the surface of %planet{1}%");
         [LocSpace]
+        [Unexported] public F EVA_Suborbital => A(nameof(EVA_Suborbital), "Performed a space walk in a suborbital trajectory of %planet{1}%");
+        [Unexported] public F EVA_Orbit_Low => A(nameof(EVA_Orbit_Low), "Performed a space walk in low %planet{0}% orbit");
+        [Unexported] public F EVA_Orbit_Transfer => A(nameof(EVA_Orbit_Transfer), "Performed a space walk in a transfer orbit of %planet{1}%");
+        [Unexported] public F EVA_Orbit_High => A(nameof(EVA_Orbit_High), "Performed a space walk in high %planet{0}% orbit");
+        [Unexported] public F EVA_Escape => A(nameof(EVA_Escape), "Performed a space walk on an escape trajectory of %planet{1}%");
+        [Unexported] public F EVA_Surface => A(nameof(EVA_Surface), "Performed a space walk on the surface of %planet{1}%");
+        [Unexported] public F Planted_Flag => A(nameof(Planted_Flag), "Planted a flag on the surface of %planet{1}%");
+        [Unexported] public F Collected_Rock => A(nameof(Collected_Rock), "Collected a rock from the surface of %planet{1}%");
+        [LocSpace]
         public F Recover_Home => A(nameof(Recover_Home), "Safely returned to %planet{1}%");
+        #endregion
+
+        #region Modloader
+        [Group("Mod Loader")]
+        [Unexported] public F Mods_Button => A(nameof(Mods_Button), "Mods");
+        [Unexported] public F Mod_Name => A(nameof(Mod_Name), "Mod");
+        [Unexported] public F AssetPack_Name => A(nameof(AssetPack_Name), "Asset Pack");
+        [Unexported] public F TexturePack_Name => A(nameof(TexturePack_Name), "Texture Pack");
+        [Unexported] public F Author_Name => A(nameof(Author_Name), "Author: {name}");
+        [Unexported] public F Changes_Warning => A(nameof(Changes_Warning), "Would you like to relaunch the game now so that the changes take effect?");
+        [Unexported] public F Disable => A(nameof(Disable), "Disable");
+        [Unexported] public F Enable => A(nameof(Enable), "Enable");
+        [Unexported] public F Relaunch => A(nameof(Relaunch), "Relaunch");
+        #endregion
+        
+        // Future
+        #region Astronaut
+        [Group("Astronaut")]
+        [Unexported] public F Crew_Count => A(nameof(Crew_Count), "Crew: %count%");
+        [Unexported] public F Crew_Assign => A(nameof(Crew_Assign), "Assign");
+        [Unexported] public F Crew_Remove => A(nameof(Crew_Remove), "Remove");
+        [Unexported] public F EVA_Exit => A(nameof(EVA_Exit), "Exit");
+        [Unexported] public F EVA_Board => A(nameof(EVA_Board), "Board");
+        //
+        [Unexported] public F Crew_AwaitingMission => A(nameof(Crew_AwaitingMission), "Awaiting Mission");
+        [Unexported] public F Crew_In_EVA => A(nameof(Crew_In_EVA), "Performing a space walk");
+        [Unexported] public F Crew_In_Flight => A(nameof(Crew_In_Flight), "In flight");
+        [Unexported] public F Crew_Deceased => A(nameof(Crew_Deceased), "Deceased");
+        //
+        [Unexported] public F Flag => A(nameof(Flag), "Flag");
+        [Unexported] public F Confirm_Remove_Flag => A(nameof(Confirm_Remove_Flag), "Remove flag?");
+        [Unexported] public F Remove_Flag => A(nameof(Remove_Flag), "Remove Flag");
+        //
+        [Unexported] public F Astronaut_Oxygen => A(nameof(Astronaut_Oxygen), "Oxygen");
+        [Unexported] public F Astronaut_Fuel => A(nameof(Astronaut_Fuel), "Fuel");
+        [Unexported] public F Oxygen_Running_Out => A(nameof(Oxygen_Running_Out), "%time% oxygen remaining");
+        [Unexported] public F Fuel_Running_Out => A(nameof(Fuel_Running_Out), "%percent% fuel remaining");
+        [Unexported] public F Backup_Propellant => A(nameof(Backup_Propellant), F.MultilineText("Out of fuel", "Using oxygen as backup propellant"));
         #endregion
     }
 
@@ -741,6 +795,10 @@ namespace SFS
             fields[name] = _default;
             return fields[name];
         }
+    }
+    public static class TranslationUtility
+    {
+        public static F State_ToOnOff(this bool a) => a ? Loc.main.State_On : Loc.main.State_Off;
     }
 }
 

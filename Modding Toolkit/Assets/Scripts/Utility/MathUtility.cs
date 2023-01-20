@@ -64,8 +64,8 @@ public static class Math_Utility
     {
         return (value - a) / (b - a);
     }
-    
-    
+
+
     // How much does A overreach area
     public static void GetRectOverreach(Rect A, Rect area, bool clampNegative, out Vector2 leftDown, out Vector2 rightUp)
     {
@@ -100,12 +100,7 @@ public static class Math_Utility
     {
         return new Vector2(Mathf.Round(A.x / range.x) * range.y, Mathf.Round(A.y / range.y) * range.y);
     }
-    
-    public static float Floor(this float A, float range)
-    {
-        return Mathf.Floor(A / range) * range;
-    }
-    
+
     // Vector2
     public static float AngleDegrees(this Vector2 a)
     {
@@ -115,8 +110,8 @@ public static class Math_Utility
     {
         return Mathf.Atan2(a.y, a.x);
     }
-    
-    
+
+
     // Other
     public static Vector2 GetLineIntersection(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2, out bool parallel)
     {
@@ -124,7 +119,7 @@ public static class Math_Utility
         Vector2 d34 = b2 - b1;
 
         float denominator = (d12.y * d34.x - d12.x * d34.y);
-        
+
         parallel = denominator == 0;
         if (parallel)
             return default;
@@ -132,7 +127,7 @@ public static class Math_Utility
         float t = ((a1.x - b1.x) * d34.y + (b1.y - a1.y) * d34.x) / denominator;
         return new Vector2(a1.x + d12.x * t, a1.y + d12.y * t);
     }
-    
+
     public static float GetClosestPointOnLine(Vector2 p1, Vector2 p2, Vector2 point)
     {
         Vector2 size = p2 - p1;
@@ -143,7 +138,7 @@ public static class Math_Utility
         Double2 size = p2 - p1;
         return Double2.Dot(point - p1, size) / size.sqrMagnitude;
     }
-    public static bool IsClockwise(Vector2 a, Vector2 b, Vector2 c) 
+    public static bool IsClockwise(Vector2 a, Vector2 b, Vector2 c)
     {
         return (b.y - a.y) * (c.x - b.x) - (b.x - a.x) * (c.y - b.y) >= 0;
     }
@@ -152,6 +147,9 @@ public static class Math_Utility
     {
         return new Vector3(a.x, a.y, z);
     }
+
+    public static float DegreesToRadians(float degrees) => degrees * (Mathf.PI / 180f);
+    public static double DegreesToRadians(double degrees) => degrees * (Math.PI / 180);
     public static double NormalizeAngleDegrees(double angle)
     {
         while (angle > 180)

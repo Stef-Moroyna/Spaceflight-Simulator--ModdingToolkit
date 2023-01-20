@@ -10,14 +10,6 @@ namespace SFS.Parts.Modules
     {
         [FormerlySerializedAs("location")]
         public LayerType layerType;
-
-
-        void UpdateActive()
-        {
-            switch (layerType)
-            {
-            }
-        }
         
         public enum LayerType
         {
@@ -26,5 +18,3 @@ namespace SFS.Parts.Modules
         }
     }
 }
-
-//bool active = (location == SceneType.Build && BuildManager.main != null) || (location == SceneType.World && GameManager.main != null);

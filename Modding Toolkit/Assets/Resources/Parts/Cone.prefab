@@ -56,11 +56,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName:
-    plainText: 0
     TranslatableName: Aerodynamic_Nose_Cone_Name
-  description:
     plainText: 0
+  description:
     TranslatableName: Aerodynamic_Nose_Cone_Description
+    plainText: 0
   mass:
     variables: {fileID: 1113172281960641807}
     input: size * 0.05
@@ -184,6 +184,7 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 1
   colliderArea: 1
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 1
   baseDepth: 0
@@ -306,6 +307,7 @@ MonoBehaviour:
   centerCover: 0
   rightCover: 0
   separatorRing: 0
+  smoothShading: 0
 --- !u!114 &3224696863155018061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,8 +348,6 @@ MonoBehaviour:
   impactTolerance: 1
   ownEngineNozzle: {fileID: 0}
   polygon: {fileID: 1113172281960641805}
-  collider_Polygon: {fileID: 0}
-  collider_Box: {fileID: 0}
 --- !u!114 &4445282238526584683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +361,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - position:
+  - toggle: 0
+    enabled:
+      variableName: 
+      referenceToVariables: {fileID: 0}
+      localValue: 0
+    position:
       variables: {fileID: 1113172281960641807}
       x:
         variables: {fileID: 1113172281960641807}
@@ -374,6 +379,9 @@ MonoBehaviour:
     output:
       variables: {fileID: 1113172281960641807}
       input: size
+    outputOffset: 0
+    shareIsOccupied: 0
+    shareIndex: 0
 --- !u!114 &3461503228955927399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +403,6 @@ MonoBehaviour:
       y:
         variables: {fileID: 1113172281960641807}
         input: 0
-  snapPoints: []
 --- !u!23 &1457258690766018317
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -494,6 +501,7 @@ MonoBehaviour:
   attachmentSurfaces: 0
   dragSurfaces: 0
   colliderArea: 0
+  attachByOverlap: 1
   physicsCollider: 0
   clickArea: 0
   baseDepth: 0

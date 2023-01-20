@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public sealed class CustomSurfaces : SurfaceData, I_InitializePartModule
+    public sealed class CustomSurfaces : SurfaceData
     {
         // Legacy
         [HideInInspector, SerializeField] Composed_Vector2[] points;
@@ -28,11 +28,6 @@ namespace SFS.Parts.Modules
 
         [BoxGroup("edit", false), HorizontalGroup("edit/h")] public bool edit = false, view = false;
         [BoxGroup("edit", false), ShowIf("edit")] public float gridSize = 0.1f;
-        
-        
-        int I_InitializePartModule.Priority => 10;
-        void I_InitializePartModule.Initialize() => Output();
-        
         
         public override void Output()
         {

@@ -36,10 +36,14 @@ namespace SFS.Variables
         }
         public Variable GetVariable(string variableName)
         {
-            if (!Has(variableName))
-                return null;
+            VariableSave save = null;
+            
+            foreach (VariableSave a in saves)
+                if (a.name == variableName)
+                    save = a;
 
-            VariableSave save = saves.First(A => A.name == variableName);
+            if (save == null)
+                return null;
 
             if (save.runtimeVariable == null)
                 save.runtimeVariable = new Variable(save);
@@ -58,7 +62,11 @@ namespace SFS.Variables
         }
         public bool Has(string variableName)
         {
-            return saves.Any(A => A.name == variableName);
+            foreach (VariableSave a in saves)
+                if (a.name == variableName)
+                    return true;
+
+            return false;
         }
         public void RegisterOnVariableChange(Action onChange, string variableName)
         {
@@ -72,7 +80,13 @@ namespace SFS.Variables
         // Save/load
         public Dictionary<string, T> GetSaveDictionary()
         {
-            return saves.Where(v => v.save).ToDictionary(v => v.name, v => GetVariable(v.name).Value);
+            Dictionary<string, T> output = new Dictionary<string, T>();
+
+            foreach (VariableSave save in saves)
+                if (save.save)
+                    output[save.name] = GetVariable(save.name).Value;
+            
+            return output;
         }
         public void LoadDictionary(Dictionary<string, T> inputs, (bool, bool) addMissingVariables)
         {

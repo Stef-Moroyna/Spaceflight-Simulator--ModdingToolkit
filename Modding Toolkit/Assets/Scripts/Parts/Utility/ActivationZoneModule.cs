@@ -14,6 +14,21 @@ namespace SFS.Parts.Modules
         
         public void OnPartUsed(UsePartData data)
         {
+            if (overwriteOnStage && data.sharedData.fromStaging)
+            {
+                onPartUsed_Staging.Invoke(data);
+                return;
+            }
+            
+            foreach (Zone zone in activationZones)
+            foreach (PolygonData polygon in zone.polygons)
+                if (polygon == data.clickPolygon)
+                {
+                    zone.onPartUsed.Invoke(data);
+                    return;
+                }
+            
+            onPartUsed_Default.Invoke(data);
         }
         
         [Serializable]

@@ -84,8 +84,3 @@ namespace SFS
         }
     }
 }
-
-// Debug.DrawLine(topLeft, bottomLeft);
-// Debug.DrawLine(topLeft, bottomRight, Color.green);
-// Debug.DrawLine(topRight, bottomLeft, Color.red);
-// Debug.DrawRay(center, Vector3.up * 0.1f);

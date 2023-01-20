@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using SFS.Variables;
 
 namespace SFS.Parts.Modules
 {
-    public class MoveModule : MonoBehaviour, I_InitializePartModule
+    public class MoveModule : MonoBehaviour
     {
         [InlineProperty] public Float_Reference time;
         [InlineProperty] public Float_Reference targetTime;
@@ -18,36 +17,8 @@ namespace SFS.Parts.Modules
         public MoveData[] animationElements = { };
         
         
-        // Initialization
-        int I_InitializePartModule.Priority => 0;
-        void I_InitializePartModule.Initialize() => Start();
-        bool initialized;
-        void Start()
-        {
-            if (initialized)
-                return;
-            
-            time.OnChange += ApplyAnimation;
-            targetTime.OnChange += () => enabled = true;
-            initialized = true;
-        }
-
-        
-        void Update()
-        {
-            float deltaTime = (unscaledTime? Time.unscaledDeltaTime : Time.deltaTime);
-            
-            if (deltaTime == 0)
-                return;
-
-            float maxDelta = animationTime > 0? deltaTime / animationTime : 10000;
-            time.Value = Mathf.MoveTowards(time.Value, targetTime.Value, maxDelta); // Moves towards target by delta
-
-            if (time.Value == targetTime.Value)
-                enabled = false; // Target reached, no need to update anymore
-        }
-        
-        [Button] void ApplyAnimation()
+        [Button]
+        void ApplyAnimation()
         {
             foreach (MoveData a in animationElements)
                 switch (a.type)
@@ -68,17 +39,14 @@ namespace SFS.Parts.Modules
                         a.spriteRenderer.color = a.gradient.Evaluate(time.Value - a.offset);
                         break;
 
-                    case MoveData.Type.ImageColor:
-                        a.image.color = a.gradient.Evaluate(time.Value - a.offset);
-                        break;
-
                     case MoveData.Type.Active:
                         float valueAtTime = a.X.Evaluate(time.Value - a.offset);
                         if (a.transform.gameObject.activeSelf != valueAtTime > 0)
                             a.transform.gameObject.SetActive(valueAtTime > 0);
                         AudioSource audioSource = a.transform.gameObject.GetComponent<AudioSource>();
-                        if (audioSource && Application.isPlaying) ;
-                            break;
+                        if (audioSource && Application.isPlaying)
+                            audioSource.volume = 1;//Audio.AudioSettings.main.soundVolume * valueAtTime;
+                        break;
 
                     case MoveData.Type.Inactive:
                         bool active = a.X.Evaluate(time.Value - a.offset) <= 0;
@@ -87,8 +55,9 @@ namespace SFS.Parts.Modules
                         break;
 
                     case MoveData.Type.SoundVolume:
-                        if (Application.isPlaying) ;
-                            break;
+                        if (Application.isPlaying)
+                            a.audioSource.volume = 1;// Audio.AudioSettings.main.soundVolume * a.X.Evaluate(time.Value - a.offset);
+                        break;
 
                     case MoveData.Type.AnchoredPosition:
                         (a.transform as RectTransform).anchoredPosition = new Vector3(a.X.Evaluate(time.Value - a.offset), a.Y.Evaluate(time.Value - a.offset), 0);
@@ -97,11 +66,18 @@ namespace SFS.Parts.Modules
                     case MoveData.Type.RotationXY:
                         a.transform.localEulerAngles = new Vector3(a.X.Evaluate(time.Value - a.offset), a.Y.Evaluate(time.Value - a.offset), 0);
                         break;
+
+                    case MoveData.Type.FloatVariable:
+                        a.floatVariable.Value = a.X.Evaluate(time.Value - a.offset);
+                        break;
+
+                    case MoveData.Type.BoolVariable:
+                        a.boolVariable.Value = a.X.Evaluate(time.Value - a.offset) > 0;
+                        break;
                 }
         }
-
-
-
+        
+        
         public void Toggle()
         {
             targetTime.Value = targetTime.Value != 0 ? 0 : 1;
@@ -109,6 +85,16 @@ namespace SFS.Parts.Modules
         public void Activate()
         {
             targetTime.Value = 1;
+        }
+        
+        // For mods
+        public void SetTargetTime(float newTargetTime)
+        {
+            targetTime.Value = newTargetTime;
+        }
+        public void SetTime(float newTime)
+        {
+            time.Value = newTime;
         }
     }
 
@@ -118,23 +104,25 @@ namespace SFS.Parts.Modules
         public Type type;
         public float offset;
 
-        [ShowIf("ShowTransform")] public Transform transform;
-        [ShowIf("ShowSpriteRenderer")] public SpriteRenderer spriteRenderer;
-        [ShowIf("ShowImage")] public Image image;
+        [ShowIf("ShowTransform"), Required] public Transform transform;
+        [ShowIf("ShowSpriteRenderer"), Required] public SpriteRenderer spriteRenderer;
 
         [ShowIf("ShowCurveX")] public AnimationCurve X = new AnimationCurve();
         [ShowIf("ShowCurveY")] public AnimationCurve Y = new AnimationCurve();
 
         [ShowIf("ShowGradient")] public Gradient gradient = new Gradient();
-        [ShowIf("ShowAudio")] public AudioSource audioSource;
+        [ShowIf("ShowAudio"), Required] public AudioSource audioSource;
+
+        [ShowIf("type", Type.FloatVariable)] public Float_Reference floatVariable;
+        [ShowIf("type", Type.BoolVariable)] public Bool_Reference boolVariable;
 
 
-        bool ShowTransform() { return new [] { true, true, true, false, false, false, false, true, true, false, true, true }[(int)type]; }
+        bool ShowTransform() { return new [] { true, true, true, false, false, false, false, true, true, false, true, true, false, false }[(int)type]; }
         bool ShowSpriteRenderer() { return type == Type.SpriteColor; }
         bool ShowImage() { return type == Type.ImageColor; }
 
-        bool ShowCurveX() { return new [] { true, true, true, true, true, false, false, true, true, true, true, true }[(int)type]; }
-        bool ShowCurveY() { return new [] { false, true, true, true, true, false, false, false, false, false, true, true }[(int)type]; }
+        bool ShowCurveX() { return new [] { true, true, true, true, true, false, false, true, true, true, true, true, true, true }[(int)type]; }
+        bool ShowCurveY() { return new [] { false, true, true, true, true, false, false, false, false, false, true, true, false, false }[(int)type]; }
 
         bool ShowGradient() { return type == Type.SpriteColor || type == Type.ImageColor; }
         bool ShowAudio() { return type == Type.SoundVolume; }
@@ -152,7 +140,9 @@ namespace SFS.Parts.Modules
             Inactive,
             SoundVolume,
             AnchoredPosition,
-            RotationXY
+            RotationXY,
+            FloatVariable,
+            BoolVariable
         }
     }
 }

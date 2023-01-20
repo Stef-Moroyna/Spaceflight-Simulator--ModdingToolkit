@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using SFS.Builds;
 using SFS.Translations;
 using SFS.Variables;
 using Sirenix.OdinInspector;
@@ -8,7 +10,7 @@ using UnityEngine;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class VariablesDrawer : MonoBehaviour, I_PartMenu
+    public class VariablesDrawer : MonoBehaviour
     {
         public DrawElement[] elements;
 

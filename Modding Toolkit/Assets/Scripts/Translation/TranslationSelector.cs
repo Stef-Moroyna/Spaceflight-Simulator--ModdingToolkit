@@ -9,8 +9,8 @@ namespace SFS.Translations
     [Serializable, InlineProperty]
     public class TranslationVariable
     {
-        [SerializeField, HorizontalGroup, HideLabel] bool plainText;
         [ShowIf(nameof(plainText)), SerializeField, HorizontalGroup, HideLabel] string TranslatableName;
+        [SerializeField, HorizontalGroup, HideLabel] bool plainText;
 
         // Editor
         #if UNITY_EDITOR
@@ -38,8 +38,6 @@ namespace SFS.Translations
         public TranslationVariable() {}
         public TranslationVariable(Field field) => this.field = field;
 
-        // Editor
-        #if UNITY_EDITOR
         public Field Dropdown(Field input, GUIContent content)
         {
             List<FieldReference> keys = Loc.dropdownData;
@@ -55,6 +53,5 @@ namespace SFS.Translations
             TranslatableName = keys[selected].name;
             return field;
         }
-        #endif
     }
 }

@@ -71,3 +71,17 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Modding Toolkit/Library/
+
+Modding Toolkit/.idea/
+
+Modding Toolkit/UserSettings/
+
+Modding Toolkit/Temp/
+
+Modding Toolkit/ProjectSettings/ProjectSettings.asset
+
+Modding Toolkit/obj/
+
+Modding Toolkit/Logs/
+
+Modding Toolkit/Assets/Plugins/

@@ -32,7 +32,7 @@ namespace SFS.Parsers.Regex
         public Group GetGroup(string name)
         {
             foreach (Group group in Match.Groups)
-                //if (group.Name == name)
+                if (group.Name == name)
                     return group;
 
             return null;

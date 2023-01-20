@@ -37,7 +37,7 @@ namespace SFS.Parts.Modules
                 vertices[vertices.Length - 1 - i] = point.GetPosition(point.cutRight * 2 - 1);
             }
             
-            if (reduceResolution)
+            if (reduceResolution && vertices.Length > 4)
                 SetData(new Polygon(vertices), new Polygon(ToFastPoints(vertices, 0.05f)));
             else
                 SetData(new Polygon(vertices));

@@ -11,6 +11,7 @@ namespace SFS.Parts.Modules
     public abstract class PolygonData : SurfaceData
     {
         [SerializeField, BoxGroup("", false), LabelText("Build Collider")] bool colliderArea = true; // Can the polygon collide
+        [SerializeField, BoxGroup("", false), LabelText("Attach By Overlap"), ShowIf("colliderArea")] bool attachByOverlap = true; // Attach by overlapping colliders
         [SerializeField, BoxGroup("", false), LabelText("Physics Collider")] bool physicsCollider = false; // Can the polygon be clicked
         [SerializeField, BoxGroup("", false), LabelText("Can Click (Build/Game)")] bool clickArea = true; // Can the polygon be clicked
 
@@ -26,16 +27,12 @@ namespace SFS.Parts.Modules
         {
             physicsCollider = true;
         }
-        void Awake()
-        {
-            PolygonCollider a = gameObject.AddComponent<PolygonCollider>();
-            a.polygon = this;
-        }
         
         public bool Click => clickArea && isActiveAndEnabled;
         public bool BuildCollider => colliderArea && isActiveAndEnabled;
         public bool BuildCollider_IncludeInactive => colliderArea;
         public bool PhysicsCollider_IncludeInactive => physicsCollider;
+        public bool AttachByOverlap => attachByOverlap;
         
         public float BaseDepth => isComposedDepth ? composedBaseDepth.Value : baseDepth;
         public void SubscribeToComposedDepth(Action a)

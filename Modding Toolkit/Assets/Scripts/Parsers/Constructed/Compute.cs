@@ -64,9 +64,7 @@ namespace SFS.Parsers.Constructed
                         modifier = minus? -1 : 1
                     });
                     elements.Add(nodes.Count - 1);
-
                     usedVariables.Add(letters);
-
                     continue;
                 }
 
@@ -80,7 +78,6 @@ namespace SFS.Parsers.Constructed
                 if (numbers.Length > 0)
                 {
                     float value = float.Parse(numbers, CultureInfo.InvariantCulture);
-
                     nodes.Add(new Number() { Value = minus? -value : value });
                     elements.Add(nodes.Count - 1);
                     continue;

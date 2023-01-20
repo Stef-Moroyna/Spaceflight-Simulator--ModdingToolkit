@@ -15,7 +15,6 @@ namespace SFS.Parts.Modules
         void OnSceneGUI()
         {
             shape = target as CustomPipe;
-
             if (shape == null)
                 return;
             
@@ -62,7 +61,7 @@ namespace SFS.Parts.Modules
                 else if (drawBetweenLines)
                 {
                     Handles.color = new Color(1, 1, 1, 0.5f);
-                    Handles.DrawDottedLine(shape.transform.TransformPoint(a.Left), shape.transform.TransformPoint(a.Right), 4);
+                    Handles.DrawDottedLine(shape.transform.TransformPoint(a.Left), shape.transform.TransformPoint(a.Right), 2);
                 }
             }
         }
@@ -137,7 +136,7 @@ namespace SFS.Parts.Modules
             position = Round(position);
             width = Round(width);
 
-            Composed_ShapePoint newPoint = new Composed_ShapePoint(position, width);
+            Composed_PipePoint newPoint = new Composed_PipePoint(position, width);
             shape.composedShape.points.Insert(index, newPoint);
         }
 

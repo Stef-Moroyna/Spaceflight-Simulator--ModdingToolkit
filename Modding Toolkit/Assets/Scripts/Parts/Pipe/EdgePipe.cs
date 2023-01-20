@@ -5,15 +5,12 @@ using Sirenix.OdinInspector;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class EdgePipe : PipeData, I_InitializePartModule
+    public class EdgePipe : PipeData
     {
         [Required] public SurfaceData surfaceData;
         public float width = 1;
 
         public bool flatStart, flatEnd;
-        
-        int I_InitializePartModule.Priority => 8;
-        void I_InitializePartModule.Initialize() => surfaceData.onChange += Output;
 
         public override void Output()
         {

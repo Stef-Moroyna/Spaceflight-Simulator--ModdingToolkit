@@ -4,13 +4,10 @@ using UnityEngine;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class BoxPolygon : PolygonData, I_InitializePartModule
+    public class BoxPolygon : PolygonData
     {
         public Vector2 point_A = Vector2.zero;
         public Vector2 point_B = Vector2.one;
-
-        int I_InitializePartModule.Priority => 10;
-        void I_InitializePartModule.Initialize() => Output();
 
         public override void Output()
         {

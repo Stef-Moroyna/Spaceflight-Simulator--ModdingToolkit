@@ -1,12 +1,15 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace SFS
 {
+    [ExecuteInEditMode]
     public class RenderSortingModule : MonoBehaviour
     {
+        static readonly int Depth = Shader.PropertyToID("_Depth");
+        
         // Modes
         public enum SortingMode { DepthOnly, AbsoluteDepth_AndQueue, RelativeDepth_AndQueue, QueueOnly }
         public SortingMode sortingMode = SortingMode.DepthOnly;
@@ -49,12 +52,12 @@ namespace SFS
         void SetDepth(GameObject gameObject, float depth)
         {
             Renderer component = gameObject.GetComponent<Renderer>();
-            (setSharedMaterial? component.sharedMaterial : component.material).SetFloat("_Depth", depth);
+            (setSharedMaterial || !Application.isPlaying? component.sharedMaterial : component.material).SetFloat(Depth, depth);
         }
         void SetRenderQueue(GameObject gameObject, int renderQueue)
         {
             Renderer component = gameObject.GetComponent<Renderer>();
-            (setSharedMaterial? component.sharedMaterial : component.material).renderQueue = renderQueue;
+            (setSharedMaterial || !Application.isPlaying? component.sharedMaterial : component.material).renderQueue = renderQueue;
         }
     }
 }

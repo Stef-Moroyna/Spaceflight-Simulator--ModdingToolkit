@@ -5,22 +5,13 @@ using Sirenix.OdinInspector;
 namespace SFS.Parts.Modules
 {
     [HideMonoScript]
-    public class SimplePipe : PipeData, I_InitializePartModule
+    public class SimplePipe : PipeData
     {
         public Composed_Float width_a;
         public Composed_Float width_b;
         public Composed_Float height_a;
         public Composed_Float height_b;
-
-        int I_InitializePartModule.Priority => 10;
-        void I_InitializePartModule.Initialize()
-        {
-            width_a.OnChange += Output;
-            width_b.OnChange += Output;
-            height_a.OnChange += Output;
-            height_b.OnChange += Output;
-        }
-
+        
         public override void Output()
         {
             Pipe pipe = new Pipe();

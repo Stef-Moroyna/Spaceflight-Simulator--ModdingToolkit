@@ -80,24 +80,15 @@ public struct Line2
 
     public void Flip()
     {
-        Vector2 temp = start;
-
-        start = end;
-        end = temp;
+        (start, end) = (end, start);
     }
     public void FlipHorizontally()
     {
-        float temp = start.x;
-
-        start.x = end.x;
-        end.x = temp;
+        (start.x, end.x) = (end.x, start.x);
     }
     public void FlipVertically()
     {
-        float temp = start.y;
-
-        start.y = end.y;
-        end.y = temp;
+        (start.y, end.y) = (end.y, start.y);
     }
 
     public Vector2 GetPositionAtX(float x)
