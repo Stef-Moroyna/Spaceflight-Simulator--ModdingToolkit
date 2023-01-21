@@ -12,6 +12,7 @@ namespace Parts
     {
         public bool drag, attachment, clickCollider, buildCollider, physicsCollider, magnets, adaptTriggers, centerOfMass, thrust;
 
+        #if UNITY_EDITOR
         void OnDrawGizmos()
         {
             // Fix
@@ -140,5 +141,6 @@ namespace Parts
         void ToExteriorView() => GetComponentsInChildren<InteriorModule>(true).ForEach(a => a.gameObject.SetActive(a.layerType == InteriorModule.LayerType.Exterior));
         [Button]
         void ResetViewMode() => GetComponentsInChildren<InteriorModule>(true).ForEach(a => a.gameObject.SetActive(true));
+        #endif
     }
 }

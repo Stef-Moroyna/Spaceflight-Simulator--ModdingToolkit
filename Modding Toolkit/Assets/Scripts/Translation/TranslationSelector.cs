@@ -38,6 +38,7 @@ namespace SFS.Translations
         public TranslationVariable() {}
         public TranslationVariable(Field field) => this.field = field;
 
+        #if UNITY_EDITOR
         public Field Dropdown(Field input, GUIContent content)
         {
             List<FieldReference> keys = Loc.dropdownData;
@@ -53,5 +54,6 @@ namespace SFS.Translations
             TranslatableName = keys[selected].name;
             return field;
         }
+        #endif
     }
 }

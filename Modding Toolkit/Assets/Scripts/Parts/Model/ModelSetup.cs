@@ -101,7 +101,8 @@ namespace SFS.Parts.Modules
         // Utility
         Material GetMaterial()
         { 
-            return (Material)UnityEditor.AssetDatabase.LoadAssetAtPath(useNormals? "Assets/Editor/Modeling/Part 2 normals.mat" : "Assets/Editor/Modeling/Part 2 texture.mat", typeof(Material));
+            //return (Material)UnityEditor.AssetDatabase.LoadAssetAtPath(useNormals? "Assets/Editor/Modeling/Part 2 normals.mat" : "Assets/Editor/Modeling/Part 2 texture.mat", typeof(Material));
+            throw new NotImplementedException();
         }
         float GetGlobalDepth(float depth)
         {
@@ -110,7 +111,6 @@ namespace SFS.Parts.Modules
         Vector3 GetLightDirection()
         {
             Vector3 lightGlobal = new Vector3( useNormals? 0.2f : -0.2f, useNormals? -0.4f : 0.4f, 1).normalized;
-
             return lightGlobal;
         }
     }

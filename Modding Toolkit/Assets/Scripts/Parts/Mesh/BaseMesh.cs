@@ -112,9 +112,10 @@ namespace SFS.Parts.Modules
             }
             void SetMaterials(int count)
             {
+                #if UNTIY_EDITOR
                 Material material = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Materials/Part 1.mat", typeof(Material));
-
                 meshRenderer.sharedMaterials = new Material[count].Select(a => material).ToArray();
+                #endif
             }
             void SetPropertyBlock(PartTex T, int index)
             {
