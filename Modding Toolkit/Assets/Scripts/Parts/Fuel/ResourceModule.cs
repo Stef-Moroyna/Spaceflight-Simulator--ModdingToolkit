@@ -27,5 +27,9 @@ namespace SFS.Parts.Modules
         [HideInInspector] public List<FlowModule.Flow> flowModules = new List<FlowModule.Flow>();
         
         public bool showDescription = true;
+        
+        public void ToggleTransfer()
+        {
+        }
     }
 }
