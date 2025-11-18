@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ public static class MyHandles
          
         float size = HandleUtility.GetHandleSize(Vector2.zero) * HandleSize;
         Vector3 pointWorld = transform.TransformPoint(position);
-        return transform.InverseTransformVector(Handles.FreeMoveHandle(pointWorld, Quaternion.identity, size, Vector2.zero, Handles.CubeHandleCap) - pointWorld);
+        return transform.InverseTransformVector(Handles.FreeMoveHandle(pointWorld, size, Vector2.zero, Handles.CubeHandleCap) - pointWorld);
     }
     public static bool DrawButton(Transform transform, Vector3 position, float size, Color color)
     {
@@ -31,7 +31,7 @@ public static class MyHandles
     {
         float size = HandleUtility.GetHandleSize(Vector2.zero) * 0.09f;
         Handles.color = color;
-        return Handles.FreeMoveHandle(position, Quaternion.identity, size, Vector2.zero, Handles.CubeHandleCap) - position;
+        return Handles.FreeMoveHandle(position, size, Vector2.zero, Handles.CubeHandleCap) - position;
     }
     public static bool DrawButton_NoTrans(Vector3 position, Color color)
     {
