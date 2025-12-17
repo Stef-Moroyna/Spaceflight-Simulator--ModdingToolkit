@@ -18,7 +18,7 @@ namespace SFS.Parts.Modules
 
         [HorizontalGroup, HideLabel] public ColorType type = ColorType.Module;
         [HorizontalGroup, HideLabel, ShowIf("type", ColorType.Local)] public Color colorBasic = Color.white;
-        [HorizontalGroup, HideLabel, ShowIf("type", ColorType.Module), Required] public ColorModule colorModule;
+        [HorizontalGroup, HideLabel, ShowIf("type", ColorType.Module)] public ColorModule colorModule;
         
         // New default (but keeps legacy assets)
         void Reset() => type = ColorType.Local;
