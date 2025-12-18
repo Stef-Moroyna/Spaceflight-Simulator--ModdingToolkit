@@ -1,7 +1,10 @@
+using System;
 using SFS.Parts;
 using SFS.Parts.Modules;
+using SFS.World;
 using System.Collections.Generic;
 using UnityEngine;
+using static SFS.World.Rocket;
 
 /**
  * Author: dani0105
@@ -10,13 +13,13 @@ using UnityEngine;
  *  Automatic separation of parts connected with this module.
  * </summary>
  */
-public class AutoDetachModule : MonoBehaviour //, Rocket.INJ_Rocket
+public class AutoDetachModule : MonoBehaviour, INJ_Rocket
 {
-    //public Rocket Rocket { set; private get; }
-    //public Part Part;
+    public Rocket Rocket { set; private get; }
+    public Part Part;
 
     // list of priority parts to detach before the default detach module
-    public string[] partToDetach = new string[0];
+    public string[] partToDetach = Array.Empty<string>();
     // default detach module.
     public DetachModule detachModule;
 
@@ -35,36 +38,28 @@ public class AutoDetachModule : MonoBehaviour //, Rocket.INJ_Rocket
      *  Search for a specific part of the rocket with a maximum deep search
      * </summary>
      */
-    /*Part SearchPart(string partName, Part startPoint, int level)
+    Part SearchPart(string partName, Part startPoint, int level)
     {
         _visited.Add(startPoint);
         if(level >= _max_search_level)
-        {
             return null;
-        }
 
         foreach (PartJoint joint in Rocket.jointsGroup.GetConnectedJoints(startPoint))
         {
             Part otherPart = joint.GetOtherPart(startPoint);
             if (AlreadyVisited(otherPart))
-            {
                 continue;
-            }
 
             if(otherPart.name == partName)
-            {
                 return otherPart;
-            }
 
             otherPart = SearchPart(partName, otherPart, level + 1);
 
             if(otherPart != null)
-            {
                 return otherPart;
-            }
         }
         return null;
-    }*/
+    }
 
     /**
      * <summary>
@@ -81,16 +76,13 @@ public class AutoDetachModule : MonoBehaviour //, Rocket.INJ_Rocket
      *  Call this method to find and detach the part for the current stage.
      * </summary>
      */
-    /*public void OnDetach(UsePartData data)
+    public void OnDetach(UsePartData data)
     {
         // if was call from stage
         if (data.sharedData.fromStaging)
         {
 
-            if (_currentStage + 1 == partToDetach.Length || partToDetach.Length == 0)
-            {
-                detachModule.Detach(data);
-            }
+            if (_currentStage + 1 == partToDetach.Length || partToDetach.Length == 0) detachModule.Detach(data);
             
             _currentStage += 1;
             return;
@@ -115,5 +107,5 @@ public class AutoDetachModule : MonoBehaviour //, Rocket.INJ_Rocket
 
         foreach (DetachModule a in otherPartModule)
             a.Detach(data);
-    }*/
+    }
 }
