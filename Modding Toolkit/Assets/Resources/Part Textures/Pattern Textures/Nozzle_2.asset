@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c70d8f290dd0284b87588ddf6666874, type: 3}
+  m_Script: {fileID: -185659834, guid: 852a8c326b318914aa667e3b6c005ae7, type: 3}
   m_Name: Nozzle_2
   m_EditorClassIdentifier: 
   colorTex:

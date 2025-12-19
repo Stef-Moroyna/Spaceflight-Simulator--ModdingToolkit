@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ccf3a634b47aa4f9855acf05dfd568, type: 3}
+  m_Script: {fileID: 1458839645, guid: 852a8c326b318914aa667e3b6c005ae7, type: 3}
   m_Name: Strut 3
   m_EditorClassIdentifier: 
   shapeTex:
