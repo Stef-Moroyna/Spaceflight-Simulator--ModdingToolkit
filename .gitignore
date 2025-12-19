@@ -85,3 +85,6 @@ Modding Toolkit/obj/
 Modding Toolkit/Logs/
 
 Modding Toolkit/Assets/Plugins/
+
+!VanillaModulesSource/VanillaModulesSource.sln
+!VanillaModulesSource/VanillaModulesSource/VanillaModulesSource.csproj
