@@ -1,0 +1,1885 @@
+{
+  "relativeDllPath": "SFS.dll",
+  "scripts": [
+    {
+      "name": "ObservableMonoBehaviour, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "eed91ff5506a7254daf8069951e37c64",
+      "fileId": "2065793709"
+    },
+    {
+      "name": "ResourcesLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "536c4422afdc6944f91cd2141f32400a",
+      "fileId": "-312391710"
+    },
+    {
+      "name": "Stars, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9e3f6c28764b0694aa4641ace30aefa1",
+      "fileId": "-633377430"
+    },
+    {
+      "name": "DepthScanner, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8142a666bb385f843966f40b42213694",
+      "fileId": "673913949"
+    },
+    {
+      "name": "AutoDetachModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1da40540ab2e84ca184948b722122714",
+      "fileId": "-215191169"
+    },
+    {
+      "name": "SaveLocationSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4648216d415849dfb031c2e2e2ae52ce",
+      "fileId": "1378384736"
+    },
+    {
+      "name": "DeeplinkManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "89badf01e617e7ecf80212bfd4be48ed",
+      "fileId": "-895478589"
+    },
+    {
+      "name": "SteamManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "038d94d8d6c84498a0e099925943456a",
+      "fileId": "1422312800"
+    },
+    {
+      "name": "PopupManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "21faf4ba4dde342998c6bb28470557ed",
+      "fileId": "760677029"
+    },
+    {
+      "name": "TimeTracker, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "65c5ebf35eabe4e469a60f1930f94c90",
+      "fileId": "-1939569556"
+    },
+    {
+      "name": "ColorAnimation, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c121105fa797c88419f2771cf2c23bbf",
+      "fileId": "803875844"
+    },
+    {
+      "name": "PopupAnimation, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6d006a26bbef46f4db9477435f6f0df4",
+      "fileId": "-1051122915"
+    },
+    {
+      "name": "SizeAnimation, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "14059bdfe7be42189eae20bca5c1bec2",
+      "fileId": "454680831"
+    },
+    {
+      "name": "StatsMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d7320989fd30f864ca73367848e17035",
+      "fileId": "-629498393"
+    },
+    {
+      "name": "MyScaleToFit, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2e69a6b584e24074894a0002c0ec878b",
+      "fileId": "848344595"
+    },
+    {
+      "name": "ButtonGroup, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "85e75e7888f641f4aadc0d110701081e",
+      "fileId": "153948935"
+    },
+    {
+      "name": "CommunityPanel, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "738c1bc442faa91429e9a3160b19ba42",
+      "fileId": "-1805277740"
+    },
+    {
+      "name": "GravityTurnDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "14114566d24f0934a9d8f8b018490a11",
+      "fileId": "2118181839"
+    },
+    {
+      "name": "SafeArea, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c97afc556caea1c44969477eb7ddec74",
+      "fileId": "-736795330"
+    },
+    {
+      "name": "DevSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b7d1a8279c80c7e438f0d729c12b4fe9",
+      "fileId": "-1281484105"
+    },
+    {
+      "name": "DisableAtStart, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "29bd2d5466214c3489256e2661b050f1",
+      "fileId": "-1770875699"
+    },
+    {
+      "name": "ErrorLogger, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "29ea1f5c003dd8e4f801918b3b531789",
+      "fileId": "-935811652"
+    },
+    {
+      "name": "FirebaseUtility, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6a3f6e6c5247423483c819f725a32a8d",
+      "fileId": "-365286786"
+    },
+    {
+      "name": "FXAA, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3a09c033073b1b34b98b95530d1b9ab4",
+      "fileId": "-996350678"
+    },
+    {
+      "name": "GLDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "de84fc0290912a44691a600e2d520378",
+      "fileId": "456679161"
+    },
+    {
+      "name": "OnFrameEnd, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a638fb8ef04f5f540a635fd7c2340453",
+      "fileId": "-932909454"
+    },
+    {
+      "name": "BuildVersionText, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1d15637416693e442ad5daad0cb96a44",
+      "fileId": "-2096867850"
+    },
+    {
+      "name": "PartIconCreator, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4b3bb3f68acad2843ba8a731a908c708",
+      "fileId": "-256444221"
+    },
+    {
+      "name": "PartShopIcon, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d96b4a9900fb7476d8795781703f18d3",
+      "fileId": "-1465357721"
+    },
+    {
+      "name": "TT_BuilderEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3d80eba2a4e75f3498e8f31da1d6bbfc",
+      "fileId": "1747157821"
+    },
+    {
+      "name": "AeroData, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2daae555b65d2a740ae7c534356d6315",
+      "fileId": "1093196470"
+    },
+    {
+      "name": "AeroMesh, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6f225dc67c70394419d0bb86447a6fd5",
+      "fileId": "-1328373014"
+    },
+    {
+      "name": "BurnManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3852ad593f5bb804180a12bcf505392b",
+      "fileId": "1553055738"
+    },
+    {
+      "name": "TemperatureTest, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e824da142f652cc49913495f35dc6d7d",
+      "fileId": "-1624498422"
+    },
+    {
+      "name": "StarGenerator, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ffa0682ae45ef0441a9c7224aaa1c8a9",
+      "fileId": "-1682521523"
+    },
+    {
+      "name": "PackDisplay, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "69d96caaeddc74698b0eaec8b7f50bdd",
+      "fileId": "1699214560"
+    },
+    {
+      "name": "SaleManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "36d9c402d2df5e84e8f40ce435545ac2",
+      "fileId": "-2145094949"
+    },
+    {
+      "name": "SalesSystem, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b85b94ed1bdc741cbbd1c3b7023339da",
+      "fileId": "-1457615486"
+    },
+    {
+      "name": "_Game.GameMusic, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b4b0093afd7f4420814db9ffc93ce3d2",
+      "fileId": "430105754"
+    },
+    {
+      "name": "_Game.Drawers.FuelTransferDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a9b920acf6c542e4bd29cb22f2ace2a2",
+      "fileId": "942864147"
+    },
+    {
+      "name": "Assets.Scripts.ForceIncludeSecurityLibraries, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "acc78359f76c71b4da92e65cca98b54f",
+      "fileId": "1994574256"
+    },
+    {
+      "name": "UI.ScrollToButtonAttach, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c5032d4a0383461a90273fd1fd7c1993",
+      "fileId": "-488289455"
+    },
+    {
+      "name": "TranslucentImage.TranslucentImage, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "196bb08d6c2d3c9499c04e1281fd4ad3",
+      "fileId": "1209882826"
+    },
+    {
+      "name": "TranslucentImage.TranslucentImageNode, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "50354f428bf80f04c8b2b696b90ba1a3",
+      "fileId": "-1181240145"
+    },
+    {
+      "name": "TranslucentImage.TranslucentImageSource, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4ee01e66702087b4798e633ca34c7956",
+      "fileId": "-672842743"
+    },
+    {
+      "name": "Parts.PartVisualizer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a5544660e4edb4f47b58db57de9cca63",
+      "fileId": "-1046310905"
+    },
+    {
+      "name": "Parts.Transform.CraftFlipModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "29e518003b8148b799942eddcedd8bc1",
+      "fileId": "-993459797"
+    },
+    {
+      "name": "InterplanetaryModule.AtmosphericFlameModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1c31ba2d08868e943be7d6869c6d07b4",
+      "fileId": "1881445605"
+    },
+    {
+      "name": "InterplanetaryModule.BalloonModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "dd004c14ceee42249aec9fd6875c839e",
+      "fileId": "-1603810936"
+    },
+    {
+      "name": "InterplanetaryModule.FlapModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "864f64d7fdd9109488f473ec26358b48",
+      "fileId": "-1254996635"
+    },
+    {
+      "name": "InterplanetaryModule.GravityRingModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d02ad714fed47804b8f625b9db40551a",
+      "fileId": "1548050586"
+    },
+    {
+      "name": "InterplanetaryModule.RepeatMoveModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ecc68be215c863947a5156486495787b",
+      "fileId": "-1014787760"
+    },
+    {
+      "name": "InterplanetaryModule.SurfaceShadingModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "824c876ec3541af4982699cc3977ff38",
+      "fileId": "-2036097658"
+    },
+    {
+      "name": "ModLoader.Loader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fa43e7c63ecda5242ae35028651d0965",
+      "fileId": "794657844"
+    },
+    {
+      "name": "ModLoader.ModLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "04739437824794b41af1b5142777ae2d",
+      "fileId": "-1806937794"
+    },
+    {
+      "name": "ModLoader.ModsSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "22141d099fec42898c3266b99c0b4c24",
+      "fileId": "1439109536"
+    },
+    {
+      "name": "ModLoader.PackData, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5499134bc9bf4342a3880329018c3a62",
+      "fileId": "-1042286354"
+    },
+    {
+      "name": "ModLoader.UI.ModsListElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b7137d72556bbbf47ae1bb6a833f8bdf",
+      "fileId": "634159186"
+    },
+    {
+      "name": "ModLoader.UI.ModsMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "bed7c231afdf2eb41810a01425b040ae",
+      "fileId": "1253543244"
+    },
+    {
+      "name": "ModLoader.IO.Console, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "679627c0afc3a5a488615851ee9a5d0b",
+      "fileId": "1249584545"
+    },
+    {
+      "name": "SFS.BaseAssigner, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9d88a94938e303a47880c3c0f2355220",
+      "fileId": "1398505308"
+    },
+    {
+      "name": "SFS.SceneLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "def4aa95d8d657d44a29318c969afb12",
+      "fileId": "-1607674697"
+    },
+    {
+      "name": "SFS.CameraRotator, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c1acc1eeeb2b70a4da39325e2eb4b11c",
+      "fileId": "1746254084"
+    },
+    {
+      "name": "SFS.PostProcessing, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "af8934fa76c7d3a40a5328a878706ea3",
+      "fileId": "-1597106648"
+    },
+    {
+      "name": "SFS.InteriorManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7cb5256618726b2408bea04f993be699",
+      "fileId": "-1516720887"
+    },
+    {
+      "name": "SFS.RenderSortingManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d8e12bd1be4a60749b66610ebc57a27d",
+      "fileId": "1057205948"
+    },
+    {
+      "name": "SFS.RenderSortingModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "45fb768e65642ea469bef6741f72abbf",
+      "fileId": "-244770327"
+    },
+    {
+      "name": "SFS.VideoSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ac2b7126cde975e428036d497256bfff",
+      "fileId": "-1549115915"
+    },
+    {
+      "name": "SFS.VideoSettingsComponent, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9d02f1683abd04040ae8fa4dc94ed086",
+      "fileId": "1827291048"
+    },
+    {
+      "name": "SFS.VideoSettingsPC, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ae910453fe4632b4a963d55d0e7b6ed4",
+      "fileId": "963709365"
+    },
+    {
+      "name": "SFS.FOV_Sync, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6daced37bf2fbe74dbcc2b05d6008502",
+      "fileId": "1328787166"
+    },
+    {
+      "name": "SFS.TimeEvent, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7dc144e11d94f9840a200b879851965b",
+      "fileId": "-1208278303"
+    },
+    {
+      "name": "SFS.Selector, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7cac0a84d11193445985edeebbeeebe5",
+      "fileId": "1372574293"
+    },
+    {
+      "name": "SFS.ShootingStar, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7cd29e85acca6ae4c812cc18adb00527",
+      "fileId": "-760389686"
+    },
+    {
+      "name": "SFS.ShootingStarManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d3f8244cf3bdc9b40a335517f172344e",
+      "fileId": "1336719384"
+    },
+    {
+      "name": "SFS.Stats.LogManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7585bba0f5ac4a845bcab1d3a536242a",
+      "fileId": "-538298668"
+    },
+    {
+      "name": "SFS.Stats.StatsRecorder, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1c4faf00462c9084abb21b001e163301",
+      "fileId": "1072477419"
+    },
+    {
+      "name": "SFS.Career.AllowPerMode, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "14a19205ce5186b48a7fbdc818a7dba1",
+      "fileId": "347889083"
+    },
+    {
+      "name": "SFS.Career.CareerState, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c407089cdbd16504883eda2d2f0ecd89",
+      "fileId": "-1941409697"
+    },
+    {
+      "name": "SFS.Career.TreeComponent, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "dfc3649559e815c4483bf8b05fc7af68",
+      "fileId": "1006431587"
+    },
+    {
+      "name": "SFS.Career.TT_Builder, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "82ce2927b89d3a44d84326945e10753d",
+      "fileId": "-1336798709"
+    },
+    {
+      "name": "SFS.Career.TT_Creator, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "bdcc372259684744098eeb473235a10c",
+      "fileId": "-320629158"
+    },
+    {
+      "name": "SFS.Career.TT_Info, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1ed62fc54fae78e4596c985e3bb700d2",
+      "fileId": "-2021890033"
+    },
+    {
+      "name": "SFS.Career.TT_InfoData, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9060e5b5369eb3440ae3afcd848b2168",
+      "fileId": "1039019119"
+    },
+    {
+      "name": "SFS.Career.TT_PartPackData, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "965823ba66c634c448b2acab25b7ee6b",
+      "fileId": "1348570967"
+    },
+    {
+      "name": "SFS.Career.TT_Parts, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5ae178c9e23c87041ac391ee5168ab3f",
+      "fileId": "-1149620464"
+    },
+    {
+      "name": "SFS.Career.TT_Upgrade, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "bc791804795b44a48938d32bd51d4069",
+      "fileId": "-415337641"
+    },
+    {
+      "name": "SFS.Career.TT_UpgradeData, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "52f8b8a4fb8646b6897a573b5726e050",
+      "fileId": "114715545"
+    },
+    {
+      "name": "SFS.Career.AstronautState, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b1ded56c86f1bd641bc68fefea627790",
+      "fileId": "-1695867524"
+    },
+    {
+      "name": "SFS.Career.HubManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5e92b68d0e3488e4a910fad9ae702306",
+      "fileId": "-730325219"
+    },
+    {
+      "name": "SFS.Career.HubView, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "129a1b5095744fe9b96418a8346495ac",
+      "fileId": "572201931"
+    },
+    {
+      "name": "SFS.Platform.PlatformManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f68da1ecf9ed42af815fc13423234b98",
+      "fileId": "-985309059"
+    },
+    {
+      "name": "SFS.Builds.UIDepthSorted, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d6932976299d2d045b9a5e71d029c023",
+      "fileId": "1126904060"
+    },
+    {
+      "name": "SFS.Builds.AreaSelect, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b84e2c69260d89f4abc01fabc14534f8",
+      "fileId": "-358810917"
+    },
+    {
+      "name": "SFS.Builds.BuildCamera, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e5cb0628cfc28584698cfb623bfd7bad",
+      "fileId": "-983683224"
+    },
+    {
+      "name": "SFS.Builds.BuildGrid, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fdeb126940d9d844ebb813f0971d719c",
+      "fileId": "764360313"
+    },
+    {
+      "name": "SFS.Builds.BuildManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "83487b4ebbae5d4448e1ef7328585577",
+      "fileId": "-1467620794"
+    },
+    {
+      "name": "SFS.Builds.BuildMenus, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "746e829093faf2a40be45396f29efc9a",
+      "fileId": "-40061396"
+    },
+    {
+      "name": "SFS.Builds.BuildOrientation, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e5e413e2b2d4b5c4686debe59dfe9704",
+      "fileId": "1047041550"
+    },
+    {
+      "name": "SFS.Builds.BuildSelector, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "42f3bd89a7012264491c4b37554fa071",
+      "fileId": "-1265383909"
+    },
+    {
+      "name": "SFS.Builds.BuildState, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "16507bba97ceaef4eacf8c378f143ca1",
+      "fileId": "-1555926772"
+    },
+    {
+      "name": "SFS.Builds.BuildStatsDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ae7c6e3ede084cb4997eb508e415de96",
+      "fileId": "-474561453"
+    },
+    {
+      "name": "SFS.Builds.ExpandMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "53d1a0a2fef46d84098b5935b7d7e825",
+      "fileId": "1387373609"
+    },
+    {
+      "name": "SFS.Builds.GridSize, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "62c3c48cd425ab64d8a540987b60fa5f",
+      "fileId": "1806380663"
+    },
+    {
+      "name": "SFS.Builds.HoldGrid, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7b8717d2edd65f949bc4438dde09039d",
+      "fileId": "1556331418"
+    },
+    {
+      "name": "SFS.Builds.PartGrid, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "492f0fe1438aefe40b991ec888acd685",
+      "fileId": "251307411"
+    },
+    {
+      "name": "SFS.Builds.PickCategoriesMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d410782eaabdb324190c3b38697a7a9b",
+      "fileId": "861308344"
+    },
+    {
+      "name": "SFS.Builds.PickCategory, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "462d6d2510a26f54f9ea3923b07210d8",
+      "fileId": "-552423246"
+    },
+    {
+      "name": "SFS.Builds.SkinMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a1b104df0ec89fe4c886c3bf054467b5",
+      "fileId": "670512328"
+    },
+    {
+      "name": "SFS.Builds.SkinMenuButton, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "01a547a6ffdf67c43968b617ed78e421",
+      "fileId": "-1412955254"
+    },
+    {
+      "name": "SFS.Builds.PickCategoryUI, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "15067ebd135091c4bb957486548f780d",
+      "fileId": "-1174322729"
+    },
+    {
+      "name": "SFS.Builds.PickGridIcon, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "eda234edaaee5324f92fbeb25eff7909",
+      "fileId": "-1695269833"
+    },
+    {
+      "name": "SFS.Builds.PickGridPositioner, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f2cfe2876e5f7df4c8d7e7a83b2b28eb",
+      "fileId": "1641101877"
+    },
+    {
+      "name": "SFS.Builds.PickGridUI, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5cb4c5f695314a54087767a86a28dbb5",
+      "fileId": "-1021887445"
+    },
+    {
+      "name": "SFS.Builds.Undo, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b48be24459aee4e8c935a7ee5a93bef5",
+      "fileId": "190070830"
+    },
+    {
+      "name": "SFS.Tutorials.FailureMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d050b044fbee80d42a274528825fdadd",
+      "fileId": "776875261"
+    },
+    {
+      "name": "SFS.Tutorials.PartShowcaseModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "88fafc78c5d3c0148a2ac2488e106271",
+      "fileId": "1346220324"
+    },
+    {
+      "name": "SFS.Tutorials.Tutorial_Build, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c2f86ef92dc80d445970200d94d469a6",
+      "fileId": "1362725564"
+    },
+    {
+      "name": "SFS.Tutorials.Tutorial_World, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "82627caa5cc47f24cbf3184b7d405bc2",
+      "fileId": "-1563415161"
+    },
+    {
+      "name": "SFS.Translations.LanguageSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e60eee7653f7f174cba2848d0453104e",
+      "fileId": "1528029194"
+    },
+    {
+      "name": "SFS.Translations.FontSetter, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "0513a047c5c5ade43a2f4306da291f39",
+      "fileId": "-609713638"
+    },
+    {
+      "name": "SFS.Translations.TranslationManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "0d1191b2b5338e8459fbd073122713b2",
+      "fileId": "-801130382"
+    },
+    {
+      "name": "SFS.Translations.TranslationSelector, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "05e6f6ced53972547bf34243f04bfd10",
+      "fileId": "-1714239425"
+    },
+    {
+      "name": "SFS.Core.ActionQueue, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3b99c6aded4ff4740922292e40af81e1",
+      "fileId": "983520535"
+    },
+    {
+      "name": "SFS.UI.DevelopmentMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cfbd4d925b96b4be2b96bb60532d6e90",
+      "fileId": "-1377701154"
+    },
+    {
+      "name": "SFS.UI.DownloadMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d13e802ad59f8204ab0ddc1a859b63cb",
+      "fileId": "-1772560835"
+    },
+    {
+      "name": "SFS.UI.ElementGenerator, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d699560ac967ee049a3b4b5e7794ca0b",
+      "fileId": "-1927839514"
+    },
+    {
+      "name": "SFS.UI.DraggableWindowModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cdfcc2817ae04586813594a556dea705",
+      "fileId": "1789701567"
+    },
+    {
+      "name": "SFS.UI.AttachableStatsMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "48c8d9cc07194efd8d3878b7d27b4c6d",
+      "fileId": "1581004316"
+    },
+    {
+      "name": "SFS.UI.AttachWithArrow, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "11455062866c4cca8b80715b5359c0af",
+      "fileId": "-1418779184"
+    },
+    {
+      "name": "SFS.UI.Button, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "db71f6bdbdff67c4db9c6323fab0fc00",
+      "fileId": "-1049220447"
+    },
+    {
+      "name": "SFS.UI.CheatsDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "515a83b0fb0d84b4c88078c64cc0a3ba",
+      "fileId": "740512366"
+    },
+    {
+      "name": "SFS.UI.CycleSelector, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "770f17655f47b0d42a74a7676cbadbc1",
+      "fileId": "1521486095"
+    },
+    {
+      "name": "SFS.UI.IconButton, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "aa346a337a1e44e5db503ae62f0d5930",
+      "fileId": "141566458"
+    },
+    {
+      "name": "SFS.UI.LoadMenuElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c5bb6bd970e732e46a3d27e0973d2eb8",
+      "fileId": "-739308630"
+    },
+    {
+      "name": "SFS.UI.MsgDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d0a53f2b05e4c164ebc4fc205e2b342e",
+      "fileId": "1621463099"
+    },
+    {
+      "name": "SFS.UI.RadioButton, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "73b394a9b322f744abcfbdc4df5865d7",
+      "fileId": "-92579486"
+    },
+    {
+      "name": "SFS.UI.RadioGroup, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "eeab7a49e6ea4b3449ae4b4ed18a7c3a",
+      "fileId": "2295461"
+    },
+    {
+      "name": "SFS.UI.Raycastable, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cdc971ee0587571429d1a016968c5101",
+      "fileId": "188670256"
+    },
+    {
+      "name": "SFS.UI.RelativeSizeFitter, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3e5d43c42d997414dafa0820cec71448",
+      "fileId": "-1303231161"
+    },
+    {
+      "name": "SFS.UI.ReorderingGroup, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f8fc7901b5e3ce543ac621fb8337e10a",
+      "fileId": "-1004436644"
+    },
+    {
+      "name": "SFS.UI.ReorderingModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8c884a4628d24e242b5db18d4e041a5d",
+      "fileId": "-453218414"
+    },
+    {
+      "name": "SFS.UI.ScrollElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e67a7b93ded85664991b1f38f5bfb8b4",
+      "fileId": "1396704027"
+    },
+    {
+      "name": "SFS.UI.SizeSyncGroup, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "41149b8ff4b808845b77a36f3ff2b057",
+      "fileId": "-1095095441"
+    },
+    {
+      "name": "SFS.UI.SkipUI, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b6c0591fd4b6fd34190f671a2bc7b1a2",
+      "fileId": "-759315215"
+    },
+    {
+      "name": "SFS.UI.TextInputElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "af4e9766519ae7e4688dd3ff14a2546d",
+      "fileId": "563905122"
+    },
+    {
+      "name": "SFS.UI.ToggleButton, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5399c5088ac56f542846ca7b79cf26aa",
+      "fileId": "742662608"
+    },
+    {
+      "name": "SFS.UI.FillSlider, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c87c447c3dcbd6e4db84f422bd1aa769",
+      "fileId": "1743289427"
+    },
+    {
+      "name": "SFS.UI.Menu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4344cf2758ac4ce0a634231357140654",
+      "fileId": "212828465"
+    },
+    {
+      "name": "SFS.UI.BasicMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "01bd3a39676dce244b7ff6532dca1ff5",
+      "fileId": "607236279"
+    },
+    {
+      "name": "SFS.UI.LoadingScreen, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "31161735c300b264eb1dd87d069eb521",
+      "fileId": "108207866"
+    },
+    {
+      "name": "SFS.UI.LoadMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cdd0ec1d6f930d24ea3970ce8a77e2d1",
+      "fileId": "983242725"
+    },
+    {
+      "name": "SFS.UI.ReadMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2bfe8f1c7dc0c0449867cdfae05cf8bb",
+      "fileId": "-1105310172"
+    },
+    {
+      "name": "SFS.UI.ContainerElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8fa3d2a4bb49f704f9ceec8713a1a8dc",
+      "fileId": "1132591402"
+    },
+    {
+      "name": "SFS.UI.ContainerElementWithScaling, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "68d7e6f19114ee24ebff1ea998b2fd3c",
+      "fileId": "712041191"
+    },
+    {
+      "name": "SFS.UI.FitBetween, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "021917888a6589e4a90703d191cdc89c",
+      "fileId": "8349043"
+    },
+    {
+      "name": "SFS.UI.HorizontalLayout, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "103fef21ef1fac3459e8663805cd900c",
+      "fileId": "-1831898217"
+    },
+    {
+      "name": "SFS.UI.LayoutGroupUpdater, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4ac13649ddee26145b49a12264dbc6a9",
+      "fileId": "329221119"
+    },
+    {
+      "name": "SFS.UI.NewSizeSyncGroup, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3ad53b7bb4b6b2f4bb0ade561bd9b6c2",
+      "fileId": "1938249876"
+    },
+    {
+      "name": "SFS.UI.ReadTextContainer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "635569cef0544da4585aee072533b5e7",
+      "fileId": "-1197539993"
+    },
+    {
+      "name": "SFS.UI.ScaleTextToFit, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "20b67eeb53c34dc478fdaa8f2c5f491a",
+      "fileId": "1831867684"
+    },
+    {
+      "name": "SFS.UI.SettingsMenuSizer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4a2b8884a34c0534682dcd59fb9280c2",
+      "fileId": "-1134336718"
+    },
+    {
+      "name": "SFS.UI.VerticalLayout, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e1321803f85f08d46aeaadfe65ee4040",
+      "fileId": "95100207"
+    },
+    {
+      "name": "SFS.UI.ClampSize, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e29f0a15641f2bb49a9fe66fef19e9d7",
+      "fileId": "-1723004097"
+    },
+    {
+      "name": "SFS.UI.ForceUpdateLayout, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "13f32278fae1fc447be441c24a459ff7",
+      "fileId": "559257551"
+    },
+    {
+      "name": "SFS.UI.Margin, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ec78ffb8decfc0b439b387b0308390f4",
+      "fileId": "-480812062"
+    },
+    {
+      "name": "SFS.UI.MultiCycleUI, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "0da2fec399c7de54fad3f40bc628e446",
+      "fileId": "183754725"
+    },
+    {
+      "name": "SFS.UI.NewPadding, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "13b88450f87175145814f00ba68f92e5",
+      "fileId": "727221709"
+    },
+    {
+      "name": "SFS.UI.UIUpdater, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4cece7f4c00cb074887e58255a66117f",
+      "fileId": "-751695167"
+    },
+    {
+      "name": "SFS.UI.OptionsMenuDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ea01c2cfc4eec9c4cb732a2df80472d4",
+      "fileId": "-1823475205"
+    },
+    {
+      "name": "SFS.UI.BuildMenuBar, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8915ffc59c4821a46acf423fd3e9bd65",
+      "fileId": "1232292301"
+    },
+    {
+      "name": "SFS.UI.ButtonPC, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2729b4f856c1e474fbedc183cc833cb9",
+      "fileId": "1363961264"
+    },
+    {
+      "name": "SFS.UI.SliderText, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5ed4d2324cdaa314b9d9311dddf3ec80",
+      "fileId": "1619779705"
+    },
+    {
+      "name": "SFS.UI.ScreenTracker, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f3cdc2bdf49b3fe48a28eeae88fbbfc5",
+      "fileId": "-825434063"
+    },
+    {
+      "name": "SFS.UI.TextInputMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "64e0c7903e9793c4e95e607ca97ae44a",
+      "fileId": "-1483812363"
+    },
+    {
+      "name": "SFS.UI.TextAdapter, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "0572158c48e684e4a944a1145818eb3b",
+      "fileId": "-77638080"
+    },
+    {
+      "name": "SFS.UI.TextBoxAdapter, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "26236beae9d5ab34e9f654a8c62b4581",
+      "fileId": "-1299753372"
+    },
+    {
+      "name": "SFS.UI.AstronautElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a2fea52f5eed447c1a6aa78ab1fcb145",
+      "fileId": "273893082"
+    },
+    {
+      "name": "SFS.UI.AstronautMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6d6c4c0d4b9e54c3bb47e3b6af199454",
+      "fileId": "-1388497798"
+    },
+    {
+      "name": "SFS.UI.ResourceBar, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1169b080d2d4af844bc4347f4e35f03a",
+      "fileId": "804855659"
+    },
+    {
+      "name": "SFS.UI.CreateWorldMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "119b74ac093023646ab3f53425a640f2",
+      "fileId": "567764406"
+    },
+    {
+      "name": "SFS.UI.HomeManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a1e8cc281773bdc44a38d80ca4633823",
+      "fileId": "-1262095237"
+    },
+    {
+      "name": "SFS.UI.ProductThumbnail, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1877b57a1c3273346bc0de659f3ad7c9",
+      "fileId": "-2103753862"
+    },
+    {
+      "name": "SFS.UI.ShopManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "bf244e7f64b579f43bd2fbc810e70919",
+      "fileId": "-1758122184"
+    },
+    {
+      "name": "SFS.UI.ShopManagerMac, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e1ddc06446b8d441881a1cbef69be67d",
+      "fileId": "1639442789"
+    },
+    {
+      "name": "SFS.UI.WorldElement, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8aa443ecc4670c046bee83a2e4e348b7",
+      "fileId": "683967715"
+    },
+    {
+      "name": "SFS.UI.WorldsMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "eb52be24b52462741aace1f3435038be",
+      "fileId": "-754875112"
+    },
+    {
+      "name": "SFS.UI.ModGUI.ModGUIPrefabsLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9128da07d3d7406087f7046fee1fbb6c",
+      "fileId": "1079993399"
+    },
+    {
+      "name": "SFS.Cameras.ActiveCamera, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "39ec1f742c4130744806e73ca9ef8d5d",
+      "fileId": "-1692697086"
+    },
+    {
+      "name": "SFS.Cameras.CameraManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4ca5490dec10ceb429c0048e1934e59d",
+      "fileId": "1830444297"
+    },
+    {
+      "name": "SFS.Cameras.RotateToCamera, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1edbc153b2992664a9caafe1d307c07c",
+      "fileId": "-1041263897"
+    },
+    {
+      "name": "SFS.WorldBase.PlanetLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b434c998c843ef14fbae7edc0b4de6e4",
+      "fileId": "846860813"
+    },
+    {
+      "name": "SFS.WorldBase.Planet, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "74d2dedd089e1234ab91d92968c54fed",
+      "fileId": "1115742090"
+    },
+    {
+      "name": "SFS.WorldBase.SavingCache, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fb8bd97a553e06f47a8bffe57e402b58",
+      "fileId": "-383582578"
+    },
+    {
+      "name": "SFS.WorldBase.WorldBaseManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f1185770ccb9bda438ef6b9ee2495c6c",
+      "fileId": "540277794"
+    },
+    {
+      "name": "SFS.Parts.PartsLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4687f972ffb81cd4e90fbb4f461685dc",
+      "fileId": "-403069275"
+    },
+    {
+      "name": "SFS.Parts.WheelModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7ee8eac7d92bace43b0cce91e7c95af0",
+      "fileId": "1081445667"
+    },
+    {
+      "name": "SFS.Parts.Mass_Calculator, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1fcba9f257e8a4c4e94c32a06c97a630",
+      "fileId": "-1754797939"
+    },
+    {
+      "name": "SFS.Parts.Part, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a01d8382f787b844d84fe3e7463aba27",
+      "fileId": "-1014021694"
+    },
+    {
+      "name": "SFS.Parts.PartHolder, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7f5b07d2dc9f7bd48a9161a4e505a584",
+      "fileId": "-1280952283"
+    },
+    {
+      "name": "SFS.Parts.BasicTexture, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "01ae1bbf9dd329e4a8f37566e82a0a45",
+      "fileId": "-586868304"
+    },
+    {
+      "name": "SFS.Parts.ColorTexture, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5c70d8f290dd0284b87588ddf6666874",
+      "fileId": "-185659834"
+    },
+    {
+      "name": "SFS.Parts.ShadowTexture, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2a1ba2d54938fe34096d17240759d525",
+      "fileId": "555749273"
+    },
+    {
+      "name": "SFS.Parts.ShapeTexture, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "45ccf3a634b47aa4f9855acf05dfd568",
+      "fileId": "1458839645"
+    },
+    {
+      "name": "SFS.Parts.Modules.BuildColor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "31b24a0806d4df34497a904b5c6b34f8",
+      "fileId": "-346811509"
+    },
+    {
+      "name": "SFS.Parts.Modules.ColorByScene, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "dc5d9ad95fdd4d64ba2437b3c18b5cc3",
+      "fileId": "-289001643"
+    },
+    {
+      "name": "SFS.Parts.Modules.CompositeColor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1ba9be98b13bf3241914c12ab0fb70b9",
+      "fileId": "1944894077"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomColor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9a873e7ca6d71ab43882574053dd3e4b",
+      "fileId": "-1966220164"
+    },
+    {
+      "name": "SFS.Parts.Modules.SeparatorColor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "89c767a9f10ffcb4989efe531e614d3d",
+      "fileId": "-1791960119"
+    },
+    {
+      "name": "SFS.Parts.Modules.FramingColliderBounds, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a41afcd3996ef39488bbed28119ffd60",
+      "fileId": "-998081380"
+    },
+    {
+      "name": "SFS.Parts.Modules.FramingOverwrite, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5277bae21ccd6bd409512804e2e59049",
+      "fileId": "743925455"
+    },
+    {
+      "name": "SFS.Parts.Modules.LaunchColliderBounds, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fea0f1227ec40fd44a7dc0555dbb1e70",
+      "fileId": "-1789070109"
+    },
+    {
+      "name": "SFS.Parts.Modules.FlowModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f80098a90a69dcd45a1b26ae1e010609",
+      "fileId": "-499737371"
+    },
+    {
+      "name": "SFS.Parts.Modules.FuelPipeModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2c51951d95cc956419dbe236f21a7201",
+      "fileId": "2089160503"
+    },
+    {
+      "name": "SFS.Parts.Modules.ResourceModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "53592ab8d2400374095cd89a7c0ce93a",
+      "fileId": "-1720424799"
+    },
+    {
+      "name": "SFS.Parts.Modules.ResourceType, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "caf9598b7e92587409b925237ba19f43",
+      "fileId": "-211855599"
+    },
+    {
+      "name": "SFS.Parts.Modules.AdaptModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9e6816d1b05c0ac48bfc5b847420486e",
+      "fileId": "-461735712"
+    },
+    {
+      "name": "SFS.Parts.Modules.AdaptModuleEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5dc50ead68f37524990f0a28f4a94c27",
+      "fileId": "-2133821950"
+    },
+    {
+      "name": "SFS.Parts.Modules.AdaptTriggerModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "641659d31fdc50c4aa71e2efbc218dd3",
+      "fileId": "1070029276"
+    },
+    {
+      "name": "SFS.Parts.Modules.ColliderModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "369cca2bdbcf9f7469c6756a853359ce",
+      "fileId": "-1155477557"
+    },
+    {
+      "name": "SFS.Parts.Modules.DockingPortModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ff33105181e136640a381f448438be99",
+      "fileId": "271858156"
+    },
+    {
+      "name": "SFS.Parts.Modules.DockingPortTrigger, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3a1ef011fe0f13340bf801b1d4c5e690",
+      "fileId": "-1243716433"
+    },
+    {
+      "name": "SFS.Parts.Modules.LES_Module, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cb158562bf6724369ac490f56f1cff3a",
+      "fileId": "1300139358"
+    },
+    {
+      "name": "SFS.Parts.Modules.MagnetModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6ec10b9375b46f049ae5f1dea9294f6b",
+      "fileId": "1786943318"
+    },
+    {
+      "name": "SFS.Parts.Modules.PipeMesh, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b7560b24127b2fe45909a6821f093671",
+      "fileId": "1207039664"
+    },
+    {
+      "name": "SFS.Parts.Modules.PolygonMesh, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "34e483146094b00478fb1e25d75f7031",
+      "fileId": "1655588267"
+    },
+    {
+      "name": "SFS.Parts.Modules.PolygonMeshEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b22c4c5e9c3da2149be157b639266152",
+      "fileId": "1996194773"
+    },
+    {
+      "name": "SFS.Parts.Modules.SkinModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1a992037912a16d46a9e6c80c7e82ee8",
+      "fileId": "-2086810277"
+    },
+    {
+      "name": "SFS.Parts.Modules.ModelPolygon, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5b5e365081c43a144ab4e24bbd074522",
+      "fileId": "-821743974"
+    },
+    {
+      "name": "SFS.Parts.Modules.ModelPolygonEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5fccb8bfac0bc7a4cbe829dc24f65805",
+      "fileId": "81541433"
+    },
+    {
+      "name": "SFS.Parts.Modules.ModelSetup, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b2835b530abeda040a14756f8f2878cf",
+      "fileId": "-978776514"
+    },
+    {
+      "name": "SFS.Parts.Modules.ModelSurface, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "70da534af9787a448ac02011b35f992b",
+      "fileId": "-520379043"
+    },
+    {
+      "name": "SFS.Parts.Modules.ModelSurfaceEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "24ebd9c3437c1af42ad7d4ce866ff0ca",
+      "fileId": "-1984636961"
+    },
+    {
+      "name": "SFS.Parts.Modules.DisableOnNoFlow, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "17714af59f6ec924eacabb792195236b",
+      "fileId": "2112935887"
+    },
+    {
+      "name": "SFS.Parts.Modules.ExternalVariableModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2b1933727735ec24e80b0093a1748ea1",
+      "fileId": "-243264091"
+    },
+    {
+      "name": "SFS.Parts.Modules.MathModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "08d5f04d6ea54b1489357be5022f4158",
+      "fileId": "2122568612"
+    },
+    {
+      "name": "SFS.Parts.Modules.MultiStepToggleSequenceModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6a70125a5765e934a920266b67d0ad2d",
+      "fileId": "-1944500256"
+    },
+    {
+      "name": "SFS.Parts.Modules.VariableConverterModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4652a56d6e265d844867d72ad9839532",
+      "fileId": "2059917956"
+    },
+    {
+      "name": "SFS.Parts.Modules.OwnModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "923fbd2e77fe5b64593b1ea8b8a0903f",
+      "fileId": "1724422699"
+    },
+    {
+      "name": "SFS.Parts.Modules.Own_Size, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1907b263f139fee4782001469fdbc62f",
+      "fileId": "-1648760819"
+    },
+    {
+      "name": "SFS.Parts.Modules.BoosterModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "abd0f01495fae9840b6b102931a617e9",
+      "fileId": "20159721"
+    },
+    {
+      "name": "SFS.Parts.Modules.DetachModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3527b28af5e0c654b9c0ab8adc0e4bc1",
+      "fileId": "1563098368"
+    },
+    {
+      "name": "SFS.Parts.Modules.EngineModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c8f9cfaf9b4647048b56580331f1c4ef",
+      "fileId": "1745558161"
+    },
+    {
+      "name": "SFS.Parts.Modules.ParachuteModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "7efdbdf6d8d98d44e990068a822da0bb",
+      "fileId": "1201879278"
+    },
+    {
+      "name": "SFS.Parts.Modules.RcsModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ce7e6b04cd6d32b40958291f2c5bd3b1",
+      "fileId": "-798766729"
+    },
+    {
+      "name": "SFS.Parts.Modules.SplitModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ddf3712453291b64bb7eae45b7e64cfb",
+      "fileId": "-1645237708"
+    },
+    {
+      "name": "SFS.Parts.Modules.TorqueModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "31b57e6111e433f4cbee514dd9a8ad8c",
+      "fileId": "631258065"
+    },
+    {
+      "name": "SFS.Parts.Modules.CopyPipe, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "38edb0006bd6e494ebc666ef50872b49",
+      "fileId": "-1123027489"
+    },
+    {
+      "name": "SFS.Parts.Modules.CurvePipe, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6a240389b3fb78847bd0f99fe18f7347",
+      "fileId": "-1025454085"
+    },
+    {
+      "name": "SFS.Parts.Modules.CurvePipeEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "36ac1b15d3dbc524397b60fb73889943",
+      "fileId": "711706162"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomPipe, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "305b12a83390f5c488a64145b53f92bd",
+      "fileId": "993746803"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomPipeEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "08e22aaaa9ef4554f8953a4767f043b5",
+      "fileId": "1041657287"
+    },
+    {
+      "name": "SFS.Parts.Modules.EdgePipe, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e69c50ee2d43bf24f926eaceb39e286d",
+      "fileId": "-489138466"
+    },
+    {
+      "name": "SFS.Parts.Modules.SimplePipe, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8522a1b03f1d09c4e8f4581cc99ed617",
+      "fileId": "1817883200"
+    },
+    {
+      "name": "SFS.Parts.Modules.BoxPolygon, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "0921b189829c9a34e86b4aada194d845",
+      "fileId": "2126433352"
+    },
+    {
+      "name": "SFS.Parts.Modules.BoxPolygonEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4d151a04e453c63458f456c591e7b989",
+      "fileId": "230716566"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomPolygon, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "85fc94dccdd780049b4ac6eb441000b4",
+      "fileId": "-786196720"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomPolygonEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9c592a53e96fb524bb26490d1c5bd3f0",
+      "fileId": "-1009832588"
+    },
+    {
+      "name": "SFS.Parts.Modules.PolygonCollider, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e286d6d53d7956c42a93c464053e29e0",
+      "fileId": "735130809"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomSurfaces, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "495e6cd1dab54734f852b5de090da5d9",
+      "fileId": "926442106"
+    },
+    {
+      "name": "SFS.Parts.Modules.CustomSurfacesEditor, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a46f484d47c30d94d91df6a1cf6735ed",
+      "fileId": "-1724188208"
+    },
+    {
+      "name": "SFS.Parts.Modules.PipeSurface, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "235f7fe0eb7e6e247be3d0873216e511",
+      "fileId": "235522177"
+    },
+    {
+      "name": "SFS.Parts.Modules.SurfaceCollider, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f6ce56524b0003f4c9981a393990470d",
+      "fileId": "-1052702628"
+    },
+    {
+      "name": "SFS.Parts.Modules.BurnMark, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "322ac431e64964347b6ebf5f4be23aa5",
+      "fileId": "-1636135544"
+    },
+    {
+      "name": "SFS.Parts.Modules.StrutTexModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "de9d4d0815b052146afa46a616a60f2a",
+      "fileId": "-1054165795"
+    },
+    {
+      "name": "SFS.Parts.Modules.ActiveModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "43da11ace83e7914ab09245093179468",
+      "fileId": "992292831"
+    },
+    {
+      "name": "SFS.Parts.Modules.InteriorModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2eaac581eed06dc48bcaa946005d44fa",
+      "fileId": "1219306217"
+    },
+    {
+      "name": "SFS.Parts.Modules.MaterialByScene, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fb4ea4dd7d65ff54aa5cb7a811c05634",
+      "fileId": "1298502251"
+    },
+    {
+      "name": "SFS.Parts.Modules.OrientationModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d96e122f666f27140a430b6f43b5ac6a",
+      "fileId": "687606620"
+    },
+    {
+      "name": "SFS.Parts.Modules.PositionModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fbec2249583b4bc40b41d0e1a1fe813d",
+      "fileId": "-1397603401"
+    },
+    {
+      "name": "SFS.Parts.Modules.RotationModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "66d3e06166b5d814aa62c844f7f15d98",
+      "fileId": "-1490903038"
+    },
+    {
+      "name": "SFS.Parts.Modules.ScaleModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ab6d30894d171184e971a69debd01fb7",
+      "fileId": "1580710173"
+    },
+    {
+      "name": "SFS.Parts.Modules.ActivationSequenceModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6c4215c1465f2454f9543b4599017dfb",
+      "fileId": "2109583958"
+    },
+    {
+      "name": "SFS.Parts.Modules.ActivationZoneModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3029d8474a39a41528f580a2de6e4407",
+      "fileId": "-909452149"
+    },
+    {
+      "name": "SFS.Parts.Modules.AudioModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cc6a17878f0d6204a850235c0d58758a",
+      "fileId": "-747130860"
+    },
+    {
+      "name": "SFS.Parts.Modules.CannotClickModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "678d7f7353a6a7e4695a0d9cd4c80430",
+      "fileId": "-560042612"
+    },
+    {
+      "name": "SFS.Parts.Modules.CannotStageModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "30c5c5e3479f6f246b7ca416398a7a6d",
+      "fileId": "1047163757"
+    },
+    {
+      "name": "SFS.Parts.Modules.ControlModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1da3dc30ac33c3747af6b11851b21c7a",
+      "fileId": "-555962468"
+    },
+    {
+      "name": "SFS.Parts.Modules.FlameRandomizer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4f3b7a003b0f121499741d7c1bb83bde",
+      "fileId": "-1068648939"
+    },
+    {
+      "name": "SFS.Parts.Modules.HeatInfoModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3c3b0831cd1efad46931a600c0a15f7b",
+      "fileId": "1672151342"
+    },
+    {
+      "name": "SFS.Parts.Modules.HeatModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f3f71a660c8a1d240bb65a3429daf4ed",
+      "fileId": "-351713934"
+    },
+    {
+      "name": "SFS.Parts.Modules.IsCoveredModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "84ba4a0554ced4ae8a7315fb0188d9a6",
+      "fileId": "1601175828"
+    },
+    {
+      "name": "SFS.Parts.Modules.LinkModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "94b104ce571e3074d9682d1b5471e3a0",
+      "fileId": "-1312013712"
+    },
+    {
+      "name": "SFS.Parts.Modules.MassModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "64d8c3a7662cb3547bfcbb0baa5680a7",
+      "fileId": "-379167567"
+    },
+    {
+      "name": "SFS.Parts.Modules.MoveModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "552528028df376f4ea4a34bddcebb6e1",
+      "fileId": "1311664809"
+    },
+    {
+      "name": "SFS.Parts.Modules.MovingMassModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "37c1ae8f1ec12477bb06199fb7287931",
+      "fileId": "288021511"
+    },
+    {
+      "name": "SFS.Parts.Modules.SeparatorPanel, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3b5499ff33c2542b497ff6e86679a9a7",
+      "fileId": "-934130732"
+    },
+    {
+      "name": "SFS.Parts.Modules.ToggleModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5fb106702cd72414a8e4951698be39cf",
+      "fileId": "1839923542"
+    },
+    {
+      "name": "SFS.Parts.Modules.VariablesDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "3a1118b079a948f1aa60a90b1197c957",
+      "fileId": "2135586357"
+    },
+    {
+      "name": "SFS.Parts.Modules.EffectModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d5b657bc8fdf10f4596bd20d4d1cc68b",
+      "fileId": "154386350"
+    },
+    {
+      "name": "SFS.Parts.Modules.ParticleModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4bc160108685c6249b70928c5ac6f259",
+      "fileId": "956788737"
+    },
+    {
+      "name": "SFS.World.CrewModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fa667b0c3f976fc439449eb46aff48d5",
+      "fileId": "612085759"
+    },
+    {
+      "name": "SFS.World.SandboxSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f6a91fa410a7d1d47b78522f818a4716",
+      "fileId": "839152265"
+    },
+    {
+      "name": "SFS.World.TeleportMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a2a3af377a47494da6409c9d93d6ea39",
+      "fileId": "-1129702426"
+    },
+    {
+      "name": "SFS.World.AstronautManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "65088909c82ced24e8cdc2664f1c6d86",
+      "fileId": "1261095827"
+    },
+    {
+      "name": "SFS.World.Astronaut_EVA, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2dfebe3e290f76046b0cb78fd22ccee1",
+      "fileId": "-2131020632"
+    },
+    {
+      "name": "SFS.World.EVA_Resources, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "57221b32564e94123a6eaac211e50957",
+      "fileId": "867224486"
+    },
+    {
+      "name": "SFS.World.Physics, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ee5933025b20333459a14dac76801164",
+      "fileId": "99922791"
+    },
+    {
+      "name": "SFS.World.StaticWorldObject, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2d51ed9806781614381d360b922dbe23",
+      "fileId": "1384976500"
+    },
+    {
+      "name": "SFS.World.WorldLoader, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "289b1463fdfe57a4d9cd53ad6b5edeaf",
+      "fileId": "1331983788"
+    },
+    {
+      "name": "SFS.World.WorldLocation, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6a304ba4360851043964a55a17c8928d",
+      "fileId": "-1297291006"
+    },
+    {
+      "name": "SFS.World.AeroDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "65bc3fc70017c9247b4094872e636bbc",
+      "fileId": "1315333156"
+    },
+    {
+      "name": "SFS.World.ArrowkeysDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e7e33a488a86ba548a2312dde9ba350b",
+      "fileId": "-2135079141"
+    },
+    {
+      "name": "SFS.World.EndMissionMenu, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f31083f976c377145b85417425ae2b5d",
+      "fileId": "723181007"
+    },
+    {
+      "name": "SFS.World.FlightInfoDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "23eda97470881194d95b5ce8486f3f1b",
+      "fileId": "-298709877"
+    },
+    {
+      "name": "SFS.World.FuelTransferLine, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "19d14fb3fe0fb4945bdcfcea0d73f079",
+      "fileId": "-2131561445"
+    },
+    {
+      "name": "SFS.World.FuelTransferUI, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8cb041f0bb597fe4db6f71b1c25c16c8",
+      "fileId": "-1433899215"
+    },
+    {
+      "name": "SFS.World.GameMenuLayout_Mobile, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f45d8e382f741944da994d3422f473f5",
+      "fileId": "-250516911"
+    },
+    {
+      "name": "SFS.World.GameMenus, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "b95f468b551deb244aaf8cd430df8341",
+      "fileId": "-1362855816"
+    },
+    {
+      "name": "SFS.World.LocationDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "51613e40f00992b439e377dc0698fac4",
+      "fileId": "-1877068955"
+    },
+    {
+      "name": "SFS.World.ResourceDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5f7ca93e88ed6684080f47007619267d",
+      "fileId": "663452429"
+    },
+    {
+      "name": "SFS.World.StageUI, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "18fcf2fd49377a74cb1a8caed2db6469",
+      "fileId": "-7158848"
+    },
+    {
+      "name": "SFS.World.StagingDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1472edd08efc57a4796b095777b35193",
+      "fileId": "2055850328"
+    },
+    {
+      "name": "SFS.World.ThrottleDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "4282af23a1714c34b995237820635053",
+      "fileId": "935943342"
+    },
+    {
+      "name": "SFS.World.VelocityArrowDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "453d84a1de6eb3240aad66bb77a86507",
+      "fileId": "-285940634"
+    },
+    {
+      "name": "SFS.World.Atmosphere, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "76fc8bf4a0bddbb4da241dc2f6615a28",
+      "fileId": "-1187479392"
+    },
+    {
+      "name": "SFS.World.FrontClouds, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f55959bfa3114b268e0ebf1d88307950",
+      "fileId": "-1692953529"
+    },
+    {
+      "name": "SFS.World.Rings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "76cd9750631e44e4bd406d0dc6d9be20",
+      "fileId": "1552825907"
+    },
+    {
+      "name": "SFS.World.RockSelector, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "37ad638cea04f48228cbffe7cebfe242",
+      "fileId": "838078334"
+    },
+    {
+      "name": "SFS.World.WorldEnvironment, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "90fd4e050e1d76849a357cebd6d1d4e2",
+      "fileId": "796411043"
+    },
+    {
+      "name": "SFS.World.EffectManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "24012785bef500c46be2bab3f4bed448",
+      "fileId": "-11034585"
+    },
+    {
+      "name": "SFS.World.WorldEffect, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "08b8299614c2c434aaf1b46203047077",
+      "fileId": "314798503"
+    },
+    {
+      "name": "SFS.World.Flag, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "be088d3ce1558a2418e388c7d5a6b2d3",
+      "fileId": "426363753"
+    },
+    {
+      "name": "SFS.World.GameCamerasManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "26bac11a7b3a4c4cb89376d7f243cc55",
+      "fileId": "-930014601"
+    },
+    {
+      "name": "SFS.World.GameManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "556aeec85d04c464a849ae9077dc9c57",
+      "fileId": "81707147"
+    },
+    {
+      "name": "SFS.World.ElementDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f4ed14ce97abc144cb4a6b0f286866c4",
+      "fileId": "-2074769883"
+    },
+    {
+      "name": "SFS.World.GameSelector, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "cc2842b4edbb74d4f87dc55e88d55fba",
+      "fileId": "-818269819"
+    },
+    {
+      "name": "SFS.World.Arrowkeys, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d1e0583720be84e449264a694eb49f15",
+      "fileId": "1438542475"
+    },
+    {
+      "name": "SFS.World.Resources, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d9980dd79a1fdc444960a417a8700e3e",
+      "fileId": "-580122523"
+    },
+    {
+      "name": "SFS.World.Staging, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c8cd6d7dc6bc9b240858ab1d036a268e",
+      "fileId": "-356679679"
+    },
+    {
+      "name": "SFS.World.Throttle, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a2717e700cea6db4e964ea299358a49a",
+      "fileId": "1846855805"
+    },
+    {
+      "name": "SFS.World.PlayerController, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "9f06a628fa878014ea5b7097d59d93ca",
+      "fileId": "-574482236"
+    },
+    {
+      "name": "SFS.World.Rocket, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a32ff1550ac70824ea78daeda457d640",
+      "fileId": "255771080"
+    },
+    {
+      "name": "SFS.World.RocketManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c632d86ff921ea94595b48e1616b455f",
+      "fileId": "1793396831"
+    },
+    {
+      "name": "SFS.World.SpaceCenter, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e85b2396121f36e4b93b362db5646e5a",
+      "fileId": "1572897939"
+    },
+    {
+      "name": "SFS.World.WorldParticle, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "31c48842d55dbcd41beae80ad62e1d02",
+      "fileId": "1272307124"
+    },
+    {
+      "name": "SFS.World.WorldSmoke, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "18a8c2077a9054aee85e79c5f2ed6f05",
+      "fileId": "501566690"
+    },
+    {
+      "name": "SFS.World.WorldTime, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "5da2b366ddb469c4f9157076e22dc868",
+      "fileId": "-2054228002"
+    },
+    {
+      "name": "SFS.World.WorldView, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c1fac684636a024488bf7f0ac7bc0878",
+      "fileId": "-1670080321"
+    },
+    {
+      "name": "SFS.World.Terrain.DynamicTerrain, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "0d1857578a6ae8e4b940566f9456789a",
+      "fileId": "705100725"
+    },
+    {
+      "name": "SFS.World.Terrain.TerrainColliderManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "e266802dfd992d043a9c0159e51a1530",
+      "fileId": "-736874969"
+    },
+    {
+      "name": "SFS.World.Terrain.TerrainColliderModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "646f947910a057341a45016525446dc9",
+      "fileId": "-1047119291"
+    },
+    {
+      "name": "SFS.World.Maps.MapAstronaut, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8fe3df357cb908e40ad11865ba648036",
+      "fileId": "1700099630"
+    },
+    {
+      "name": "SFS.World.Maps.Landmark, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a329ffcc1fce53f4bb6d7ea5544c9a5c",
+      "fileId": "1115247673"
+    },
+    {
+      "name": "SFS.World.Maps.MapFlag, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ac5843df6a2e0c3489548b0f73e8fac2",
+      "fileId": "-491984628"
+    },
+    {
+      "name": "SFS.World.Maps.LineDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "430ee7f1bd36ea64aab92d02f421456a",
+      "fileId": "1840770171"
+    },
+    {
+      "name": "SFS.World.Maps.Map, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "11895ba5fd6e50648b8945c3ea8e6d03",
+      "fileId": "1802538822"
+    },
+    {
+      "name": "SFS.World.Maps.MapDrawer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "266f69d448220f940b9190f7fd720c8d",
+      "fileId": "209863755"
+    },
+    {
+      "name": "SFS.World.Maps.MapEnvironment, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a8e9ec60cc37d824991199501672cb6b",
+      "fileId": "-372614504"
+    },
+    {
+      "name": "SFS.World.Maps.MapIcon, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "ddf1bb298747d0648b0b1b695f416afc",
+      "fileId": "-816890350"
+    },
+    {
+      "name": "SFS.World.Maps.MapManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "de1a54cb5ffb1124abf09317c36e40ea",
+      "fileId": "-1258405752"
+    },
+    {
+      "name": "SFS.World.Maps.MapNavigation, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "121c55a74626a3d4a8905455e1d42322",
+      "fileId": "29088929"
+    },
+    {
+      "name": "SFS.World.Maps.MapPlanet, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "107868e405b12724da5d68e36e861393",
+      "fileId": "1629537119"
+    },
+    {
+      "name": "SFS.World.Maps.MapRocket, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "d743d08769dbe7b4a9759cffebfa73a4",
+      "fileId": "-1147679165"
+    },
+    {
+      "name": "SFS.World.Maps.MapView, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "209b81f0bb4d5074f9affd34f7149cc8",
+      "fileId": "-1326881919"
+    },
+    {
+      "name": "SFS.World.Maps.TimewarpTo, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a50cabc988d7c7941af0a92006367dce",
+      "fileId": "1458062184"
+    },
+    {
+      "name": "SFS.World.Drag.HeatManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c1deb44b11e9c654ea77df74b43ebaef",
+      "fileId": "-1367289678"
+    },
+    {
+      "name": "SFS.World.Drag.Water_Rocket, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8021ecf8259346b7830f9e769560ddf4",
+      "fileId": "-303115627"
+    },
+    {
+      "name": "SFS.World.Drag.Aero_Astronaut, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8f2a794b74b67514faa34fbfa1332a2f",
+      "fileId": "-2137766326"
+    },
+    {
+      "name": "SFS.World.Drag.Aero_Rocket, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "6b87792ac1522c44abc253124a90b6a2",
+      "fileId": "-2084979699"
+    },
+    {
+      "name": "SFS.IO.DisableSavingReceiver, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "284e199d0faa09641bbe1fa76a6dcdc4",
+      "fileId": "86077083"
+    },
+    {
+      "name": "SFS.Input.InputManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "2fac3400f54a313449202e92a2ba0683",
+      "fileId": "-1791806692"
+    },
+    {
+      "name": "SFS.Input.InputMask2D, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "79948446067247a6bfd56312ede36342",
+      "fileId": "-1370189905"
+    },
+    {
+      "name": "SFS.Input.ScreenManager, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "a9b07b784a525bf4ea6ce1c32c6e7c29",
+      "fileId": "-1108771912"
+    },
+    {
+      "name": "SFS.Input.Screen_Game, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "8615a8f4a87eef44eb8830113426eba7",
+      "fileId": "-2034596194"
+    },
+    {
+      "name": "SFS.Input.TextBox, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f5b749768e5785442b695e6776c8e32e",
+      "fileId": "1469468740"
+    },
+    {
+      "name": "SFS.Input.KeyBinder, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "79f0bc7ab25215a4b9914bdd0ac83840",
+      "fileId": "334025075"
+    },
+    {
+      "name": "SFS.Input.KeybindingsPC, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "56bdf513a7596db469bce8995e4e4360",
+      "fileId": "1511659411"
+    },
+    {
+      "name": "SFS.Variables.VariablesModule, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1c86f5a5df11278449447b85a93fd5f8",
+      "fileId": "1362158000"
+    },
+    {
+      "name": "SFS.Audio.MusicPlaylist, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "c3dacc9ddb84c5c47b99755cdd3d3005",
+      "fileId": "980957776"
+    },
+    {
+      "name": "SFS.Audio.MusicPlaylistPlayer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "fa9873c0d74434241abd5187a74701dd",
+      "fileId": "1658480195"
+    },
+    {
+      "name": "SFS.Audio.SoundEffect, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "f569ca35f6a6dbf4b9627f3196a85077",
+      "fileId": "1597403402"
+    },
+    {
+      "name": "SFS.Audio.SoundPlayer, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "1b1cf9e32fcc9134287380770b8ea326",
+      "fileId": "403519432"
+    },
+    {
+      "name": "SFS.Audio.AudioSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "932e5cd2b037f504ebfd0e027e6d6662",
+      "fileId": "-761915444"
+    },
+    {
+      "name": "SFS.Analytics.ABTests, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "87be39c7213f4576b052542d99cd368b",
+      "fileId": "95480304"
+    },
+    {
+      "name": "SFS.Analytics.FbRemoteSettings, SFS, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "guid": "089b092aa61cdea4d86bd095a7f32602",
+      "fileId": "-1467230860"
+    }
+  ]
+}
