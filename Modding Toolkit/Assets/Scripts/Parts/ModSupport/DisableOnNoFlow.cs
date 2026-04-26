@@ -1,6 +1,6 @@
 using SFS.Parts.Modules;
 using SFS.Translations;
-using SFS.UI;
+//using SFS.UI;
 using SFS.Variables;
 using SFS.World;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace SFS.Parts.Modules
 
         void Update()
         {
-            if (GameManager.main == null || !on.Value)
+            /*if (GameManager.main == null || !on.Value)
             {
                 previousFrameWasOn = on.Value;
                 return;
@@ -38,7 +38,7 @@ namespace SFS.Parts.Modules
                 break;
             }
 
-            previousFrameWasOn = on.Value;
+            previousFrameWasOn = on.Value;*/
         }
     }
 }

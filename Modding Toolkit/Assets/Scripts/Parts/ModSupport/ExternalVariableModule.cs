@@ -3,12 +3,12 @@ using SFS.Variables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using SFS.World;
-using SFS.World.Drag;
+//using SFS.World.Drag;
 using Dref = SFS.Variables.Double_Reference;
 
 namespace SFS.Parts.Modules
 {
-	public class ExternalVariableModule : MonoBehaviour, Rocket.INJ_Rocket
+	public class ExternalVariableModule : MonoBehaviour//, Rocket.INJ_Rocket
 	{
 		[Title("Timewarp")] public Dref physicsTimeScale = new();
 		public Dref railsTimewarp = new();
@@ -38,7 +38,7 @@ namespace SFS.Parts.Modules
 		public Dref globalRotation = new();
 
 		OrientationModule ormod;
-		HeatModuleBase hmb;
+		/*HeatModuleBase hmb;
 		Rocket rkt;
 
 		public Rocket Rocket
@@ -103,6 +103,6 @@ namespace SFS.Parts.Modules
 			{
 				partTemperature.Value = hmb.Temperature;
 			}
-		}
+		}*/
 	}
 }

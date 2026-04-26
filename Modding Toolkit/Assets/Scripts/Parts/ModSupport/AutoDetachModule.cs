@@ -4,7 +4,7 @@ using SFS.Parts.Modules;
 using SFS.World;
 using System.Collections.Generic;
 using UnityEngine;
-using static SFS.World.Rocket;
+//using static SFS.World.Rocket;
 
 /**
  * Author: dani0105
@@ -13,9 +13,9 @@ using static SFS.World.Rocket;
  *  Automatic separation of parts connected with this module.
  * </summary>
  */
-public class AutoDetachModule : MonoBehaviour, INJ_Rocket
+public class AutoDetachModule : MonoBehaviour //, INJ_Rocket
 {
-    public Rocket Rocket { set; private get; }
+    //public Rocket Rocket { set; private get; }
     public Part Part;
 
     // list of priority parts to detach before the default detach module
@@ -27,18 +27,18 @@ public class AutoDetachModule : MonoBehaviour, INJ_Rocket
     List<Part> _visited;
     const short _max_search_level = 3;
     
-    void Awake()
+    /*void Awake()
     {
         _currentStage = 0;
         _visited = new List<Part>();
-    }
+    }*/
 
     /**
      * <summary>
      *  Search for a specific part of the rocket with a maximum deep search
      * </summary>
      */
-    Part SearchPart(string partName, Part startPoint, int level)
+    /*Part SearchPart(string partName, Part startPoint, int level)
     {
         _visited.Add(startPoint);
         if(level >= _max_search_level)
@@ -59,7 +59,7 @@ public class AutoDetachModule : MonoBehaviour, INJ_Rocket
                 return otherPart;
         }
         return null;
-    }
+    }*/
 
     /**
      * <summary>
@@ -79,7 +79,7 @@ public class AutoDetachModule : MonoBehaviour, INJ_Rocket
     public void OnDetach(UsePartData data)
     {
         // if was call from stage
-        if (data.sharedData.fromStaging)
+        /*if (data.sharedData.fromStaging)
         {
 
             if (_currentStage + 1 == partToDetach.Length || partToDetach.Length == 0) detachModule.Detach(data);
@@ -106,6 +106,6 @@ public class AutoDetachModule : MonoBehaviour, INJ_Rocket
         }
 
         foreach (DetachModule a in otherPartModule)
-            a.Detach(data);
+            a.Detach(data);*/
     }
 }

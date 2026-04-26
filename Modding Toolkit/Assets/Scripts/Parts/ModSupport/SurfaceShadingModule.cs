@@ -1,17 +1,17 @@
 ﻿using SFS.World;
-using SFS.World.PlanetModules;
+//using SFS.World.PlanetModules;
 using UnityEngine;
 
 namespace InterplanetaryModule
 {
-    public class SurfaceShadingModule : MonoBehaviour, Rocket.INJ_Location
+    public class SurfaceShadingModule : MonoBehaviour//, Rocket.INJ_Location
     {
         public Texture2D shadowTexture;
         public SpriteRenderer spriteRenderer;
         public Transform rotationTransform;
         public Color baseColor = Color.white;
 
-        Location location;
+        /*Location location;
         Location Rocket.INJ_Location.Location
         {
             set => location = value;
@@ -43,6 +43,6 @@ namespace InterplanetaryModule
             }
             spriteRenderer.color = color;
             // Debug.Log(initialAngle.Value + " -> " + sign * rotationTransform.localEulerAngles.y + ", " + t);
-        }
+        }*/
     }
 }

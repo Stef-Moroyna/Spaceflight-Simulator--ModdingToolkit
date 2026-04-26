@@ -5,19 +5,19 @@ using UnityEngine;
 
 namespace InterplanetaryModule
 {
-    public class FlapModule : MonoBehaviour, Rocket.INJ_TurnAxisTorque, Rocket.INJ_Location
+    public class FlapModule : MonoBehaviour //, Rocket.INJ_TurnAxisTorque, Rocket.INJ_Location
     {
         public MoveModule moveModule;
         public Float_Reference duration;
         public bool unscaledTime;
         public Bool_Reference activated;
-        Location location;
+        //Location location;
         float turnAxis;
         public TorqueModule torqueModule;
         public float coefficient;
 
 
-        Location Rocket.INJ_Location.Location
+        /*Location Rocket.INJ_Location.Location
         {
             set => location = value;
         }
@@ -38,6 +38,6 @@ namespace InterplanetaryModule
             float delta = (duration.Value != 0) ? deltaTime / duration.Value : 10000f;
             float destination = activated.Value ? turnAxis : 0;
             moveModule.time.Value = Mathf.MoveTowards(moveModule.time.Value, destination, delta);
-        }
+        }*/
     }
 }

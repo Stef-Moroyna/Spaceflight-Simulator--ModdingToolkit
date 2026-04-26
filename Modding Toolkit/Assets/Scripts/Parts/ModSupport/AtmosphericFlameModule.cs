@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace InterplanetaryModule
 {
-    public class AtmosphericFlameModule : MonoBehaviour, Rocket.INJ_Location
+    public class AtmosphericFlameModule : MonoBehaviour //, Rocket.INJ_Location
     {
         public float maxPressure = 0.005f;
         public MoveModule moveModule;
-        Location location;
+        //Location location;
 
-        Location Rocket.INJ_Location.Location
+        /*Location Rocket.INJ_Location.Location
         {
             set
             {
@@ -24,6 +24,6 @@ namespace InterplanetaryModule
             if (location == null) return;
             float pressure = (float) location.planet.GetAtmosphericDensity(location.Height);
             moveModule.time.Value = Mathf.Clamp01(pressure / maxPressure);
-        }
+        }*/
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using SFS.Translations;
-using SFS.UI;
+//using SFS.UI;
 using SFS.Variables;
 using SFS.World;
 using SFS.Parts;
@@ -10,9 +10,9 @@ using UnityEngine.Events;
 
 namespace InterplanetaryModule
 {
-    public class BalloonModule : MonoBehaviour, Rocket.INJ_Location, Rocket.INJ_Physics, I_PartMenu
+    public class BalloonModule : MonoBehaviour //, Rocket.INJ_Location, Rocket.INJ_Physics, I_PartMenu
     {
-        public Location Location { private get; set; }
+        //public Location Location { private get; set; }
         public Rigidbody2D Rb2d { get; set; }
 
         public Float_Reference radius;
@@ -33,14 +33,14 @@ namespace InterplanetaryModule
         [Space]
         public UnityEvent onDeploy;
 
-        void I_PartMenu.Draw(StatsMenu drawer, PartDrawSettings settings)
+        /*void I_PartMenu.Draw(StatsMenu drawer, PartDrawSettings settings)
         {
             // drawer.DrawStat(40, Loc.main.Info_Parachute_Max_Height.Inject(maxDeployHeight.ToDistanceString(true), "height"), null);
-        }
+        }*/
 
         public void DeployBalloon(UsePartData data)
         {
-            bool flag = false;
+            /*bool flag = false;
             double num = Location.planet.HasAtmospherePhysics ? Location.planet.data.atmospherePhysics.parachuteMultiplier : 1.0;
             if (targetState.Value == 0f && state.Value == 0f)
             {
@@ -67,16 +67,16 @@ namespace InterplanetaryModule
             else if (targetState.Value == 3f)
                 flag = true;
             if (!flag)
-                data.successfullyUsedPart = false;
+                data.successfullyUsedPart = false;*/
         }
 
         void Start()
         {
-            if (GameManager.main == null)
+            /*if (GameManager.main == null)
             {
                 enabled = false;
                 return;
-            }
+            }*/
             targetState.OnChange += UpdateEnabled;
         }
 
@@ -85,7 +85,7 @@ namespace InterplanetaryModule
             enabled = (targetState.Value == 1f || targetState.Value == 2f);
         }
 
-        void FixedUpdate()
+        /*void FixedUpdate()
         {
             if (state.Value == 0f) return;
             double scaledRadius = radius.Value * (state.Value / 2);
@@ -143,6 +143,6 @@ namespace InterplanetaryModule
                 0f,
                 angle + Mathf.Sin(Time.time) * 3f * balloon.parent.lossyScale.x * balloon.parent.lossyScale.y
             );
-        }
+        }*/
     }
 }
