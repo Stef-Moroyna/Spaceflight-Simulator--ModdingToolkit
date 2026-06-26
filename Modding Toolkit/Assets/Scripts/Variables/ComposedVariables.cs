@@ -41,6 +41,7 @@ namespace SFS.Variables
         }
 
         protected override bool Equals(Pipe a, Pipe b) => false;
+        protected override void Overwrite(Pipe a) {}
     }
     [Serializable, InlineProperty, HideReferenceObjectPicker, PropertySpace(0, 2)] public class Composed_PipePoint : Composed<PipePoint>
     {
@@ -58,6 +59,7 @@ namespace SFS.Variables
         }
 
         protected override bool Equals(PipePoint a, PipePoint b) => false;
+        protected override void Overwrite(PipePoint a) {}
 
         public Composed_PipePoint(Vector2 position, Vector2 width)
         {
@@ -80,8 +82,9 @@ namespace SFS.Variables
             
             return new Rect(position.Value, size.Value);
         }
-
+        
         protected override bool Equals(Rect a, Rect b) => false;
+        protected override void Overwrite(Rect a) {}
     }
     [Serializable, InlineProperty, HideReferenceObjectPicker, PropertySpace(0, 2)] public class Composed_Vector2 : Composed<Vector2>
     {
@@ -99,6 +102,11 @@ namespace SFS.Variables
         }
 
         protected override bool Equals(Vector2 a, Vector2 b) => a == b;
+        protected override void Overwrite(Vector2 a)
+        {
+            x.Value = a.x;
+            y.Value = a.y;
+        }
 
         public Composed_Vector2(Vector2 a)
         {
@@ -136,7 +144,8 @@ namespace SFS.Variables
         }
 
         protected override bool Equals(float a, float b) => a == b;
-
+        protected override void Overwrite(float a) => input = "#" + a;
+        
         public Composed_Float(string a)
         {
             input = a;
@@ -175,6 +184,7 @@ namespace SFS.Variables
         }
 
         protected override bool Equals(double a, double b) => a == b;
+        protected override void Overwrite(double a) => input = "#" + a;
     }
 
     // Abstract/Generic base
@@ -203,6 +213,13 @@ namespace SFS.Variables
             }
             set
             {
+                initialized = Application.isPlaying; // If set manually, marks as initialized
+                
+                #if UNITY_EDITOR
+                if (Application.isPlaying)
+                    Overwrite(value);
+                #endif
+                
                 if (Equals(this.value, value))
                     return;
                 
@@ -269,5 +286,6 @@ namespace SFS.Variables
         
         protected abstract T GetResult(bool initialize);
         protected abstract bool Equals(T a, T b);
+        protected abstract void Overwrite(T a);
     }
 }

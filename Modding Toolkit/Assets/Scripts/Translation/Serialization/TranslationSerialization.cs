@@ -21,7 +21,7 @@ namespace SFS.Translations
 
                 Field field = propertyInfo.GetValue(translation) as Field;
                 foreach (Func<string, string> exportFunction in group.subExports)
-                    field?.SetSub(field.GetSubs().Length, exportFunction(field));
+                    field?.SetSub(field.subs.Count, exportFunction(field));
             }
             
             IniConverter converter = new IniConverter();
@@ -35,15 +35,15 @@ namespace SFS.Translations
                 FieldReference info = new FieldReference(propertyInfo.Name, group.Name);
                 Field subs = propertyInfo.GetValue(translation) as Field;
                 // ReSharper disable once PossibleNullReferenceException
-                bool hasSubGroup = subs.GetSubs().Length > 1 || group.hasSubs || propertyInfo.GetCustomAttributes<MarkAsSub>().Any();
+                bool hasSubGroup = subs.subs.Count > 1 || group.hasSubs || propertyInfo.GetCustomAttributes<MarkAsSub>().Any();
                 bool isFirstSub = true;
 
-                foreach ((int, string) sub in subs.GetSubs())
+                foreach (KeyValuePair<int, string> sub in subs.subs)
                 {
                     IniDataSection section = converter.GetSection(info.group);
 
-                    IniDataEnv.Value value = new IniDataEnv.Value(sub.Item2);
-                    section[hasSubGroup ? info.name + "{" + sub.Item1 + "}" : info.name] = value;
+                    IniDataEnv.Value value = new IniDataEnv.Value(sub.Value);
+                    section[hasSubGroup ? info.name + "{" + sub.Key + "}" : info.name] = value;
 
                     LocSpace locSpaceAttribute = propertyInfo.GetCustomAttribute<LocSpace>();
                     Documentation documentationAttribute = propertyInfo.GetCustomAttribute<Documentation>();
@@ -105,8 +105,8 @@ namespace SFS.Translations
                 Field output_Field = propertyInfo.GetMethod.Invoke(output, new object[0]) as Field;
 
                 // Finds changed fields
-                foreach ((int, string) sub in output_Field.GetSubs())
-                    if (!toInject.HasSub(sub.Item1) || sub.Item2 != output_Field.GetSub(sub.Item1))
+                foreach (KeyValuePair<int, string> sub in output_Field.subs)
+                    if (!toInject.HasSub(sub.Key) || sub.Value != output_Field.GetSub(sub.Key))
                         changed.Add(field);
 
                 // Injects translation
@@ -120,35 +120,49 @@ namespace SFS.Translations
             IniConverter iniConverter = new IniConverter(iniText);
             Dictionary<FieldReference, Field> translations = new Dictionary<FieldReference, Field>();
 
-            SimpleRegex subGroupRegex = new SimpleRegex(@"(?<name>.*){(?<number>\d*)}");
-
+            string[] sectionNames = iniConverter.GetSectionNames();
             // Collect all translations
-            foreach (string sectionName in iniConverter.GetSectionNames())
+            for (int i = 0; i < sectionNames.Length; i++)
             {
+                string sectionName = sectionNames[i];
                 IniDataSection dataSection = iniConverter.GetSection(sectionName);
 
                 string groupName = sectionName;
 
                 foreach (KeyValuePair<string, IniDataEnv.Value> pair in dataSection.data)
                 {
-                    FieldReference info = new FieldReference(pair.Key, groupName);
-
+                    string fieldName = pair.Key;
                     int subGroup = 0;
 
-                    if (subGroupRegex.Input(info.name))
+                    // Fast string parsing instead of regex
+                    int openBrace = fieldName.LastIndexOf('{');
+                    if (openBrace >= 0)
                     {
-                        info.name = subGroupRegex.GetGroup("name").Value;
-
-                        if (!int.TryParse(subGroupRegex.GetGroup("number").Value, out subGroup))
+                        if (fieldName[fieldName.Length - 1] != '}')
+                        {
+                            Debug.LogError($"Wrong Translation key syntax:{fieldName}");
                             continue;
+                        }
+
+                        string numberPart = fieldName.Substring(openBrace + 1, fieldName.Length - openBrace - 2);
+                        
+                        if (int.TryParse(numberPart, out subGroup))
+                        {
+                            fieldName = fieldName.Substring(0, openBrace);
+                        }
+                        // If parse fails, treat as regular field name (no modification)
                     }
 
-                    Field field = new Field();
+                    FieldReference info = new FieldReference(fieldName, groupName);
 
+                    Field field;
                     if (translations.ContainsKey(info))
                         field = translations[info];
                     else
+                    {
+                        field = new Field();
                         translations[info] = field;
+                    }
 
                     field.SetSub(subGroup, pair.Value.value);
                 }
@@ -161,6 +175,16 @@ namespace SFS.Translations
         public static T CreateTranslation<T>() where T : new()
         {
             return new T();
+        }
+        public static SFS_Translation CreateTranslation()
+        {
+            SFS_Translation translation = new SFS_Translation();
+
+            foreach ((PropertyInfo propertyInfo, Group _) in GetFieldReferences<SFS_Translation>())
+                if (propertyInfo.GetValue(translation) is Field field)
+                    translation.fields[propertyInfo.Name] = field;
+
+            return translation;
         }
 
         // Utility
@@ -189,5 +213,68 @@ namespace SFS.Translations
 
             return properties;
         }
+    }
+    
+    // Attributes
+    public class Unexported : Attribute { }
+    public class MarkAsSub : Attribute { }
+    
+    public class LocSpace : Attribute
+    {
+        public readonly int amount;
+        public readonly bool attachToGroup;
+
+        public LocSpace(int amount = 1, bool attachToGroup = false)
+        {
+            this.amount = amount;
+            this.attachToGroup = attachToGroup;
+        }
+    }
+    
+    public class Group : Attribute
+    {
+        public string Name { get; }
+        public bool hasSubs;
+        public List<Func<string, string>> subExports = new List<Func<string, string>>();
+        
+        public Group(string name)
+        {
+            Name = name;
+        }
+    }
+    
+    public class Documentation : Attribute
+    {
+        public string comment;
+        public bool attachToGroup;
+        public bool afterLine;
+
+        public Documentation(string comment, bool attachToGroup = false, bool afterLine = false)
+        {
+            this.comment = comment;
+            this.attachToGroup = attachToGroup;
+            this.afterLine = afterLine;
+        }
+    }
+}
+
+public class LLMComment : Attribute
+{
+    public string comment;
+
+    public LLMComment(string comment)
+    {
+        this.comment = comment;
+    }
+}
+
+/// <summary>
+/// Give a shortened version of this word.
+/// </summary>
+public class LLMCommentShorten : LLMComment
+{
+    public LLMCommentShorten(string comment)
+        : base($"If this translates with too many characters, shorten it to {comment}")
+    {
     }
 }

@@ -130,20 +130,20 @@ namespace SFS.Variables
                 get => save.name;
                 set => save.name = value;
             }
+            #endif
             [ShowInInspector]
-            bool Save
+            public bool Save
             {
                 get => save.save;
                 set => save.save = value;
             }
-            #endif
 
             VariableSave save;
             T value;
 
-            public event Action onValueChange;
-            public event Action<T> onValueChangeNew;
-            public event Action<T, T> onValueChangeOldNew;
+            [HideInInspector] public Action onValueChange;
+            [HideInInspector] public Action<T> onValueChangeNew;
+            [HideInInspector] public Action<T, T> onValueChangeOldNew;
 
             public Variable()
             {
@@ -179,7 +179,6 @@ namespace SFS.Variables
                     onValueChangeOldNew?.Invoke(oldValue, value);
                 }
             }
-
 
             VariableSave IVariable.GetSave() => save;
             void IVariable.SaveAsBytes()

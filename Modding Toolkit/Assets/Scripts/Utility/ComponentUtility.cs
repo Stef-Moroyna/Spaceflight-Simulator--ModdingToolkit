@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -79,5 +79,39 @@ public static class Component_Utility
     public static RectTransform GetRect(this Transform transform)
     {
         return (RectTransform)transform;
+    }
+
+    public static string GetPath(this Component component)
+    {
+        Stack<string> parts = new();
+
+        Transform t = component.transform;
+        while (t)
+        {
+            parts.Push(t.name);
+            t = t.parent;
+        }
+
+        return string.Join("/", parts);
+    }
+}
+
+public static class Transform_Utility
+{
+    public static Vector2 LocalToLocalPoint(Component a, Component b, Vector2 point)
+    {
+        return b.transform.InverseTransformPoint(a.transform.TransformPoint(point));
+    }
+    public static Vector2 LocalToLocalDirection(Component a, Component b, Vector2 direction)
+    {
+        return b.transform.InverseTransformDirection(a.transform.TransformDirection(direction));
+    }
+    public static Vector2 TransformVectorUnscaled(this Transform a, Vector2 force)
+    {
+        return a.TransformVector(force / new Vector2(Mathf.Abs(a.lossyScale.x), Mathf.Abs(a.lossyScale.y)));
+    }
+    public static float RotationDirection(this Transform a)
+    {
+        return Mathf.Sign(a.lossyScale.x * a.lossyScale.y);
     }
 }

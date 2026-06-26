@@ -10,5 +10,8 @@ namespace SFS.World
         public ParticleSystem effect;
         public float drag;
         public bool gas;
+
+        public void Spawn((Vector3, Vector3)[] particles) { }
+        public void Spawn(ParticleSystem.EmitParams[] particles) { }
     }
 }

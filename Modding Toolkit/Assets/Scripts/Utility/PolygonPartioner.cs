@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using SFS;
 using UnityEngine;
 
 public static class PolygonPartioner
 {
-    public static List<ConvexPolygon> Partion(Vector2[] points)
+    public static List<ConvexPolygon> Partion(Object debugObject, Vector2[] points)
     {
         VertexChain v = new VertexChain(points);
-        List<VertexChain> polys = ConvexPartition(v);
+        List<VertexChain> polys = ConvexPartition(debugObject, v);
         List<ConvexPolygon> output = new List<ConvexPolygon>();
 
         for (int i = 0; i < polys.Count; i++)
@@ -114,201 +115,258 @@ public static class PolygonPartioner
         return simplified;
     }
 
-    static List<VertexChain> ConvexPartition(VertexChain vertices)
+    static List<VertexChain> ConvexPartition(Object debugObject, VertexChain input)
     {
         // We force CCW as it is a precondition to this algorithm.
-        vertices.ForceCounterClockWise();
+        input.ForceCounterClockWise();
 
-        List<VertexChain> list = new List<VertexChain>();
+        if (input.Count < 3)
+            return new List<VertexChain>();
 
-        if (vertices.Count < 3)
-            return list;
+        VertexWorkSet workSet = new(null, input);
+        Queue<VertexWorkSet> workSets = new();
+        workSets.Enqueue(workSet);
 
-        double d = 0.0, lowerDist = 0.0, upperDist = 0.0;
-        Vector2 p;
-        Vector2 lowerInt = new Vector2();
-        Vector2 upperInt = new Vector2();
-        int lowerIndex = 0, upperIndex = 0;
-        VertexChain lowerPoly, upperPoly;
+        string path;
 
-        for (int i = 0; i < vertices.Count; ++i)
+        if (debugObject is MonoBehaviour monoBehaviour)
+            path = monoBehaviour.GetPath();
+        else
+            path = debugObject.name;
+
+        int iterations = 0;
+
+        while (workSets.Count > 0)
         {
-            Vector2 prev = At(i - 1, vertices);
-            Vector2 on = At(i, vertices);
-            Vector2 next = At(i + 1, vertices);
+            iterations++;
 
-            if (Reflex(prev, on, next))
+            if (iterations > 10000)
             {
-                lowerDist = upperDist = double.MaxValue;
-                for (int j = 0; j < vertices.Count; ++j)
+                Debug.LogError($"ConvexPartition stopped on too many iterations after: {iterations} iterations; for: {path}", debugObject);
+                return new List<VertexChain>();
+            }
+            
+            VertexWorkSet current = workSets.Dequeue();
+            VertexChain vertices = current.input;
+            List<VertexChain> list = current.list;
+            
+            if (vertices.Count < 3)
+                goto FINISHED_WORKSET;
+            
+            double d, lowerDist, upperDist;
+            Vector2 p;
+            Vector2 lowerInt = new();
+            Vector2 upperInt = new();
+            int lowerIndex = 0, upperIndex = 0;
+            VertexChain lowerPoly, upperPoly;
+
+            for (int i = 0; i < vertices.Count; ++i)
+            {
+                Vector2 prev = At(i - 1, vertices);
+                Vector2 on = At(i, vertices);
+                Vector2 next = At(i + 1, vertices);
+
+                if (Reflex(prev, on, next))
                 {
-                    if ((i == j) || (i == Index(j - 1, vertices.Count)) || (i == Index(j + 1, vertices.Count)))
-                        continue;
-
-                    Vector2 iPrev = At(i - 1, vertices);
-                    Vector2 iSelf = At(i, vertices);
-                    Vector2 jSelf = At(j, vertices);
-                    Vector2 jPrev = At(j - 1, vertices);
-
-                    bool leftOK = Left(iPrev, iSelf, jSelf);
-                    bool rightOK = Right(iPrev, iSelf, jPrev);
-
-                    bool leftOnOK = IsCollinear(ref iPrev, ref iSelf, ref jSelf);
-                    bool rightOnOK = IsCollinear(ref iPrev, ref iSelf, ref jPrev);
-
-                    if (leftOnOK || rightOnOK)
+                    lowerDist = upperDist = double.MaxValue;
+                    for (int j = 0; j < vertices.Count; ++j)
                     {
-                        d = SquareDist(iSelf, jSelf);
+                        if (i == j || i == Index(j - 1, vertices.Count) || i == Index(j + 1, vertices.Count))
+                            continue;
 
-                        if (d < lowerDist)
+                        Vector2 iPrev = At(i - 1, vertices);
+                        Vector2 iSelf = At(i, vertices);
+                        Vector2 jSelf = At(j, vertices);
+                        Vector2 jPrev = At(j - 1, vertices);
+
+                        bool leftOK = Left(iPrev, iSelf, jSelf);
+                        bool rightOK = Right(iPrev, iSelf, jPrev);
+
+                        bool leftOnOK = IsCollinear(ref iPrev, ref iSelf, ref jSelf);
+                        bool rightOnOK = IsCollinear(ref iPrev, ref iSelf, ref jPrev);
+
+                        if (leftOnOK || rightOnOK)
                         {
-                            lowerDist = d;
-                            lowerInt = jSelf;
-                            lowerIndex = j - 1;
-                        }
-
-                        d = SquareDist(iSelf, jPrev);
-
-                        if (d < lowerDist)
-                        {
-                            lowerDist = d;
-                            lowerInt = jPrev;
-                            lowerIndex = j;
-                        }
-                    }
-                    else if (leftOK && rightOK)
-                    {
-                        p = LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
-                                                    At(j - 1, vertices));
-
-                        if (Right(At(i + 1, vertices), At(i, vertices), p))
-                        {
-
-                            d = SquareDist(At(i, vertices), p);
+                            d = SquareDist(iSelf, jSelf);
 
                             if (d < lowerDist)
                             {
                                 lowerDist = d;
-                                lowerInt = p;
+                                lowerInt = jSelf;
+                                lowerIndex = j - 1;
+                            }
+
+                            d = SquareDist(iSelf, jPrev);
+
+                            if (d < lowerDist)
+                            {
+                                lowerDist = d;
+                                lowerInt = jPrev;
                                 lowerIndex = j;
                             }
                         }
-                    }
-
-                    Vector2 iNext = At(i + 1, vertices);
-                    Vector2 jNext = At(j + 1, vertices);
-
-                    bool leftOKn = Left(iNext, iSelf, jNext);
-                    bool rightOKn = Right(iNext, iSelf, jSelf);
-
-                    bool leftOnOKn = IsCollinear(ref iNext, ref iSelf, ref jNext);
-                    bool rightOnOKn = IsCollinear(ref iNext, ref iSelf, ref jSelf);
-
-                    if (leftOnOKn || rightOnOKn)
-                    {
-                        d = SquareDist(iSelf, jNext);
-
-                        if (d < upperDist)
+                        else if (leftOK && rightOK)
                         {
-                            upperDist = d;
-                            upperInt = jNext;
-                            upperIndex = j + 1;
+                            p = LineIntersect(At(i - 1, vertices),
+                                At(i, vertices),
+                                At(j, vertices),
+                                At(j - 1, vertices));
+
+                            if (Right(At(i + 1, vertices), At(i, vertices), p))
+                            {
+
+                                d = SquareDist(At(i, vertices), p);
+
+                                if (d < lowerDist)
+                                {
+                                    lowerDist = d;
+                                    lowerInt = p;
+                                    lowerIndex = j;
+                                }
+                            }
                         }
 
-                        d = SquareDist(At(i, vertices), At(j, vertices));
+                        Vector2 iNext = At(i + 1, vertices);
+                        Vector2 jNext = At(j + 1, vertices);
 
-                        if (d < upperDist)
+                        bool leftOKn = Left(iNext, iSelf, jNext);
+                        bool rightOKn = Right(iNext, iSelf, jSelf);
+
+                        bool leftOnOKn = IsCollinear(ref iNext, ref iSelf, ref jNext);
+                        bool rightOnOKn = IsCollinear(ref iNext, ref iSelf, ref jSelf);
+
+                        if (leftOnOKn || rightOnOKn)
                         {
-                            upperDist = d;
-                            upperInt = jSelf;
-                            upperIndex = j;
-                        }
-                    }
-                    else if (leftOKn && rightOKn)
-                    {
-                        p = LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices),
-                                                    At(j + 1, vertices));
-                        if (Left(At(i - 1, vertices), At(i, vertices), p))
-                        {
-                            d = SquareDist(At(i, vertices), p);
+                            d = SquareDist(iSelf, jNext);
+
                             if (d < upperDist)
                             {
                                 upperDist = d;
+                                upperInt = jNext;
+                                upperIndex = j + 1;
+                            }
+
+                            d = SquareDist(At(i, vertices), At(j, vertices));
+
+                            if (d < upperDist)
+                            {
+                                upperDist = d;
+                                upperInt = jSelf;
                                 upperIndex = j;
-                                upperInt = p;
                             }
                         }
-                    }
-                }
-
-                if (lowerIndex == (upperIndex + 1) % vertices.Count)
-                {
-                    Vector2 sp = ((lowerInt + upperInt) / 2);
-
-                    lowerPoly = Copy(i, upperIndex, vertices);
-                    lowerPoly.Add(sp);
-                    upperPoly = Copy(lowerIndex, i, vertices);
-                    upperPoly.Add(sp);
-                }
-                else
-                {
-                    double highestScore = 0, bestIndex = lowerIndex;
-                    while (upperIndex < lowerIndex)
-                        upperIndex += vertices.Count;
-
-                    for (int j = lowerIndex; j <= upperIndex; ++j)
-                    {
-                        if (CanSee(i, j, vertices))
+                        else if (leftOKn && rightOKn)
                         {
-                            double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
-
-                            Vector2 prevj = At(j - 1, vertices);
-                            Vector2 onj = At(j, vertices);
-                            Vector2 nextj = At(j + 1, vertices);
-
-                            if (Reflex(prevj, onj, nextj))
+                            p = LineIntersect(At(i + 1, vertices),
+                                At(i, vertices),
+                                At(j, vertices),
+                                At(j + 1, vertices));
+                            if (Left(At(i - 1, vertices), At(i, vertices), p))
                             {
-                                if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) &&
-                                    LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
-                                    score += 3;
-                                else
-                                    score += 2;
-                            }
-                            else
-                                score += 1;
-                            if (score > highestScore)
-                            {
-                                bestIndex = j;
-                                highestScore = score;
+                                d = SquareDist(At(i, vertices), p);
+                                if (d < upperDist)
+                                {
+                                    upperDist = d;
+                                    upperIndex = j;
+                                    upperInt = p;
+                                }
                             }
                         }
                     }
 
-                    lowerPoly = Copy(i, (int)bestIndex, vertices);
-                    upperPoly = Copy((int)bestIndex, i, vertices);
-                }
+                    if (lowerIndex == (upperIndex + 1) % vertices.Count)
+                    {
+                        Vector2 sp = ((lowerInt + upperInt) / 2);
 
-                if (lowerPoly.Count < upperPoly.Count)
-                {
-                    list.AddRange(ConvexPartition(lowerPoly));
-                    list.AddRange(ConvexPartition(upperPoly));
-                }
-                else
-                {
-                    list.AddRange(ConvexPartition(upperPoly));
-                    list.AddRange(ConvexPartition(lowerPoly));
-                }
+                        lowerPoly = Copy(i, upperIndex, vertices);
+                        lowerPoly.Add(sp);
+                        upperPoly = Copy(lowerIndex, i, vertices);
+                        upperPoly.Add(sp);
+                    }
+                    else
+                    {
+                        double highestScore = 0, bestIndex = lowerIndex;
+                        while (upperIndex < lowerIndex)
+                            upperIndex += vertices.Count;
 
-                return list;
+                        for (int j = lowerIndex; j <= upperIndex; ++j)
+                        {
+                            if (CanSee(i, j, vertices))
+                            {
+                                double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
+
+                                Vector2 prevj = At(j - 1, vertices);
+                                Vector2 onj = At(j, vertices);
+                                Vector2 nextj = At(j + 1, vertices);
+
+                                if (Reflex(prevj, onj, nextj))
+                                {
+                                    if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) &&
+                                        LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
+                                        score += 3;
+                                    else
+                                        score += 2;
+                                }
+                                else
+                                    score += 1;
+
+                                if (score > highestScore)
+                                {
+                                    bestIndex = j;
+                                    highestScore = score;
+                                }
+                            }
+                        }
+
+                        lowerPoly = Copy(i, (int)bestIndex, vertices);
+                        upperPoly = Copy((int)bestIndex, i, vertices);
+                    }
+
+                    // This recurses but only if reflex works out, which idk what it does
+                    if (lowerPoly.Count < upperPoly.Count)
+                    {
+                        workSets.Enqueue(new VertexWorkSet(current, lowerPoly));
+                        workSets.Enqueue(new VertexWorkSet(current, upperPoly));
+                        current.pending += 2;
+                    }
+                    else
+                    {
+                        workSets.Enqueue(new VertexWorkSet(current, upperPoly));
+                        workSets.Enqueue(new VertexWorkSet(current, lowerPoly));
+                        current.pending += 2;
+                    }
+
+                    goto NEXT_WORKSET;
+                }
             }
+
+            list.Add(vertices);
+
+            for (int i = 0; i < list.Count; i++)
+                list[i] = CollinearSimplify(list[i], 0.00001f);
+
+            FINISHED_WORKSET:;
+            current.done = true;
+            VertexWorkSet set = current;
+            while (set != null)
+            { // Iterate up the dispatch list
+                if (set.dispatcher == null)
+                    break;
+
+                set.dispatcher.list.AddRange(set.list);
+                set.dispatcher.pending--;
+
+                if (set.dispatcher.pending > 0)
+                    break;
+
+                set.dispatcher.done = true;
+                set = set.dispatcher;
+            }
+            
+            NEXT_WORKSET:;
         }
-
-        list.Add(vertices);
-
-        for (int i = 0; i < list.Count; i++)
-            list[i] = CollinearSimplify(list[i], 0.00001f);
-
-        return list;
+        
+        return workSet.list;
     }
 
     static VertexChain Copy(int i, int j, VertexChain vertices)
@@ -422,7 +480,24 @@ public static class PolygonPartioner
         float dy = b.y - a.y;
         return dx * dx + dy * dy;
     }
+
+    class VertexWorkSet
+    {
+        public readonly VertexWorkSet dispatcher;
+        public VertexChain input;
+        public List<VertexChain> list = new();
+        
+        public int pending = 0;
+        public bool done = false;
+
+        public VertexWorkSet(VertexWorkSet dispatcher, VertexChain input)
+        {
+            this.dispatcher = dispatcher;
+            this.input = input;
+        }
+    }
 }
+
 
 public class VertexChain : List<Vector2>
 {

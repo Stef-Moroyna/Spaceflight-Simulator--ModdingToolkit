@@ -3,6 +3,12 @@ using System;
 
 namespace SFS.Variables
 {
+    [Serializable]
+    public class Local_GenericTarget : Obs_Destroyable<ObservableMonoBehaviour>
+    {
+        protected override bool IsEqual(ObservableMonoBehaviour a, ObservableMonoBehaviour b) => a == b;
+    }
+    
     // Reference to destroyable
     [Serializable, InlineProperty]
     public abstract class Obs_Destroyable<T> : Obs<T> where T : I_ObservableMonoBehaviour
@@ -35,7 +41,14 @@ namespace SFS.Variables
     {
         Action OnDestroy { get; set; }
     }
-    
+
+
+    // Custom
+    [Serializable]
+    public class Planet_Local : Obs<WorldBase.Planet>
+    {
+        protected override bool IsEqual(WorldBase.Planet a, WorldBase.Planet b) => a == b;
+    }
     //
     [Serializable]
     public class Double2_Local : Obs<Double2>

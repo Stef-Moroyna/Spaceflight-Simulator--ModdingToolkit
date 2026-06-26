@@ -51,7 +51,7 @@ namespace SFS.Variables
 
         bool initialized;
         VariableList<T>.Variable variable;
-        VariableList<T>.Variable Variable
+        public VariableList<T>.Variable Variable
         {
             get
             {

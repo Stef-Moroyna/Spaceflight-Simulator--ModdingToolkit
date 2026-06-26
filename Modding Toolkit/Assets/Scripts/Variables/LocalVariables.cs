@@ -12,6 +12,15 @@ namespace SFS.Variables
     [Serializable] public class Float_Local : Obs<float>
     {
         protected override bool IsEqual(float a, float b) => a == b;
+        
+        // Constructor
+        public Float_Local()
+        {
+        }
+        public Float_Local(float initialValue)
+        {
+            Value = initialValue;
+        }
     }
     [Serializable] public class Double_Local : Obs<double>
     {

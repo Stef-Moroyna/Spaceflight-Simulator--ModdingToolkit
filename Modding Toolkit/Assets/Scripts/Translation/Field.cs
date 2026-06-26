@@ -3,6 +3,7 @@ using SFS.Parsers.Regex;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.Text;
 
 namespace SFS.Translations
 {
@@ -14,10 +15,6 @@ namespace SFS.Translations
         {
             return subs.ContainsKey(index)? subs[index] : subs[0];
         }
-        public (int, string)[] GetSubs()
-        {
-            return subs.Select(pair => (pair.Key, pair.Value)).ToArray();
-        }
         public bool HasSub(int index)
         {
             return subs.ContainsKey(index);
@@ -27,36 +24,41 @@ namespace SFS.Translations
             subs[index] = sub;
         }
 
-
-        public Builder InjectField(TranslationVariable subs, string variableName)
+        public Builder InjectField(TranslationVariable subs, string variableName, bool formatCapitalization = false)
         {
-            return InjectField(subs.Field, variableName);
+            return InjectField(subs.Field, variableName, formatCapitalization);
         }
-        public Builder InjectField(Field subs, string variableName)
+        public Builder InjectField(Field subs, string variableName, bool formatCapitalization = false)
         {
-            return GetBuilder(0).InjectField(subs, variableName);
+            return GetBuilder(0).InjectField(subs, variableName, formatCapitalization);
         }
-        public Builder Inject(string value, string variableName)
+        public Builder InjectPlanet(Field subs)
         {
-            return GetBuilder(0).Inject(value, variableName);
+            return GetBuilder(0).InjectField(subs, "planet", false);
+        }
+        public Builder Inject(string value, string variableName, bool formatCapitalization = false)
+        {
+            return GetBuilder(0).Inject(value, variableName, formatCapitalization);
         }
         Builder GetBuilder(int subIndex)
         {
             return new Builder(GetSub(subIndex));
         }
-               
 
         public static implicit operator string(Field field)
         {
-            try
-            {
-                return field.subs[0];
-            }
-            catch(Exception e)
-            {
-                Debug.Log(e);
-                throw;
-            }
+            if (field == null)
+                return string.Empty;
+
+            return field.ToString();
+        }
+
+        public override string ToString()
+        {
+            if (subs.Count == 0)
+                return string.Empty;
+
+            return subs[0];
         }
 
         public static Field Text(string sub)
@@ -80,6 +82,7 @@ namespace SFS.Translations
         
         public class Builder
         {
+            static readonly StringBuilder stringBuilder = new StringBuilder();
             string translation;
 
             public Builder(string translation)
@@ -87,7 +90,7 @@ namespace SFS.Translations
                 this.translation = translation;
             }
             
-            public Builder InjectField(Field subs, string variableName)
+            public Builder InjectField(Field subs, string variableName, bool formatCapitalization = false)
             {
                 SimpleRegex regex = new SimpleRegex("%" + variableName + @"{(?<number>\d*?)}%");
 
@@ -101,11 +104,22 @@ namespace SFS.Translations
                     translation = translation.Insert(regex.Match.Index, sub);
                 }
 
-                return Inject(subs, variableName);
+                return Inject(subs, variableName, formatCapitalization);
             }
-            public Builder Inject(string value, string variableName)
+            public Builder Inject(string value, string variableName, bool formatCapitalization = false)
             {
-                translation = translation.Replace("%" + variableName + "%", value);
+                string variableKey = $"%{variableName}%";
+
+                // Check if we need to (de)capitalize the value
+                if (formatCapitalization && !string.IsNullOrEmpty(value) && value.Length > 2)
+                {
+                    if (ShouldCapitalizeWord(translation, variableKey))
+                        value = char.ToUpper(value[0]) + value.Substring(1);
+                    else
+                        value = value.ToLower();
+                }
+
+                translation = translation.Replace(variableKey, value);
                 return this;
             }
 
@@ -118,6 +132,44 @@ namespace SFS.Translations
             {
                 return a.translation;
             }
+
+            public static bool ShouldCapitalizeWord(string text, string variableName)
+            {
+                if (string.IsNullOrEmpty(text) || !text.Contains(variableName))
+                    return false;
+
+                int wordIndex = text.IndexOf(variableName);
+
+                // Case 1: %word% is at the very beginning of the text
+                if (wordIndex == 0)
+                    return true;
+
+                // Case 2: %word% is at the beginning of a sentence
+                // Check if the character before %word% is a sentence terminator followed by whitespace
+                if (wordIndex >= 2)
+                {
+                    char charBefore = text[wordIndex - 1];
+                    char charBeforeThat = text[wordIndex - 2];
+
+                    // Check for ". ", "! ", "? ", or "\n" patterns
+                    if ((charBefore == ' ' && IsSentenceTerminator(charBeforeThat)) ||
+                        (charBefore == '\n' && IsSentenceTerminator(charBeforeThat)) ||
+                        charBefore == '\n')
+                    {
+                        return true;
+                    }
+                }
+
+                // Case 3: %word% is after a newline (start of a new line/paragraph)
+                if (wordIndex > 0 && text[wordIndex - 1] == '\n')
+                    return true;
+
+                return false;
+            }
+        }
+        private static bool IsSentenceTerminator(char c)
+        {
+            return c == '.' || c == '!' || c == '?';
         }
     }
 }
