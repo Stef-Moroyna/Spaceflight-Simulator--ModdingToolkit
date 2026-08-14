@@ -42,7 +42,7 @@ namespace SFS.Variables
     {
         // Variables
         [ValueDropdown("Dropdown"), HorizontalGroup, HideLabel, SerializeField, DisableInPlayMode] string variableName = "";
-        [HideInInspector] public VariablesModule referenceToVariables; 
+        public VariablesModule referenceToVariables; 
         // 
         [HideInInspector] public T localValue;
         event Action onLocalValueChange;
